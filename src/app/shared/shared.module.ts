@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
+    HttpClientModule
   ],
    exports: [
     CommonModule,
@@ -31,6 +34,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
+    HttpClientModule
   ],
 })
 export class SharedModule { }
