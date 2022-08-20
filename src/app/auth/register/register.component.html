@@ -1,1 +1,93 @@
-<p>register works!</p>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">Telegram</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-5">
+        <div class="login-wrap p-4 p-md-5">
+          <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-user-o"><img src="https://i.pinimg.com/originals/b3/81/f1/b381f1b5e7dbccca15ddb526c634e16d.gif" width="200px"></span>
+          </div>
+          <h3 class="text-center mb-4">Register</h3>
+          <form [formGroup]="registerForm" class="login-form">
+
+            <mat-label>First Name</mat-label>
+            <div class="form-group">
+
+              <mat-form-field style="width: 93%; " >
+
+              <input type="text" class="form-control rounded-left"   matInput  name="name" formControlName="firstName" >
+               <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
+                  First name is requird!
+            </mat-error>
+
+            </mat-form-field>
+            </div>
+
+            <mat-label>Last Name</mat-label>
+            <div class="form-group">
+
+              <mat-form-field style="width: 93%; ">
+
+              <input type="text" class="form-control rounded-left"   matInput  name="name" formControlName="lastName" >
+               <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
+                  Last name is requird!
+            </mat-error>
+
+            </mat-form-field>
+            </div>
+
+            <mat-label>Email</mat-label>
+            <div class="form-group" >
+              <mat-form-field  style="width: 93%; ">
+
+              <input type="email" matInput name="email" formControlName="email"  class="form-control rounded-left"  placeholder="Ex@email.com">
+              <mat-error *ngIf="registerForm.controls['email'].hasError('email')" >
+                please Enter A valid Email Address.
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['email'].hasError('requird')" >
+                Email is requird
+              </mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <mat-label>Password</mat-label>
+            <div class="form-group" >
+              <mat-form-field style="width:93%; " >
+
+              <input type="password" matInput name="password" formControlName="password"  class="form-control rounded-left" >
+              <mat-error *ngIf="registerForm.controls['password'].hasError('requird')" >
+                Password iis requird !
+              </mat-error>
+              <mat-error *ngIf="registerForm.controls['email'].hasError('minlength')" >
+               please enter a strong password
+              </mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <div class="form-group">
+              <button type="submit" [disabled]="!registerForm.valid" class="form-control btn btn-primary rounded submit px-3" (click)="submit()" >Login</button>
+            </div>
+            <div class="form-group d-md-flex">
+              <div class="w-50">
+                <label class="checkbox-wrap checkbox-primary">Remember Me
+                  <input type="checkbox" checked>
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+
+              <div class="w-50 text-md-right">
+                <a (click)="goToLogin()" >Go to login </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
