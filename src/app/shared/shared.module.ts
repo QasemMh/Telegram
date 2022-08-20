@@ -13,6 +13,7 @@ import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr
 
 import { HttpClientModule } from '@angular/common/http';
 
+import{HttpClientModule}from '@angular/common/http'
 
 
 @NgModule({
