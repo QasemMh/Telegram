@@ -11,6 +11,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import{HttpClientModule}from '@angular/common/http'
 import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -25,8 +27,6 @@ import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    ToastrModule.forRoot(),
-    ToastNoAnimationModule.forRoot(),
     HttpClientModule
   ],
    exports: [
@@ -37,8 +37,7 @@ import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    ToastrModule,
-    ToastNoAnimationModule,
-    HttpClientModule  ],
+    HttpClientModule
+  ],
 })
 export class SharedModule { }
