@@ -7,6 +7,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => AuthModule,
   },
+  
 ];
 
 @NgModule({
