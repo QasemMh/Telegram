@@ -15,23 +15,23 @@
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
+  --purple: #5d8ffa;
+  --pink: #3e5de8;
+  --red: #355cdc;
+  --orange: #1466fd;
+  --yellow: #07c5ff;
   --green: #39aee4;
   --teal: #318be0;
   --cyan: #6493fa;
   --white: #ffffff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #9e6de0;
-  --secondary: #fd5190;
+  --primary: #377be0;
+  --secondary: #5154fd;
   --success: #3390ec;
   --info: #04c7e0;
-  --warning: #fec400;
-  --danger: #fe5461;
+  --warning: #008cfe;
+  --danger: #5498fe;
   --light: #f0f1f5;
   --dark: #31343d;
   --info-dark: #6493fa;
@@ -164,12 +164,12 @@ sup {
 }
 
 a {
-  color: #9e6de0;
+  color: #3757e7;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #742ed3;
+  color: #2e54d3;
   text-decoration: underline;
 }
 
