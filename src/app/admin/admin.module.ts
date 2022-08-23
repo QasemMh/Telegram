@@ -9,7 +9,11 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { StoryComponent } from './story/story.component';
 import { ChannelComponent } from './channel/channel.component';
 import { GroupComponent } from './group/group.component';
+
 import { UserComponent } from './user/user.component';
+
+import { RolesComponent } from './role/role.component';
+
 
 
 @NgModule({
@@ -20,7 +24,10 @@ import { UserComponent } from './user/user.component';
     StoryComponent,
     ChannelComponent,
     GroupComponent,
+
     UserComponent
+    RolesComponent
+
   ],
   imports: [
     CommonModule,

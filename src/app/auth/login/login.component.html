@@ -18,29 +18,33 @@
             <mat-label>Email</mat-label>
             <div class="form-group">
 
-              <mat-form-field style="width: 93%; " >
+              <mat-form-field style="width: 93%; "  >
 
-              <input type="email" class="form-control rounded-left"   matInput [formControl]="emailFormControl" placeholder="Ex.pat@example.com">
-               <mat-error *ngIf="emailFormControl.hasError('email')">
-                  not a valid email.
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.errors?.['required']">
-              email is required. </mat-error>
+              <input  type="text" class="form-control rounded-left"  title="email" matInput [formControl]="email" placeholder="Ex.pat@example.com">
+
+            <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+              please enter valid email </mat-error>
             </mat-form-field>
+            <mat-error *ngIf="email.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
             </div>
 
             <mat-label>Password</mat-label>
             <div class="form-group"   >
               <mat-form-field  style="width: 93%; " >
 
-              <input type="password" class="form-control rounded-left" matInput [formControl]="passFormControl">
-              <mat-error *ngIf="passFormControl.errors?.['minlength']" >
-                min length for the password equal 6.
-              </mat-error>
+              <input id="password" type="password" class="form-control rounded-left" matInput [formControl]="password" name="password" title="password">
+              <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+                password is required. </mat-error>
+
+                <mat-error *ngIf="password.hasError('required')">
+                  password is required. </mat-error>
               </mat-form-field>
+
             </div>
             <div class="form-group">
-              <button type="submit" class="form-control btn btn-primary rounded submit px-3" (click)="submit()" >Login</button>
+              <button [disabled]="!email.valid || !password.valid "  (click)="submit()"  type="submit" class="form-control btn btn-primary rounded submit px-3" >Login</button>
             </div>
             <div class="form-group d-md-flex">
               <div class="w-50">
@@ -55,9 +59,9 @@
               </div>
             </div>
           </form>
+
         </div>
       </div>
     </div>
   </div>
 </section>
- 

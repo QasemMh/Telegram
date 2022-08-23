@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form class="example-form">
+        <div class="example-full-width" appearance="fill">
+          <label>Search</label>
+          <input
+            type="text"
+            required
+            (change)="searchInput($event)"
+            [value]="searchTerm"
+          />
+        </div>
+        <button (click)="SearchRole()">Search</button>
+      </form>
+    </div>
+    <div class="col-md-12">
+      <button (click)="openInsertDialog()">Add New Role</button>
+    </div>
+    <div class="col-md-6">
+      <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Action</th>
+          </tr>
+          <tr *ngFor="let role of roles">
+            <td>{{ role.id }}</td>
+            <td>{{ role.name }}</td>
+            <td>
+              <button class="" (click)="openUpdateDialog(role.id, role.name)">
+                Edit
+              </button>
+              <button class="" (click)="openDeleteDialog(role.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #callUpdateDiloag>
+  <form class="example-form" [formGroup]="updateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Role Name</mat-label>
+      <input
+        matInput
+        formControlName="name"
+        type="text"
+        [(ngModel)]="this.prevData.name"
+      />
+    </mat-form-field>
+    <button (click)="UpdateRole()">Update</button>
+    <button mat-dialog-close="yes">Back</button>
+  </form>
+</ng-template>
+
+<ng-template #callDeleteDiloag>
+  <h1>Are you Sure</h1>
+  <button mat-dialog-close="yes" mat-button>Delete</button>
+  <button mat-dialog-close="no" mat-button>Back</button>
+</ng-template>
+
+<ng-template #callInsertDiloag>
+  <form class="example-form" [formGroup]="updateForm">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Role Name</mat-label>
+      <input matInput formControlName="name" type="text" />
+    </mat-form-field>
+    <button (click)="AddRole()">Add</button>
+    <button mat-dialog-close="yes">Back</button>
+  </form>
+</ng-template>
