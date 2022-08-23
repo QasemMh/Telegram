@@ -17,26 +17,25 @@ export class AuthService {
 
   ) {}
 
-
-
-  //test
-  login(email: any, pass: any) {
+  submit(email: any, pass: any) {
     this.spinner.show();
 
     const body = {
       username: email.value.toString(),
       password: pass.value.toString(),
-    };
+    }
+
+
     const headerRef = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-    };
+    }
     const requestOptions = {
       headers: new HttpHeaders(headerRef),
-    };
+    }
     //
-    return this.http
-      .post('https://localhost:44349/api/Jwt/Authen', body, requestOptions)
+
+ this.http.post('https://localhost:44301/api/Login/authon/auth', body, requestOptions)
       .subscribe(
         (data) => {
           console.log('token:');
@@ -49,11 +48,12 @@ export class AuthService {
           localStorage.setItem('token', respons.token);
           let decoded: any = jwt_decode(respons.token);
           localStorage.setItem('userData', JSON.stringify(decoded));
+
           console.log('decoded token');
           console.log(decoded);
 
-          if (decoded.role == 'admin') {
-            this.router.navigate(['/home']);
+        if (decoded.role == 'Admin') {
+            this.router.navigate(['/admin/dashboard']);
            } else {
             this.router.navigate(['/home']);
            }

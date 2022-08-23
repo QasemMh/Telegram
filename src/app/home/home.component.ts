@@ -38,9 +38,9 @@ CreateContact:FormGroup=new FormGroup({
   uploadImage(file:any)
   {
     if(file.length==0)
-    return ; 
+    return ;
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object 
+    const formDate=new FormData();//object
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.home.uploadAttachment(formDate);
