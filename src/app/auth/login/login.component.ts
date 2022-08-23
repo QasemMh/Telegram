@@ -16,14 +16,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService:AuthService ,private router:Router ,private spinner: NgxSpinnerService) { }
 
-  emailFormControl = new FormControl('', [Validators.email, Validators.required]);
-   passFormControl = new FormControl('', Validators.minLength(6));
+
+  email: FormControl = new FormControl('', [ Validators.required]);
+  password : FormControl = new FormControl('', Validators.minLength(6));
+
+
 
    submit(){
-    this.spinner.show();
-    setTimeout(() => {
-    /** spinner ends after 5 seconds */this.spinner.hide();
-    }, 5000);
+    this.authService.submit(this.email,this.password)
+
   }
 
   goToRegister(){
@@ -32,16 +33,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-// handel(){
-//   this.authService.login();
-// }
-
-
-
-//   handel() {
-//   //  this.authService.login();
-//   }
 
 }
 
