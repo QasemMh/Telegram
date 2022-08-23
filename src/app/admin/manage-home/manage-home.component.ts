@@ -36,17 +36,50 @@ export class ManageHomeComponent implements OnInit {
   updateHomeForm:FormGroup=new FormGroup({
     id:new FormControl(),
     name:new FormControl(),
+    logo:new FormControl(),
     img :new FormControl(),
     email:new FormControl(),
     phone:new FormControl(),
-    address:new FormControl(),
-
+    address:new FormControl()
   })
+
+  updateTestimonialForm:FormGroup=new FormGroup({
+    id:new FormControl(),
+    first_Name:new FormControl(),
+    last_Name:new FormControl(),
+    image:new FormControl(),
+    description :new FormControl(),
+    is_accept :new FormControl()
+  })
+  
+  Testimonial_data:any={};
+
+  Accepting(obj:any){
+    this.Testimonial_data={
+      id:obj.id,
+      first_Name:obj.first_Name,
+      last_Name:obj.last_Name,
+      image:obj.image,
+      description:obj.description,
+      is_accept:obj.is_accept,
+      }
+      console.log(this.Testimonial_data);
+      if(obj.is_accept==0)
+      obj.is_accept=1;
+      else 
+      obj.is_accept=0;
+      this.updateTestimonialForm.controls['id'].setValue(this.Testimonial_data.id); 
+
+      
+   this.home.UpdateTestimonial(this.updateTestimonialForm.value);
+  }
+  
   ngOnInit(): void {
     
     this.home.getHomeInfo();
     this.home.getAboutUsInfo();
     this.home.getAllContact();
+    this.home.GetAllTestimonial();
   }
 
   UploadImageAboutUs(file:any)
@@ -64,7 +97,7 @@ export class ManageHomeComponent implements OnInit {
     this.About_data={
     id:obj.id,
     img:obj.img,
-    contant:obj.logo
+    contant:obj.contant
     }
     console.log(this.About_data);
     this.updateAboutUsForm.controls['id'].setValue(this.About_data.id); 
@@ -73,7 +106,7 @@ export class ManageHomeComponent implements OnInit {
     
   }
   UpdateAbout(){
-    debugger
+    // debugger
     this.home.UpdateAboutUs(this.updateAboutUsForm.value);
   }
   uploadImage(file:any)
