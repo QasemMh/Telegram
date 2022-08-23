@@ -18,54 +18,57 @@ export class AuthService {
   ) {}
 
 
+  submit(email: any, pass: any) {
+    this.spinner.show();
 
-//   //test
-//   login(email: any, pass: any) {
-//     this.spinner.show();
+    const body = {
+      username: email.value.toString(),
+      password: pass.value.toString(),
+    }
 
-//     const body = {
-//       username: email.value.toString(),
-//       password: pass.value.toString(),
-//     };
-//     const headerRef = {
-//       'Content-Type': 'application/json',
-//       Accept: 'application/json',
-//     };
-//     const requestOptions = {
-//       headers: new HttpHeaders(headerRef),
-//     };
-//     //
-//     return this.http
-//       .post('https://localhost:44349/api/Jwt/Authen', body, requestOptions)
-//       .subscribe(
-//         (data) => {
-//           console.log('token:');
-//           console.log(data);
-//           this.spinner.hide();
-//           const respons = {
-//             token: data.toString(),
-//           };
 
-//           localStorage.setItem('token', respons.token);
-//           let decoded: any = jwt_decode(respons.token);
-//           localStorage.setItem('userData', JSON.stringify(decoded));
-//           console.log('decoded token');
-//           console.log(decoded);
+    const headerRef = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    }
+    const requestOptions = {
+      headers: new HttpHeaders(headerRef),
+    }
+    //
 
-//           if (decoded.role == 'admin') {
-//             this.router.navigate(['/home']);
-//            } else {
-//             this.router.navigate(['/home']);
-//            }
-//         },
-//         (error) => {
-//           this.spinner.hide();
-//           this.toastr.error('Invalid Credentials', 'Error');
-//         }
-//       );
-//     //
-//   }
-// //test
+ this.http.post('https://localhost:44301/api/Login/authon/auth', body, requestOptions)
+      .subscribe(
+        (data) => {
+          console.log('token:');
+          console.log(data);
+          this.spinner.hide();
+          const respons = {
+            token: data.toString(),
+          };
+
+          localStorage.setItem('token', respons.token);
+          let decoded: any = jwt_decode(respons.token);
+          localStorage.setItem('userData', JSON.stringify(decoded));
+
+          console.log('decoded token');
+          console.log(decoded);
+
+        if (decoded.role == 'Admin') {
+            this.router.navigate(['/admin/dashboard']);
+           } else {
+            this.router.navigate(['/home']);
+           }
+        },
+        (error) => {
+          this.spinner.hide();
+          this.toastr.error('Invalid Credentials', 'Error');
+        }
+      );
+    //
+  }
+
+
+ 
 
 
 }
