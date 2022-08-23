@@ -1,0 +1,46 @@
+<div class="card card-default">
+    <div class="card-header">
+      <h2>Users List :</h2>
+  
+      <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
+        aria-controls="collapse-data-tables"> </a>
+  
+    </div>
+  
+      <table id="productsTable" class="table table-hover table-product" style="width:100%">
+        <thead>
+          <tr>
+            <th>Full Name</th> 
+            <th>bio</th>
+            <th>gender</th>
+            <th>image_path</th>
+            <th>created_at</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+  
+          <tr *ngFor="let obj of Admin.Users">
+            <td>{{obj.first_name}} {{obj.middle_name}} {{obj.last_name}}</td>
+            <td>{{obj.bio}} </td>
+            <td>{{obj.gender}}</td>
+            <td><img src="../../../assets/images/{{obj.image_path}}" width="50px"> </td>
+            <td>{{obj.created_at}}</td>
+           
+            <td>
+              
+  
+                
+                 <!-- // <button (click)="deleteContactUs(obj.id)">Delete</button> -->
+                  
+                
+              
+            </td>
+          </tr>
+  
+          
+  
+        </tbody>
+      </table>
+  
+    </div>
