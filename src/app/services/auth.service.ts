@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-//import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root',
@@ -68,7 +68,7 @@ export class AuthService {
   }
 
 
- 
+
 
 
 }

@@ -9,6 +9,7 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { StoryComponent } from './story/story.component';
 import { ChannelComponent } from './channel/channel.component';
 import { GroupComponent } from './group/group.component';
+import { RolesComponent } from './role/role.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { GroupComponent } from './group/group.component';
     ManageHomeComponent,
     StoryComponent,
     ChannelComponent,
-    GroupComponent
+    GroupComponent,
+    RolesComponent
   ],
   imports: [
     CommonModule,
