@@ -1,7 +1,7 @@
 
         <!-- <pre class="language-html mb-4">
   <code> -->
-  
+  <!-- <app-sidebar></app-sidebar> -->
  <div class="row">
    <div class="col-lg-6 col-xl-3">
      <div class="card mb-4">
@@ -80,6 +80,72 @@
     </div>
   
 
+
+
+
+
+    <div class="card card-default">
+      <div class="card-header">
+        <h2>Testimonials List :</h2>
+
+        <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-table-striped" role="button"
+          aria-expanded="false" aria-controls="collapse-table-striped"> </a>
+
+
+      </div>
+      <div class="card-body">
+        <div class="collapse" id="collapse-table-striped">
+          
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">first_Name</th>
+              <th scope="col">last_Name</th>
+              <th scope="col">image</th>
+              <th scope="col">description</th>
+              <th scope="col">is_Accept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of home.Testimonials">
+              <td scope="row">{{obj.first_Name}}</td>
+              <td>{{obj.last_Name}}</td>
+              <td> <img class="card-img-top" src="../../../assets/img/{{obj.image}}"></td>
+              <td>{{obj.description}}</td>
+              <td>
+                <label class="switch switch-primary switch-pill form-control-label ">
+                  <input type="checkbox" class="switch-input form-check-input" [(ngModel)]="obj.is_Accept" >
+                  
+                  <span class="switch-label"></span>
+                  <span class="switch-handle">{{obj.is_Accept}}</span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <ng-template #callHomeupdateDailog>
       <form class="example-form" [formGroup]="updateHomeForm" >
           <mat-form-field class="example-full-width" appearance="fill">
@@ -87,6 +153,15 @@
             <input type="text" matInput formControlName="name"
                    [(ngModel)]="Home_data.name">
           </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label> Logo</mat-label>
+        <input type="text" matInput formControlName="logo"
+               [(ngModel)]="Home_data.logo">
+      </mat-form-field>
+  <br>
+      <mat-label>Upload Image </mat-label>
+      <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="Home_data.img">
       <br>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label> email</mat-label>
@@ -107,9 +182,7 @@
       </mat-form-field>
       <br>
       
-          <mat-label>Upload Image </mat-label>
-          <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="Home_data.img">
-          <button (click)="UpdateHome()">DONE</button>
+         <button (click)="UpdateHome()">DONE</button>
       </form>
       
      
@@ -119,17 +192,19 @@
   
   <ng-template #callAboutupdateDailog>
     <form class="example-form" [formGroup]="updateAboutUsForm" >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label> contant</mat-label>
-          <input type="text" matInput formControlName="contant"
-                 [(ngModel)]="About_data.contant">
-        </mat-form-field>
+        
     
     <br>
     
         <mat-label>Upload Image </mat-label>
-        <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="About_data.img">
-        <button (click)="UpdateHome()">DONE</button>
+        <input type="file" #file formControlName="img" (change)="UploadImageAboutUs(file.files)" [(ngModel)]="About_data.img">
+        <br>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label> contant</mat-label>
+          <input type="text" matInput formControlName="contant"
+                 [(ngModel)]="About_data.contant">
+        </mat-form-field><button (click)="UpdateAbout()">DONE</button>
     </form>
     
    

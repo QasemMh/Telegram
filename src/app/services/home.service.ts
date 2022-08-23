@@ -9,14 +9,44 @@ export class HomeService {
   AboutUs:any=[{}];
   HomePage:any=[{}];
   ContactUs:any=[{}];
+  AcceptTestimonial:any=[{}];
   display_Image:any;
   constructor(private http :HttpClient) { }
+  Testimonials:any=[{}];
+
+  GetAllTestimonial()
+  {
+    
+  this.http.get('https://localhost:44301/api/Testimonial/GetAllTestimonial').subscribe((res)=>{
+  this.Testimonials=res;
+   //console.log(this.HomePage)
+  })
+  }
+  GetAcceptTestimonial()
+  {
+    
+  this.http.get('https://localhost:44301/api/Testimonial/GetAcceptTestimonial').subscribe((res)=>{
+  this.AcceptTestimonial=res;
+   //console.log(this.HomePage)
+  })
+  }
+  UpdateTestimonial(body:any)
+  {
+    
+    this.http.put('https://localhost:44301/api/Testimonial/UpdateTestimonial',body).subscribe((resp)=>{
+     
+    },err=>{
+     
+    })
+    window.location.reload();
+  }
+
   getHomeInfo()
   {
     
   this.http.get('https://localhost:44301/api/HomePage/Home').subscribe((res)=>{
   this.HomePage=res;
-   console.log(this.HomePage)
+   //console.log(this.HomePage)
   })
   }
   getAboutUsInfo()
@@ -35,7 +65,7 @@ getAllContact()
 UpdateHome (body:any)
 {
   
-  body.imagename=this.display_Image;
+  body.img=this.display_Image;
   this.http.put('https://localhost:44301/api/HomePage/UpdateHome',body).subscribe((resp)=>{
    
   },err=>{
@@ -45,7 +75,7 @@ UpdateHome (body:any)
 }
 uploadAttachment(file:FormData)
 {
-  this.http.post('https://localhost:44301/api/HomePage/UploadHome',file).subscribe
+  this.http.post('https://localhost:44301/api/HomePage/UploadImageHome',file).subscribe
   ((resp:any)=>{
     if(resp)
     {     
@@ -79,7 +109,7 @@ deleteContactUs(id:number)
 UpdateAboutUs (body:any)
 {
   
-  body.imagename=this.display_Image;
+  body.img=this.display_Image;
   this.http.put('https://localhost:44301/api/HomePage/UpdateAboutUs',body).subscribe((resp)=>{
    
   },err=>{
