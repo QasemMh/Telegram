@@ -1,148 +1,187 @@
-
-        <!-- <pre class="language-html mb-4">
+<!-- <pre class="language-html mb-4">
   <code> -->
-  
- <div class="row">
-   <div class="col-lg-6 col-xl-3">
-     <div class="card mb-4">
-        <img class="card-img-top" src="../../../assets/img/{{home.HomePage[0].img}}">
-        <div class="card-body">
-          <h2 class="card-title ">{{home.HomePage[0].name}}</h2>
-          <p class="card-text pb-3">{{home.HomePage[0].address}}<br> {{home.HomePage[0].email}}<br>{{home.HomePage[0].phone}} </p>
-          <button (click)="updateHomeDailog(home.HomePage[0])"> UpDate</button>
-          </div>
-        </div>
-    </div>
 
-   
+<div class="wrapper">
+  <app-sidebar></app-sidebar>
+
+  <div class="page-wrapper">
+    <app-header></app-header>
+    <div class="content-wrapper">
+      <!--  -->
+
+      <div class="row">
         <div class="col-lg-6 col-xl-3">
           <div class="card mb-4">
-             <img class="card-img-top" src="../../../assets/img/{{home.AboutUs[0].img}}">
-             <div class="card-body">
-               <h2 class="card-title ">Contant</h2>
-               <p class="card-text pb-3">{{home.AboutUs[0].contant}} </p>
-               <button (click)="updateAboutDailog(home.AboutUs[0])"> UpDate</button>
-               <!-- <a href="#" class="btn btn-outline-primary btn-pill"> UpDate</a> -->
-               </div>
-             </div>
-         </div>
-        
-</div>
+            <img
+              class="card-img-top"
+              src="../../../assets/img/{{ home.HomePage[0].img }}"
+            />
+            <div class="card-body">
+              <h2 class="card-title">{{ home.HomePage[0].name }}</h2>
+              <p class="card-text pb-3">
+                {{ home.HomePage[0].address }}<br />
+                {{ home.HomePage[0].email }}<br />{{ home.HomePage[0].phone }}
+              </p>
+              <button (click)="updateHomeDailog(home.HomePage[0])">
+                UpDate
+              </button>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-lg-6 col-xl-3">
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              src="../../../assets/img/{{ home.AboutUs[0].img }}"
+            />
+            <div class="card-body">
+              <h2 class="card-title">Contant</h2>
+              <p class="card-text pb-3">{{ home.AboutUs[0].contant }}</p>
+              <button (click)="updateAboutDailog(home.AboutUs[0])">
+                UpDate
+              </button>
+              <!-- <a href="#" class="btn btn-outline-primary btn-pill"> UpDate</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="card card-default">
+        <div class="card-header">
+          <h2>ContactUs List :</h2>
 
+          <a
+            class="btn mdi mdi-code-tags"
+            data-toggle="collapse"
+            href="#collapse-data-tables"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapse-data-tables"
+          >
+          </a>
+        </div>
 
+        <table
+          id="productsTable"
+          class="table table-hover table-product"
+          style="width: 100%"
+        >
+          <thead>
+            <tr>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>message</th>
+              <th>In Stock</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of home.ContactUs">
+              <td>{{ obj.username }}</td>
+              <td>{{ obj.email }}</td>
+              <td>{{ obj.subject }}</td>
+              <td>{{ obj.message }}</td>
+              <td>
+                <button (click)="deleteContactUs(obj.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-
-<div class="card card-default">
-    <div class="card-header">
-      <h2>ContactUs List :</h2>
-  
-      <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
-        aria-controls="collapse-data-tables"> </a>
-  
-    </div>
-  
-      <table id="productsTable" class="table table-hover table-product" style="width:100%">
-        <thead>
-          <tr>
-            <th>User Name</th>
-            <th>Email</th>
-            <th>Subject</th>
-            <th>message</th>
-            <th>In Stock</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-  
-          <tr *ngFor="let obj of home.ContactUs">
-            <td>{{obj.username}}</td>
-            <td>{{obj.email}} </td>
-            <td>{{obj.subject}}</td>
-            <td>{{obj.message}}</td>
-            <td>
-              
-  
-                
-                  <button (click)="deleteContactUs(obj.id)">Delete</button>
-                  
-                
-              
-            </td>
-          </tr>
-  
-          
-  
-        </tbody>
-      </table>
-  
-    </div>
-  
-
-    <ng-template #callHomeupdateDailog>
-      <form class="example-form" [formGroup]="updateHomeForm" >
+      <ng-template #callHomeupdateDailog>
+        <form class="example-form" [formGroup]="updateHomeForm">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label> Name</mat-label>
-            <input type="text" matInput formControlName="name"
-                   [(ngModel)]="Home_data.name">
+            <input
+              type="text"
+              matInput
+              formControlName="name"
+              [(ngModel)]="Home_data.name"
+            />
           </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label> email</mat-label>
-        <input type="email" matInput formControlName="email"
-               [(ngModel)]="Home_data.email">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label> phone</mat-label>
-        <input type="text" matInput formControlName="phone"
-               [(ngModel)]="Home_data.phone">
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label> address</mat-label>
-        <input type="text" matInput formControlName="address"
-               [(ngModel)]="Home_data.address">
-      </mat-form-field>
-      <br>
-      
+          <br />
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> email</mat-label>
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              [(ngModel)]="Home_data.email"
+            />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> phone</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="phone"
+              [(ngModel)]="Home_data.phone"
+            />
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> address</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="address"
+              [(ngModel)]="Home_data.address"
+            />
+          </mat-form-field>
+          <br />
+
           <mat-label>Upload Image </mat-label>
-          <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="Home_data.img">
+          <input
+            type="file"
+            #file
+            formControlName="img"
+            (change)="uploadImage(file.files)"
+            [(ngModel)]="Home_data.img"
+          />
           <button (click)="UpdateHome()">DONE</button>
-      </form>
-      
-     
-      
-  </ng-template>
-  
-  
-  <ng-template #callAboutupdateDailog>
-    <form class="example-form" [formGroup]="updateAboutUsForm" >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label> contant</mat-label>
-          <input type="text" matInput formControlName="contant"
-                 [(ngModel)]="About_data.contant">
-        </mat-form-field>
-    
-    <br>
-    
-        <mat-label>Upload Image </mat-label>
-        <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="About_data.img">
-        <button (click)="UpdateHome()">DONE</button>
-    </form>
-    
-   
-    
-</ng-template>
+        </form>
+      </ng-template>
 
-          
-            <!-- Footer -->
-            
-  
-            <ng-template #calldeleteDailog>
+      <ng-template #callAboutupdateDailog>
+        <form class="example-form" [formGroup]="updateAboutUsForm">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> contant</mat-label>
+            <input
+              type="text"
+              matInput
+              formControlName="contant"
+              [(ngModel)]="About_data.contant"
+            />
+          </mat-form-field>
 
-                <h2>Are You Sure you want to delete this item?</h2>
-                <button mat-dialog-close="yes">Yes</button>
-                <button mat-dialog-close="no">No</button>
-                </ng-template>
+          <br />
+
+          <mat-label>Upload Image </mat-label>
+          <input
+            type="file"
+            #file
+            formControlName="img"
+            (change)="uploadImage(file.files)"
+            [(ngModel)]="About_data.img"
+          />
+          <button (click)="UpdateHome()">DONE</button>
+        </form>
+      </ng-template>
+
+      <!-- Footer -->
+
+      <ng-template #calldeleteDailog>
+        <h2>Are You Sure you want to delete this item?</h2>
+        <button mat-dialog-close="yes">Yes</button>
+        <button mat-dialog-close="no">No</button>
+      </ng-template>
+
+      <!--  -->
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

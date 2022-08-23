@@ -34,14 +34,8 @@ export class LoginComponent implements OnInit {
 
 
 handel(){
-  this.authService.login();
+  //this.authService.login();
 }
-
-
-
-  handel() {
-  //  this.authService.login();
-  }
 
 }
 
