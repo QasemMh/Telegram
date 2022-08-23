@@ -33,16 +33,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-/*
-handel(){
-  this.authService.login();
-}
-*/
-
-
-  handel2() {
-  //  this.authService.login();
-  }
 
 }
 

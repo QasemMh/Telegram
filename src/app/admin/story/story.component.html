@@ -1,0 +1,80 @@
+
+
+
+ 
+<div class="card card-default">
+  <div class="card-header">
+    <h2>With Control</h2>
+    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-carousel-2" role="button"
+      aria-expanded="false" aria-controls="collapse-carousel-2"> </a>
+
+
+  </div>
+  <div class="card-body">
+    <div class="collapse" id="collapse-carousel-2">
+      
+<div class="owl-carousel owl-theme carousel-with-control" *ngFor="let obj of Admin.story">
+  <div class="single-item bg-overlay-black-40 rounded">
+    {{obj.created_at}}<br> <img class="rounded" src="../../../assets/img/screen/{{obj.file_path}}" alt="Slide Image"><br>{{obj.content}}
+  </div>
+  
+</div> -->
+ <div class="content-wrapper">
+  <div class="content">
+<div class="card card-default">
+  <div class="card-header">
+    <h2>With Control</h2>
+    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-carousel-2" role="button"
+      aria-expanded="false" aria-controls="collapse-carousel-2"> </a>
+
+
+  </div>
+  <div class="card-body">
+    <div class="collapse" id="collapse-carousel-2">
+      
+    </div>
+    
+    <div class="owl-carousel owl-theme carousel-with-control">
+
+      <div class="single-item bg-overlay-black-40 rounded">
+        <img class="rounded" src="../../../assets/img/screen/1.jpg" alt="Slide Image">
+      </div>
+
+      <div class="single-item bg-overlay-black-40 rounded">
+        <img class="rounded" src="../../../assets/img/screen/2.jpg" alt="Slide Image">
+      </div>
+
+      <div class="single-item bg-overlay-black-40 rounded">
+        <img class="rounded" src="../../../assets/img/screen/3.jpg" alt="Slide Image">
+      </div>
+
+    </div>
+
+  </div>
+</div>
+    
+  </div>
+</div> 
+
+
+
+
+
+
+<section id="screenshots" class="padd-section text-center">
+
+    <div class="container" data-aos="fade-up">
+      <div class="section-title text-center">
+        <h2>App Stories</h2>
+        <p class="separator"></p>
+      </div>
+
+      <div class="screens-slider swiper" *ngFor="let obj of Admin.story">
+        <div class="swiper-wrapper align-items-center">
+          <div class="swiper-slide"> {{obj.created_at}}<br><img src="../../../assets/img/screen/{{obj.file_path}}" class="img-fluid" alt=""> <br>{{obj.content}}</div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+</section> 

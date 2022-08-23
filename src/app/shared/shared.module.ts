@@ -12,8 +12,6 @@ import{HttpClientModule}from '@angular/common/http'
 import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr';
 
 
-
-
 @NgModule({
   declarations: [
   ],

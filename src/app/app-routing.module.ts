@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeComponent } from './home/home.component';
+import { UserModule } from './user/user.module';
 
 const routes: Routes = [
   {
@@ -14,10 +15,14 @@ const routes: Routes = [
     loadChildren: () => AuthModule
   },
 
-  {
-    path:'admin',
-    loadChildren:()=>AdminModule
-  }
+  {path:'admin',
+  loadChildren:()=>AdminModule
+},
+
+{path:'user',
+loadChildren:()=>UserModule
+}
+ 
 
 ];
 
