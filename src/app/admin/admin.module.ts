@@ -25,7 +25,7 @@ import { RolesComponent } from './role/role.component';
     ChannelComponent,
     GroupComponent,
 
-    UserComponent
+    UserComponent,
     RolesComponent
 
   ],
