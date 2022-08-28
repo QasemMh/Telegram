@@ -1,0 +1,44 @@
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                
+                <form  [formGroup]="UpdateProfileUsers">
+                <div class="row mt-3">
+                    <!-- [value]="this.userService.Users.images" -->
+                    <input type="hidden" value="9" formControlName="U_id" >
+                    <div class="col-md-12"><label class="labels">First Name</label><input type="text"  
+                         formControlName="U_first_name"   class="form-control"  [value]="this.userService.Users.first_Name"></div>
+                    <div class="col-md-12"><label class="labels">Middle Name</label><input type="text" [value]="this.userService.Users.middle_Name" formControlName="U_middle_name"  class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">Last Name</label><input type="text"  [value]="this.userService.Users.last_Name"  formControlName="U_last_name" class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">Upload Image </label><input type="file" #file (change)="uploadImage(file.files)"  formControlName="U_image_path"  class="form-control" ></div>
+                    
+                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.Users.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div>
+                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.Users.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div>
+
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text"  [value]="this.userService.Users.email"  formControlName="L_email" class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">phone</label><input type="text" [value]="this.userService.Users.phone"  formControlName="L_phone" class="form-control" ></div>
+                </div>
+                
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" (click)="UpdateProfileUser()">Save Profile</button></div>
+            </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <form [formGroup]="chackPasswords">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Password</span>
+                <span class="border px-3 p-1 add-experience" (click)="ChackPassword()"><i class="fa fa-plus"></i>&nbsp;Update</span></div><br>
+                <div class="col-md-12"><label class="labels">Current Password</label><input type="text" class="form-control" formControlName="oldPassword"   value=""></div> <br>
+                <div class="col-md-12"><label class="labels">New Password</label><input type="text" class="form-control" formControlName="newPassword"  value=""></div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
