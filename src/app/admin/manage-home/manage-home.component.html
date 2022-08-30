@@ -100,26 +100,18 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th scope="col">first_Name</th>
-              <th scope="col">last_Name</th>
-              <th scope="col">image</th>
+              
               <th scope="col">description</th>
               <th scope="col">is_Accept</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let obj of home.Testimonials">
-              <td scope="row">{{obj.first_Name}}</td>
-              <td>{{obj.last_Name}}</td>
-              <td> <img class="card-img-top" src="../../../assets/img/{{obj.image}}"></td>
+              
               <td>{{obj.description}}</td>
+              <td>{{obj.is_accept}}</td>
               <td>
-                <label class="switch switch-primary switch-pill form-control-label ">
-                  <input type="checkbox" class="switch-input form-check-input">
-                  
-                  <span class="switch-label"></span>
-                  <span class="switch-handle">{{obj.is_Accept}}</span>
-                </label>
+                <button (click)="Accepting(obj)"> Accepting </button>
               </td>
             </tr>
           </tbody>
@@ -159,7 +151,7 @@
         <input type="text" matInput formControlName="logo"
                [(ngModel)]="Home_data.logo">
       </mat-form-field>
-  <br>
+      <br>
       <mat-label>Upload Image </mat-label>
       <input type="file" #file formControlName="img" (change)="uploadImage(file.files)" [(ngModel)]="Home_data.img">
       <br>
@@ -211,7 +203,43 @@
     
 </ng-template>
 
-          
+<ng-template #callTestimonialUpdateDailog>
+  <form class="example-form" [formGroup]="updateTestimonialForm" >
+
+    <br>
+  
+      
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> description</mat-label>
+      <input type="text" matInput formControlName="description" readonly
+             [(ngModel)]="Testimonial_data.description">
+    </mat-form-field>
+  
+  <br>
+  
+      
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label> is_accept</mat-label>
+        
+        <input type="number" matInput formControlName="is_accept"
+               [(ngModel)]="Testimonial_data.is_accept">
+      </mat-form-field>
+      <br>
+      <br>
+      <button (click)="UpdateTestimonial()">DONE</button>
+  </form>
+  
+ 
+  
+</ng-template>
+
+
+ 
+  
+
+
+
+
             <!-- Footer -->
             
   

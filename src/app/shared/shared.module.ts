@@ -10,9 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import{HttpClientModule}from '@angular/common/http'
 import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr';
-import {MatCardModule} from '@angular/material/card';
+ import {MatCardModule} from '@angular/material/card';
 
-@NgModule({
+ 
+import { NgChartsModule } from 'ng2-charts';
+ @NgModule({
   declarations: [
   ],
   imports: [
@@ -24,7 +26,8 @@ import {MatCardModule} from '@angular/material/card';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule,
   ],
    exports: [
     CommonModule,

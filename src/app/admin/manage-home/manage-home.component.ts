@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+
 @Component({
   selector: 'app-manage-home',
   templateUrl: './manage-home.component.html',
@@ -12,8 +13,8 @@ export class ManageHomeComponent implements OnInit {
   constructor(public dialog: MatDialog ,public home :HomeService) { }
   @ViewChild('callHomeupdateDailog') callHomeupdateDailog! :TemplateRef<any>;
   @ViewChild('callAboutupdateDailog') callAboutupdateDailog! :TemplateRef<any>;
-
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
+  @ViewChild('callTestimonialUpdateDailog') callTestimonialUpdateDailog! :TemplateRef<any>;
  // //AboutUsInfo
 //   @Input()id :number|undefined
 //   @Input()img :string|undefined
@@ -45,35 +46,33 @@ export class ManageHomeComponent implements OnInit {
 
   updateTestimonialForm:FormGroup=new FormGroup({
     id:new FormControl(),
-    first_Name:new FormControl(),
-    last_Name:new FormControl(),
-    image:new FormControl(),
+    user_from:new FormControl(),
     description :new FormControl(),
     is_accept :new FormControl()
   })
   
+
   Testimonial_data:any={};
-
-  Accepting(obj:any){
+   Accepting(obj:any){
     this.Testimonial_data={
-      id:obj.id,
-      first_Name:obj.first_Name,
-      last_Name:obj.last_Name,
-      image:obj.image,
-      description:obj.description,
-      is_accept:obj.is_accept,
-      }
-      console.log(this.Testimonial_data);
-      if(obj.is_accept==0)
-      obj.is_accept=1;
-      else 
-      obj.is_accept=0;
-      this.updateTestimonialForm.controls['id'].setValue(this.Testimonial_data.id); 
-
-      
-   this.home.UpdateTestimonial(this.updateTestimonialForm.value);
+    id:obj.id,
+    user_from:obj.user_from,
+    description:obj.description,
+    is_accept:obj.is_accept
+    }
+    console.log(this.Testimonial_data);
+    this.updateTestimonialForm.controls['id'].setValue(this.Testimonial_data.id); 
+    this.updateTestimonialForm.controls['user_from'].setValue(this.Testimonial_data.user_from); 
+    
+    this.dialog.open(this.callTestimonialUpdateDailog)
+    
   }
-  
+ 
+
+
+  UpdateTestimonial(){
+    this.home.UpdateTestimonial(this.updateTestimonialForm.value);
+  }
   ngOnInit(): void {
     
     this.home.getHomeInfo();
@@ -137,7 +136,6 @@ export class ManageHomeComponent implements OnInit {
     
   }
   UpdateHome(){
-    debugger
     this.home.UpdateHome(this.updateHomeForm.value);
   }
   deleteContactUs(id:number)
