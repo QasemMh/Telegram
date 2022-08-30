@@ -6,6 +6,7 @@ import { GroupComponent } from './group/group.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { RolesComponent } from './role/role.component';
 import { StoryComponent } from './story/story.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {path:'dashboard',
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path:'role',
     component:RolesComponent
+  },
+  {
+    path:'user',
+    component:UserComponent
   },
 ];
 

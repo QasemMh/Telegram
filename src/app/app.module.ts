@@ -14,10 +14,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+
 
   ],
   imports: [
