@@ -13,9 +13,10 @@ import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 
 import { RolesComponent } from './role/role.component';
-import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
+ import { BlockuserComponent } from './blockuser/blockuser.component';
+ import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
-
+ 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import HammerModule from "@egjs/hammerjs";
@@ -30,13 +31,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     ChannelComponent,
     GroupComponent,
  
+    BlockuserComponent,
+  
      UserComponent,
     RolesComponent,
     ManagecatalogComponent,
     SubscriptionComponent,
  
  
-
+ 
   ],
   imports: [
     CommonModule,

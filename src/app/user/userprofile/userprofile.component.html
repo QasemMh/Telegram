@@ -12,18 +12,18 @@
                 <form  [formGroup]="UpdateProfileUsers">
                 <div class="row mt-3">
                     <!-- [value]="this.userService.Users.images" -->
-                    <input type="hidden" value="9" formControlName="U_id" >
+                    <input type="hidden" value=9 formControlName="U_id" [(ngModel)]="this.userService.GetUserByIdDto.U_id" >
                     <div class="col-md-12"><label class="labels">First Name</label><input type="text"  
-                         formControlName="U_first_name"   class="form-control"  [value]="this.userService.Users.first_Name"></div>
-                    <div class="col-md-12"><label class="labels">Middle Name</label><input type="text" [value]="this.userService.Users.middle_Name" formControlName="U_middle_name"  class="form-control"  ></div>
-                    <div class="col-md-12"><label class="labels">Last Name</label><input type="text"  [value]="this.userService.Users.last_Name"  formControlName="U_last_name" class="form-control"  ></div>
-                    <div class="col-md-12"><label class="labels">Upload Image </label><input type="file" #file (change)="uploadImage(file.files)"  formControlName="U_image_path"  class="form-control" ></div>
+                         formControlName="U_first_name"   class="form-control"  [value]="this.userService.GetUserByIdDto.first_Name" [(ngModel)]="this.userService.GetUserByIdDto.first_Name" ></div>
+                    <div class="col-md-12"><label class="labels">Middle Name</label><input type="text" [value]="this.userService.GetUserByIdDto.middle_Name" formControlName="U_middle_name" [(ngModel)]="this.userService.GetUserByIdDto.middle_Name"  class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">Last Name</label><input type="text"  [value]="this.userService.GetUserByIdDto.last_Name"  formControlName="U_last_name" [(ngModel)]="this.userService.GetUserByIdDto.last_Name" class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">Upload Image </label><input type="file" #file (change)="uploadImage(file.files)"  formControlName="U_image_path" [(ngModel)]="this.userService.GetUserByIdDto.U_image_path" class="form-control" ></div>
                     
-                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.Users.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div>
-                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.Users.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div>
+                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.GetUserByIdDto.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div>
+                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.userService.GetUserByIdDto.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div>
 
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text"  [value]="this.userService.Users.email"  formControlName="L_email" class="form-control"  ></div>
-                    <div class="col-md-12"><label class="labels">phone</label><input type="text" [value]="this.userService.Users.phone"  formControlName="L_phone" class="form-control" ></div>
+                    <div class="col-md-12"><label class="labels">Email</label><input type="text"  [value]="this.userService.GetUserByIdDto.email"  formControlName="L_email" class="form-control"  ></div>
+                    <div class="col-md-12"><label class="labels">phone</label><input type="text" [value]="this.userService.GetUserByIdDto.phone"  formControlName="L_phone" class="form-control" ></div>
                 </div>
                 
                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" (click)="UpdateProfileUser()">Save Profile</button></div>

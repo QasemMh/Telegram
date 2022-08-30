@@ -7,9 +7,13 @@ import { ManageHomeComponent } from './manage-home/manage-home.component';
 import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
 import { RolesComponent } from './role/role.component';
 import { StoryComponent } from './story/story.component';
+ import { BlockuserComponent } from './blockuser/blockuser.component';
+
+ 
  import { UserComponent } from './user/user.component';
  
 import { SubscriptionComponent } from './subscription/subscription.component';
+ 
  
 const routes: Routes = [
   {
@@ -36,13 +40,16 @@ const routes: Routes = [
     component:RolesComponent
   },
   {
-     path:'user',
+  path:'blockuser',
+  component:BlockuserComponent },
+  {
+      path:'user',
     component:UserComponent
 ,{
     path:'sub',
     component:SubscriptionComponent
  
-  },
+   },
 ];
 
 @NgModule({

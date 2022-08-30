@@ -1,0 +1,31 @@
+<form>
+
+
+<table id="customers">
+    <tr>
+        <th>User Number</th>
+        <th>User Name</th>
+        <th>User Last Name</th>
+        <th>User Image</th>
+        <th>Email</th>
+        <th>Send Email</th>
+        <th>Oprations</th>
+    </tr>
+    <tr *ngFor="let obj of emailblock.GetAllBlockUserAndSendEmailDTO">
+        <td>{{obj.id}}</td>
+        <td>{{obj.nameUser}}</td>
+        <td>{{obj.lastName}}</td>
+        <td><img src="../../../assets/images/{{obj.imagepath}}" width="50px"></td>
+        <td>{{obj.email}}</td>
+        <td>{{obj.sendEmail}}</td>
+        <td><button   (click)="EmailSend(obj.id)">send</button>
+        </td>
+    </tr>
+</table>
+</form>
+<ng-template #calldeleteDailog>
+
+    <h2>Are You Sure you want to send this email?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+    </ng-template>

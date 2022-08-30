@@ -10,18 +10,6 @@ import { UserService } from '../../services/user.service';
 })
 export class UserprofileComponent implements OnInit {
 
-
-
-  // first_Name:string|undefined
-  // middle_Name:string|undefined
-  // last_Name:string|undefined
-  // images:string|undefined
-  // gender:string|undefined
-  // email:string|undefined
-  // phone:string|undefined 
-   
-
-  
   UpdateProfileUsers = new FormGroup({
     U_id :new FormControl(),
     U_first_name :new FormControl(),
@@ -45,20 +33,12 @@ export class UserprofileComponent implements OnInit {
 
     this.userService.GetUserById();
     
-    this.UpdateProfileUsers.controls['U_id'].setValue(9);
-    this.UpdateProfileUsers.controls['U_first_name'].setValue(this.userService.Users.U_first_name);
-    this.UpdateProfileUsers.controls['U_middle_name'].setValue(this.userService.Users.U_middle_name);
-    this.UpdateProfileUsers.controls['U_last_name'].setValue(this.userService.Users.U_last_name);
-    this.UpdateProfileUsers.controls['U_image_path'].setValue(this.userService.Users.U_image_path);
-    this.UpdateProfileUsers.controls['U_gender'].setValue(this.userService.Users.U_gender);
-    this.UpdateProfileUsers.controls['L_email'].setValue(this.userService.Users.L_email);
-    this.UpdateProfileUsers.controls['L_phone'].setValue(this.userService.Users.L_phone);
-    
- console.log(this.userService.Users);
+    console.log(this.userService.GetUserByIdDto);
     
   }
 
   
+
 
 
   
@@ -93,8 +73,17 @@ export class UserprofileComponent implements OnInit {
     this.userService.UpdateProfileUser(formDate);
   }
   UpdateProfileUser(){
+    
+  this.UpdateProfileUsers.controls['U_id'].setValue(9);
+  this.UpdateProfileUsers.controls['U_first_name'].setValue(this.userService.GetUserByIdDto.U_first_name);
+  this.UpdateProfileUsers.controls['U_middle_name'].setValue(this.userService.GetUserByIdDto.U_middle_name);
+  this.UpdateProfileUsers.controls['U_last_name'].setValue(this.userService.GetUserByIdDto.U_last_name);
+  this.UpdateProfileUsers.controls['U_image_path'].setValue(this.userService.GetUserByIdDto.U_image_path);
+  this.UpdateProfileUsers.controls['U_gender'].setValue(this.userService.GetUserByIdDto.U_gender);
+  this.UpdateProfileUsers.controls['L_email'].setValue(this.userService.GetUserByIdDto.L_email);
+  this.UpdateProfileUsers.controls['L_phone'].setValue(this.userService.GetUserByIdDto.L_phone);
     // debugger
-
+    // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
     this.userService.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);
     
