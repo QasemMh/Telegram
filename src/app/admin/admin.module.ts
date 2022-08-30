@@ -13,6 +13,7 @@ import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 
 import { RolesComponent } from './role/role.component';
+import { BlockuserComponent } from './blockuser/blockuser.component';
 
 
 
@@ -26,7 +27,8 @@ import { RolesComponent } from './role/role.component';
     GroupComponent,
 
     UserComponent,
-    RolesComponent
+    RolesComponent,
+    BlockuserComponent,
 
   ],
   imports: [

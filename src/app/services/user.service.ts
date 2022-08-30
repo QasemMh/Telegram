@@ -7,20 +7,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
    constructor(public http:HttpClient) { }
-  Users:any={};
+   GetUserByIdDto:any={};
+   UpdateProfileUserDTO:any={}
+   Users:any={}
 
   GetUserById()
   {
     
   this.http.get('https://localhost:44301/api/Users/GetUserById/GetUserById/9').subscribe((res)=>{
-    this.Users=res;
+    this.GetUserByIdDto=res;
     console.log(res);
     })
 }
 UpdateProfileUser(body:any)
 {
   this.http.put('https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',body).subscribe((res)=>{
-     this.Users=res;
+     this.UpdateProfileUserDTO=res;
      console.log(res);
 })
 }
