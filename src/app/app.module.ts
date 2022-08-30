@@ -36,9 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     SharedModule,
-     ToastrModule.forRoot(),
+    ToastrModule.forRoot(),
     NgChartsModule, // ToastrModule added
-     HttpClientModule
+    HttpClientModule
    ],
   providers: [
     {
