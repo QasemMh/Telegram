@@ -1,0 +1,164 @@
+
+
+  <div class="card card-default">
+    <div class="card-header">
+      <h2> Services List :</h2>
+  
+      <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
+        aria-controls="collapse-data-tables"> </a>
+  
+    </div>
+    <button class="btn btn primary" (click)=" Createdialog()"> + Add New Service </button> 
+      <table id="productsTable" class="table table-hover table-product" style="width:100%">
+        <thead>
+          <tr>
+            <th>Name </th> 
+             <th>Price </th>
+            <th>Image</th>
+            <th>descriptions</th>
+            
+            <th>Createtime </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+  
+          <tr *ngFor="let obj of Admin.Services">
+            <td>{{obj.name}}</td>
+             <td>{{obj.price}}</td>  
+             <td><img src="../../../assets/img/{{obj.image}}" width="50px"> </td>
+            <td>{{obj.descriptions}} </td>
+            <td>{{obj.createtime}}</td>
+           
+            <td>
+              
+              <button (click)="deleteServices(obj.id)">Delete</button>
+                
+              <button class="btn btn primary" (click)="updateDailog(obj)">Update</button>
+              
+                  
+                
+              
+            </td>
+          </tr>
+  
+          
+  
+        </tbody>
+    </table>
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    <ng-template #callUpdateServicesDailog>
+      <form class="example-form" [formGroup]="updateFormServices" >
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Service Name</mat-label>
+            <input type="text" matInput formControlName="name"
+                   [(ngModel)]="p_data.name">
+          </mat-form-field>
+      <br>
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Description </mat-label>
+              <input type="text" matInput formControlName="descriptions"
+              [(ngModel)]="p_data.descriptions">
+            </mat-form-field>
+      <br>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Price</mat-label>
+              <input type="number" matInput formControlName="price" [(ngModel)]="p_data.price">
+            </mat-form-field>
+    
+      <br>
+      
+          <mat-label>Upload Image </mat-label>
+          <input type="file" #file formControlName="image" (change)="uploadImage (file.files)" [(ngModel)]="p_data.image">
+          <button (click)="updateServices()">Update</button>
+      </form>
+      
+     
+      
+  </ng-template>
+  
+
+
+
+
+
+
+
+  <ng-template #callDeleteServicesDailog>
+
+    <h2>Are You Sure you want to delete this Services?</h2>
+    <button mat-dialog-close="yes">Yes</button>
+    <button mat-dialog-close="no">No</button>
+  </ng-template>
+
+
+
+
+  
+
+
+
+
+<ng-template #callCreateServicesDailog>
+<h2 mat-dialog-title>Add New Course</h2>
+<mat-dialog-content class="mat-typography">
+  
+
+<form class="example-form" [formGroup]="createFormServices" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Services Name </mat-label>
+      <input type="text" matInput formControlName="name">
+  
+      <mat-error *ngIf="createFormServices.controls['name'].hasError('required')">
+        Services name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+<br>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Description </mat-label>
+        <input type="text" matInput formControlName="descriptions">
+        <mat-error *ngIf="createFormServices.controls['descriptions'].hasError('required')">
+          descriptions is <strong>required</strong> 
+        </mat-error>
+        
+      </mat-form-field>
+<br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Price </mat-label>
+        <input type="number" matInput formControlName="price"
+               >
+        <mat-error *ngIf="createFormServices.controls['price'].hasError('required')">
+          price  is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+<br>
+      
+
+    <mat-label>Upload Image </mat-label>
+    <input type="file" #file formControlName="image" (change)="uploadImage(file.files)">
+</form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreateServices()">save</button>
+</mat-dialog-actions>
+</ng-template>
+
+
+
+
+
+
