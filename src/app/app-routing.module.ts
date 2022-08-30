@@ -7,23 +7,17 @@ import { UserModule } from './user/user.module';
 
 const routes: Routes = [
   {
-    path:'home',
-    component:HomeComponent
+    path: 'home',
+    component: HomeComponent,
   },
   {
     path: 'auth',
-    loadChildren: () => AuthModule
+    loadChildren: () => AuthModule,
   },
 
-  {path:'admin',
-  loadChildren:()=>AdminModule
-},
+  { path: 'admin', loadChildren: () => AdminModule },
 
-{path:'user',
-loadChildren:()=>UserModule
-}
- 
-
+  { path: 'user', loadChildren: () => UserModule },
 ];
 
 @NgModule({
