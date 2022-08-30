@@ -1,4 +1,50 @@
+ <section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section">Story All Users</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-wrap">
+          <table class="table">
+            <thead class="thead-primary">
+              <tr>
+                <th>#</th>
+                <th>User ID</th>
+                <th>Story</th>
+                <th>content</th>
+                <th>created At</th>
+                <th>Is Blocked</th>
 
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let obj of Admin.story">
+                <th scope="row">#</th>
+                <td>{{obj.user_id}}</td>
+
+                <td><img src="../../../assets/img/screen/{{obj.file_path}}" class="img-fluid" alt="" style="width: 100px; ;"></td>
+                <td>{{obj.content}}</td>
+                <td>{{obj.created_at}}</td>
+                <th>
+                  <button *ngIf="obj.isBlocked==0" style="background-color: red ; padding: 5px; " (click)="BlockStory(obj)">block</button>
+                  <button *ngIf="obj.isBlocked!=0" style="background-color: green ; padding: 5px; " (click)="UnBlockstory(obj)">unblock</button>
+
+                </th>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ 
 
 
 <!--  
@@ -19,9 +65,11 @@
   </div>
   
 </div> -->
+ 
 
 
 
+<!--
 <section id="screenshots" class="padd-section text-center">
 
     <div class="container" data-aos="fade-up">
@@ -38,4 +86,4 @@
       </div>
     </div>
 
-</section> 
+</section> -->
