@@ -34,7 +34,7 @@ export class HomeService {
   {
     
     this.http.put('https://localhost:44301/api/Testimonial/UpdateTestimonial',body).subscribe((resp)=>{
-     
+   
     },err=>{
      
     })
@@ -44,20 +44,20 @@ export class HomeService {
   getHomeInfo()
   {
     
-  this.http.get('https://localhost:44301/api/HomePage/Home').subscribe((res)=>{
+  this.http.get('https://localhost:44301/api/HomePage/GetHomeInfo/Home').subscribe((res)=>{
   this.HomePage=res;
    //console.log(this.HomePage)
   })
   }
   getAboutUsInfo()
   {
-    this.http.get('https://localhost:44301/api/HomePage/AboutUs').subscribe((res)=>{
+    this.http.get('https://localhost:44301/api/HomePage/GetAboutUsInfo/AboutUs').subscribe((res)=>{
     this.AboutUs=res;
   })
 }
 getAllContact()
 {
-  this.http.get('https://localhost:44301/api/HomePage/ContactUs').subscribe((res)=>{
+  this.http.get('https://localhost:44301/api/HomePage/GetAllContactUs/ContactUs').subscribe((res)=>{
   this.ContactUs=res;
 })
 }
@@ -99,7 +99,7 @@ createContact(body:any){//form group --> create form
 }
 deleteContactUs(id:number)
 {
-  this.http.delete('https://localhost:44301/api/HomePage/deleteContactUs/'+id).subscribe((resp)=>{
+  this.http.delete('https://localhost:44301/api/HomePage/deleteContactUs/deleteContactUs/'+ id).subscribe((resp)=>{
     console.log(resp)
   },err=>{
    

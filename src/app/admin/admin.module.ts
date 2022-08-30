@@ -13,10 +13,15 @@ import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 
 import { RolesComponent } from './role/role.component';
+import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import HammerModule from "@egjs/hammerjs";
 
 @NgModule({
+
   declarations: [
     DashboardComponent,
     SidebarComponent,
@@ -24,15 +29,20 @@ import { RolesComponent } from './role/role.component';
     StoryComponent,
     ChannelComponent,
     GroupComponent,
-
-    UserComponent,
-    RolesComponent
+     UserComponent,
+    RolesComponent,
+    ManagecatalogComponent,
+    SubscriptionComponent,
+ 
 
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    SharedModule
+    SharedModule,
+    MatSlideToggleModule,
+   // BrowserAnimationsModule
   ]
+  // , providers: [ HammerModule ] 
 })
 export class AdminModule { }

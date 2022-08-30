@@ -56,7 +56,7 @@ export class AuthService {
         if (decoded.role == 'Admin') {
             this.router.navigate(['/admin/dashboard']);
            } else {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/user/chat']);
            }
         },
         (error) => {

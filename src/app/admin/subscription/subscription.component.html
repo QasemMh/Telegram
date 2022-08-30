@@ -1,0 +1,41 @@
+<div class="container" id="htmlData">
+  <br>
+  <br>
+  <br>  
+  
+  <table id="table" >
+    <tbody >
+    <tr>
+      <th style="width:100px">User Name</th>
+      <!-- <th style="width:100px">image_path</th> -->
+      <th style="width:100px">Status</th>
+      <th style="width:100px">Createtime</th>
+      <th style="width:100px"> Service Name</th>
+      <th style="width:100px">Price</th>
+      <!-- <th style="width:100px">image</th> -->
+    </tr>
+    <tr *ngFor="let obj of Admin.GetAllSubscription">
+      <td>{{obj.first_name}} {{obj.last_name}}</td>
+      <!-- <td>{{obj.image_path}}</td> -->
+      <td>{{obj.status}}</td>
+      <td>{{obj.createtime|date}}</td>
+      <td>{{obj.name}}</td>
+      <td>{{obj.price}}</td>
+      <!-- <td>{{obj.image}}</td> -->
+    </tr></tbody>
+    <tfoot>
+      <tr>
+        <td>Losses</td>
+        <td>{{Admin.ProfitsAndLosses[0].losse}}</td>
+      </tr>
+      <tr>
+        <td>Profits</td>
+        <td>{{Admin.ProfitsAndLosses[0].profit}}</td>
+      </tr>
+    </tfoot>
+  </table>
+  <br>
+  <br>
+  <div class="col-md-12 mt-3">
+    <button (click)="download()" class="btn btn-primary">Download PDF</button>
+  </div>
