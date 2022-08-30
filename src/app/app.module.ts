@@ -7,20 +7,25 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
+import {UserprofileComponent} from './user/userprofile/userprofile.component'
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
-import { NgChartsModule } from 'ng2-charts';
+ import { NgChartsModule } from 'ng2-charts';
 import { ChartModule } from 'angular2-chartjs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+ 
+import { HttpClientModule } from '@angular/common/http';
+ 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    UserprofileComponent
 
   ],
   imports: [
@@ -29,9 +34,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     BrowserAnimationsModule,
     NgxSpinnerModule,
     SharedModule,
-    ToastrModule.forRoot(),
+     ToastrModule.forRoot(),
     NgChartsModule, // ToastrModule added
-  ],
+     HttpClientModule
+   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

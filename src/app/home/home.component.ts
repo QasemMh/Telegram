@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
 //   @Input()img :string|undefined
 //   @Input()contant :string|undefined
 
-//   //HomeInfo
-//   @Input()name :string|undefined
-//   @Input()logo :string|undefined
-//   @Input()email :string|undefined
-//   @Input()phone :string|undefined
-//   @Input()address :string|undefined
+  // //HomeInfo
+  // @Input()name :string|undefined
+  // @Input()logo :string|undefined
+  // @Input()email :string|undefined
+  // @Input()phone :string|undefined
+  // @Input()address :string|undefined
 
 CreateContact:FormGroup=new FormGroup({
   username :new FormControl(),

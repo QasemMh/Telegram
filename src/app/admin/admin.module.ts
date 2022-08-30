@@ -29,10 +29,11 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     StoryComponent,
     ChannelComponent,
     GroupComponent,
-    UserComponent,
+     UserComponent,
     RolesComponent,
     ManagecatalogComponent,
     SubscriptionComponent,
+ 
 
   ],
   imports: [

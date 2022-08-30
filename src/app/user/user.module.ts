@@ -9,12 +9,13 @@ import { CreateTestimonialComponent } from './create-testimonial/create-testimon
 
 
 @NgModule({
-  declarations: 
+   declarations: 
   [
     ChatComponent,
     CatalogComponent,
     MyorderComponent,
     CreateTestimonialComponent
+ 
   ],
   imports: 
   [
