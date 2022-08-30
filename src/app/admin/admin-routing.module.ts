@@ -4,16 +4,27 @@ import { ChannelComponent } from './channel/channel.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GroupComponent } from './group/group.component';
 import { ManageHomeComponent } from './manage-home/manage-home.component';
+import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
 import { RolesComponent } from './role/role.component';
 import { StoryComponent } from './story/story.component';
-import { BlockuserComponent } from './blockuser/blockuser.component';
+ import { BlockuserComponent } from './blockuser/blockuser.component';
 
+ 
+ import { UserComponent } from './user/user.component';
+ 
+import { SubscriptionComponent } from './subscription/subscription.component';
+ 
+ 
 const routes: Routes = [
-  {path:'dashboard',
+  {
+    path:'dashboard',
   component:DashboardComponent}
   ,
   {path:'managehome',
   component:ManageHomeComponent}
+  ,
+  {path:'cataloge',
+  component:ManagecatalogComponent}
   ,
   {path:'story',
   component:StoryComponent},
@@ -29,10 +40,16 @@ const routes: Routes = [
     component:RolesComponent
   },
   {
-
   path:'blockuser',
-  component:BlockuserComponent 
-  },
+  component:BlockuserComponent },
+  {
+      path:'user',
+    component:UserComponent
+,{
+    path:'sub',
+    component:SubscriptionComponent
+ 
+   },
 ];
 
 @NgModule({

@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+  userData:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.userData=localStorage.getItem('userData');
+    console.log(this.userData)
+
   }
 
 }
