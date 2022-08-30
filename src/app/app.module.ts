@@ -44,7 +44,6 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     ToastrModule.forRoot(),
     NgChartsModule,
     HttpClientModule,
-
     NbThemeModule.forRoot(),
     NbLayoutModule,
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
@@ -57,6 +56,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbListModule,
     NbUserModule,
   ],
+ 
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

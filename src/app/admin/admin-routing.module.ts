@@ -45,7 +45,7 @@ const routes: Routes = [
   {
       path:'user',
     component:UserComponent
-,{
+  },{
     path:'sub',
     component:SubscriptionComponent
  
