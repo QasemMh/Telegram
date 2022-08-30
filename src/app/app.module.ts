@@ -7,29 +7,34 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HomeComponent } from './home/home.component';
-import {UserprofileComponent} from './user/userprofile/userprofile.component'
+import { UserprofileComponent } from './user/userprofile/userprofile.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { ToastrModule } from 'ngx-toastr';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
- import { NgChartsModule } from 'ng2-charts';
+import { NgChartsModule } from 'ng2-charts';
 import { ChartModule } from 'angular2-chartjs';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
- 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import { HttpClientModule } from '@angular/common/http';
- 
 
-
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbChatModule,
+  NbIconModule,
+  NbLayoutModule,
+  NbListModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbThemeModule,
+  NbUserModule,
+} from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    UserprofileComponent
-
-
-  ],
+  declarations: [AppComponent, HomeComponent, UserprofileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,9 +42,21 @@ import { HttpClientModule } from '@angular/common/http';
     NgxSpinnerModule,
     SharedModule,
     ToastrModule.forRoot(),
-    NgChartsModule, // ToastrModule added
-    HttpClientModule
-   ],
+    NgChartsModule,
+    HttpClientModule,
+    NbThemeModule.forRoot(),
+    NbLayoutModule,
+    NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
+    NbMenuModule.forRoot(),     // <---------
+    NbButtonModule,
+    NbChatModule.forRoot(),
+    NbEvaIconsModule,
+    NbIconModule,
+    NbCardModule,
+    NbListModule,
+    NbUserModule,
+  ],
+ 
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
