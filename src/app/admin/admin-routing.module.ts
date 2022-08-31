@@ -9,47 +9,55 @@ import { RolesComponent } from './role/role.component';
 import { StoryComponent } from './story/story.component';
  import { BlockuserComponent } from './blockuser/blockuser.component';
 
- 
+
  import { UserComponent } from './user/user.component';
- 
+
 import { SubscriptionComponent } from './subscription/subscription.component';
- 
- 
+import { AdminComponent } from './admin/admin.component';
+
+
 const routes: Routes = [
   {
-    path:'dashboard',
-  component:DashboardComponent}
-  ,
-  {path:'managehome',
-  component:ManageHomeComponent}
-  ,
-  {path:'cataloge',
-  component:ManagecatalogComponent}
-  ,
-  {path:'story',
-  component:StoryComponent},
-  {path:'channels',
-  component:ChannelComponent}
-  ,
-  {
-    path:'groups',
-    component:GroupComponent
-  },
-  {
-    path:'role',
-    component:RolesComponent
-  },
-  {
-  path:'blockuser',
-  component:BlockuserComponent },
-  {
-      path:'user',
-    component:UserComponent
-  },{
-    path:'sub',
-    component:SubscriptionComponent
- 
-   },
+    path: '',
+    component: AdminComponent,
+    children: [
+      {
+        path:'dashboard',
+      component:DashboardComponent}
+      ,
+      {path:'managehome',
+      component:ManageHomeComponent}
+      ,
+      {path:'cataloge',
+      component:ManagecatalogComponent}
+      ,
+      {path:'story',
+      component:StoryComponent},
+      {path:'channels',
+      component:ChannelComponent}
+      ,
+      {
+        path:'groups',
+        component:GroupComponent
+      },
+      {
+        path:'role',
+        component:RolesComponent
+      },
+      {
+      path:'blockuser',
+      component:BlockuserComponent },
+      {
+          path:'user',
+        component:UserComponent
+      },{
+        path:'sub',
+        component:SubscriptionComponent
+
+       },
+    ]
+  }
+
 ];
 
 @NgModule({
