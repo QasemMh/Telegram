@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,5 +15,24 @@ export class SidebarComponent implements OnInit {
     console.log(this.userData)
 
   }
+
+items: NbMenuItem[] = [
+  {
+    title: "home",
+    link: '/'
+  },
+  {
+    title: "dashboard",
+    link: '/admin/dashboard'
+  },
+  {
+    title: "User",
+    link: '/admin/user'
+  },
+  {
+    title: "Story",
+    link: '/admin/story'
+  }
+ ];
 
 }
