@@ -45,18 +45,9 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NgChartsModule,
     HttpClientModule,
     NbThemeModule.forRoot(),
-    NbLayoutModule,
-    NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
-    NbMenuModule.forRoot(),     // <---------
-    NbButtonModule,
-    NbChatModule.forRoot(),
-    NbEvaIconsModule,
-    NbIconModule,
-    NbCardModule,
-    NbListModule,
-    NbUserModule,
+   
   ],
- 
+
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

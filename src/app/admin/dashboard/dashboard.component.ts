@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChartDataset, ChartOptions,Chart,registerables } from 'chart.js';
 import { AdminService } from 'src/app/services/admin.service';
+import { NbSidebarService } from '@nebular/theme';
+
 // import { Label } from 'ng2-charts';
 
 @Component({
@@ -15,14 +17,18 @@ export class DashboardComponent implements OnInit {
   channelCount:any ;
   result:any ;
   chart:any=[];
-  constructor(private Admin :AdminService) {
+  constructor(private Admin :AdminService , private sidebarService: NbSidebarService
+    ) {
     Chart.register(...registerables);
-    
+
+   }
+   toggle() {
+    this.sidebarService.toggle(true);
+    return false;
    }
 
-
   ngOnInit() {
- 
+
   this.Admin.GetCountMemberEachChannel().then((res: any)=>
   {
     this.result=res;
@@ -43,7 +49,7 @@ export class DashboardComponent implements OnInit {
               label: '# CountMemberEachChannel',
               data: this.channelCount,
 
-              
+
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -63,23 +69,23 @@ export class DashboardComponent implements OnInit {
             borderWidth: 1
           }]
       },
-     
-       
+
+
     })
 
   })
-  
-  
+
+
   //console.log(this.Admin.GetCountMemberEachChannel())
-  
+
 
   }
   //console.log(this.chart);
 
-  
 
-  
-   
+
+
+
 
 }
-  
+

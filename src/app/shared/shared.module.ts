@@ -12,8 +12,10 @@ import{HttpClientModule}from '@angular/common/http'
 import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr';
  import {MatCardModule} from '@angular/material/card';
 
- 
+
 import { NgChartsModule } from 'ng2-charts';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatModule, NbIconModule, NbCardModule, NbListModule, NbUserModule } from '@nebular/theme';
  @NgModule({
   declarations: [
   ],
@@ -28,6 +30,16 @@ import { NgChartsModule } from 'ng2-charts';
     MatCheckboxModule,
     HttpClientModule,
     NgChartsModule,
+    NbLayoutModule,
+    NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
+    NbMenuModule.forRoot(),     // <---------
+    NbButtonModule,
+    NbChatModule.forRoot(),
+    NbEvaIconsModule,
+    NbIconModule,
+    NbCardModule,
+    NbListModule,
+    NbUserModule,
   ],
    exports: [
     CommonModule,
@@ -37,7 +49,17 @@ import { NgChartsModule } from 'ng2-charts';
     MatInputModule,
     MatDialogModule,
     MatCheckboxModule,
-    HttpClientModule
+    HttpClientModule,
+    NbLayoutModule,
+    NbSidebarModule ,// NbSidebarModule.forRoot(), //if this is your app.module
+    NbMenuModule,     // <---------
+    NbButtonModule,
+    NbChatModule,
+    NbEvaIconsModule,
+    NbIconModule,
+    NbCardModule,
+    NbListModule,
+    NbUserModule,
   ],
 })
 export class SharedModule { }
