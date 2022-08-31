@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   allBlockedArr: any = [{}];
   allUsers: any = [{}];
   currentlyBlocked: any = [{}];
+  EmailSenduserblockDTO:any={};
   constructor(public Admin: AdminService, private http: HttpClient) {}
 
   ngOnInit(): void {
@@ -49,6 +50,7 @@ export class UserComponent implements OnInit {
       .put('https://localhost:44301/api/Users/UpdateUsers', blockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.EmailSenduserblock(obj.id);
           this.GetAllUser();
         }
       });
@@ -73,11 +75,17 @@ export class UserComponent implements OnInit {
       .put('https://localhost:44301/api/Users/UpdateUsers', UnblockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.EmailSenduserblock(obj.id);
           this.GetAllUser();
         }
       });
   }
-
+  EmailSenduserblock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/EmailSenduserblock/blockuser/'+id).subscribe((resp)=>{
+     this.EmailSenduserblockDTO = resp;
+    })
+  }
   GetNumberOfUsers() {
     return this.http
       .get('https://localhost:44301/api/Users/NumberOfUser/NumberOfUser')

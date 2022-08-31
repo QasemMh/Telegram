@@ -18,7 +18,9 @@ export class AdminService {
   GetAllSubscription:any=[{}];
   ProfitsAndLosses:any=[{}];
   CountMemberEachChannel:any=[{}];
+  EmailSenduserblockDTO:any={};
   Service_Image:any;
+  
   
   UpdateService (body:any)
   {
@@ -210,4 +212,12 @@ export class AdminService {
 
   })
   }
+
+  EmailSenduserblock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/EmailSenduserblock/blockuser/'+id).subscribe((resp)=>{
+     this.EmailSenduserblockDTO = resp;
+    })
+  }
+
 }
