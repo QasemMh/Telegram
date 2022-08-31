@@ -18,6 +18,8 @@ import { RolesComponent } from './role/role.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
  
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AdminComponent } from './admin/admin.component';
+import { HeaderComponent } from './header/header.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import HammerModule from "@egjs/hammerjs";
 
@@ -33,10 +35,12 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
  
     BlockuserComponent,
   
-     UserComponent,
+    UserComponent,
     RolesComponent,
     ManagecatalogComponent,
     SubscriptionComponent,
+    AdminComponent,
+    HeaderComponent,
  
  
  
