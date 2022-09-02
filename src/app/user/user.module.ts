@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 
 import { UserRoutingModule } from './user-routing.module';
 import { ChatComponent } from './chat/chat.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { CreateTestimonialComponent } from './create-testimonial/create-testimonial.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -14,13 +16,14 @@ import { CreateTestimonialComponent } from './create-testimonial/create-testimon
     ChatComponent,
     CatalogComponent,
     MyorderComponent,
-    CreateTestimonialComponent
- 
+    CreateTestimonialComponent,
+    UserComponent
   ],
   imports: 
   [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule
   ]
 })
 export class UserModule { }

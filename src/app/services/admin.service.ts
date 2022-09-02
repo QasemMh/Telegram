@@ -13,19 +13,52 @@ export class AdminService {
   Users:any=[{}];
   Groups:any=[{}];
   Testimonials:any=[{}];
+  GetUserByIdDto: any={};
+  UpdateProfileUserDTO: any={};
    constructor(private http :HttpClient) { }
    Services:any=[{}];
   GetAllSubscription:any=[{}];
   ProfitsAndLosses:any=[{}];
   CountMemberEachChannel:any=[{}];
   Service_Image:any;
+  u_image_path:any;
+  uploadAttachment(file:FormData)
+  {
+    this.http.post('https://localhost:44301/api/Users/UploadImageUser/UploadImageUser',file).subscribe
+    ((resp:any)=>{
+      if(resp)
+      {     
+        this.display_Image=resp.u_image_path;//
+        console.log(resp);
   
+      }
+    },err=>{
+      console.log(err);
+      
+    })
+  }
+  GetUserById(id:number)
+  {
+
+  this.http.get('https://localhost:44301/api/Users/GetUserById/GetUserById/'+id).subscribe((res)=>{
+    this.GetUserByIdDto=res;
+    console.log(res);
+  })
+}
+UpdateProfileUser(body:any)
+{
+  body.u_image_path=this.Service_Image;
+
+  this.http.put('https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',body).subscribe((res)=>{
+    console.log(res);
+})
+window.location.reload();
+}
   UpdateService (body:any)
   {
     
     body.Image=this.Service_Image;
     this.http.put('https://localhost:44301/api/Services/UpdateService/UpdateService',body).subscribe((resp)=>{
-     
     },err=>{
      
     })

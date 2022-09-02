@@ -1,19 +1,18 @@
-import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { UserService } from '../../services/user.service';
-
+import { AdminService } from 'src/app/services/admin.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-userprofile',
-  templateUrl: './userprofile.component.html',
-  styleUrls: ['./userprofile.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class UserprofileComponent implements OnInit {
-  @ViewChild('callUpdateDailog') callUpdateDailog! :TemplateRef<any>;
+export class ProfileComponent implements OnInit {
   @ViewChild('callUpdateProfileDailog') callUpdateProfileDailog! :TemplateRef<any>;
 
-  constructor(public dialog: MatDialog,public User :UserService) { }
+  constructor(public dialog: MatDialog,public admin:AdminService) { }
   UpdateProfileUsers = new FormGroup({
     u_id :new FormControl(),
     u_first_name :new FormControl(),
@@ -26,9 +25,9 @@ export class UserprofileComponent implements OnInit {
   })
   ngOnInit(): void {
 
-    this.User.GetUserById(5);
+    this.admin.GetUserById(5);
     
-    console.log(this.User.GetUserByIdDto);
+    console.log(this.admin.GetUserByIdDto);
     
   }
   uploadImage(file:any)
@@ -39,7 +38,7 @@ export class UserprofileComponent implements OnInit {
     const formDate=new FormData();//object 
     formDate.append('file',fileToUpload,fileToUpload.name);
     // debugger
-    this.User.uploadAttachment(formDate);
+    this.admin.uploadAttachment(formDate);
   }
   p_data:any;
   updateDailog(obj:any){
@@ -72,20 +71,16 @@ export class UserprofileComponent implements OnInit {
     
   }
 
-  chackPasswords = new FormGroup({
-    loginId :new FormControl(7),
-    oldPassword :new FormControl(),
-    newPassword :new FormControl(),
-    
-  })
+  
 
   UpdateProfileUser(){
     
   
     // debugger
     // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
-    this.User.UpdateProfileUser(this.UpdateProfileUsers.value);
+    this.admin.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);
     
   }
+
 }
