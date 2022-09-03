@@ -20,6 +20,7 @@ export class AdminService {
   GetAllSubscription:any=[{}];
   ProfitsAndLosses:any=[{}];
   CountMemberEachChannel:any=[{}];
+  EmailSenduserblockDTO:any={};
   Service_Image:any;
   u_image_path:any;
   uploadAttachment(file:FormData)
@@ -31,7 +32,7 @@ export class AdminService {
         this.display_Image=resp.u_image_path;//
         console.log(resp);
   
-      }
+       }
     },err=>{
       console.log(err);
       
@@ -54,6 +55,7 @@ UpdateProfileUser(body:any)
 })
 window.location.reload();
 }
+ 
   UpdateService (body:any)
   {
     
@@ -243,4 +245,12 @@ window.location.reload();
 
   })
   }
+
+  EmailSenduserblock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/EmailSenduserblock/blockuser/'+id).subscribe((resp)=>{
+     this.EmailSenduserblockDTO = resp;
+    })
+  }
+
 }
