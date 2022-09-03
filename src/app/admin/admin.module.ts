@@ -20,6 +20,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
+import { ProfileComponent } from './profile/profile.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import HammerModule from "@egjs/hammerjs";
 
@@ -32,7 +33,6 @@ import { HeaderComponent } from './header/header.component';
     StoryComponent,
     ChannelComponent,
     GroupComponent,
- 
     BlockuserComponent,
   
      UserComponent,
@@ -41,6 +41,7 @@ import { HeaderComponent } from './header/header.component';
     SubscriptionComponent,
     AdminComponent,
     HeaderComponent,
+    ProfileComponent,
  
  
  
@@ -49,7 +50,7 @@ import { HeaderComponent } from './header/header.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    MatSlideToggleModule,
+    // MatSlideToggleModule,
    // BrowserAnimationsModule
   ]
   // , providers: [ HammerModule ] 
