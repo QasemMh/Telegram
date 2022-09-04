@@ -3,7 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import {render} from 'creditcardpayments/creditCardPayments';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
-
+ 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
@@ -11,14 +11,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CatalogComponent implements OnInit {
   @ViewChild('mypaypallButton') mypaypallButton! :TemplateRef<any>;
-  constructor(public dialog: MatDialog,public User :UserService) {
+ 
+  createFormSubscripe:FormGroup = new FormGroup({
+    ServicesId:new FormControl(),
+    UserId:new FormControl()
+  })
+  constructor(public dialog: MatDialog ,public User :UserService) {
    
 
    }
-   p_data:number= +localStorage.getItem('loginId');
+    p_data:number= +localStorage.getItem('loginId');
    
    Createdialog(obj:any){
     this.dialog.open(this.mypaypallButton);
+ 
     render({
       id:"#mypaypallButtons",
       currency:"USD",
@@ -40,7 +46,7 @@ export class CatalogComponent implements OnInit {
       ServicesId:new FormControl(),
       UserId:new FormControl()
     })
-    
+     
     CreateSubscripe(obj:any){
     this.createFormSubscripe.controls['ServicesId'].setValue(obj.id); 
     this.createFormSubscripe.controls['UserId'].setValue(2);
@@ -51,6 +57,7 @@ export class CatalogComponent implements OnInit {
       }
    
   
+ 
   ngOnInit(): void {
     this.User.GetAllServices();
   }

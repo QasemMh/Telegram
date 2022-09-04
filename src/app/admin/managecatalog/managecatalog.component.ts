@@ -57,8 +57,6 @@ export class ManagecatalogComponent implements OnInit {
   }
 
 
-
-
   Createdialog(){
   this.dialog.open(this.callCreateServicesDailog)
   }

@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
+ 
 
     constructor(public http:HttpClient) { }
    GetUserByIdDto:any={};
@@ -14,9 +15,19 @@ export class UserService {
    Users:any={}
     Services:any=[{}];
   UserSubscription:any=[{}];
-  post:any=[{}];
+   post:any=[{}];
   ReportPost:any={};
 
+ 
+  display_Image_Profile: any;
+  CreateSubscripe(body:any)
+  {
+    this.http.post('https://localhost:44301/api/Subscription/InsertSubscription',body).subscribe((res)=>{
+     
+  })
+  window.location.reload();
+  }
+ 
   deleteSubscription(body:any)
   {
     this.http.delete('https://localhost:44301/api/Subscription/DeleteSubscription',body).subscribe((resp)=>{
@@ -35,32 +46,48 @@ export class UserService {
 
   })
   }
-
+  p_data:number= +localStorage.getItem('loginId');
   GetUserSubscription()
   {
 
-  this.http.get('https://localhost:44301/api/Subscription/GetUserSubscription/8').subscribe((res)=>{
+  this.http.get('https://localhost:44301/api/Subscription/GetUserSubscription/'+this.p_data).subscribe((res)=>{
   this.UserSubscription=res;
 
   })
   }
 
  
-  GetUserById()
+  uploadAttachment(file:FormData)
+  {
+    this.http.post('https://localhost:44301/api/Users/UploadImageUser/UploadImageUser',file).subscribe
+    ((resp:any)=>{
+      if(resp)
+      {     
+        this.display_Image_Profile=resp.u_image_path;//
+        console.log(resp);
+  
+      }
+    },err=>{
+      console.log(err);
+      
+    })
+  }
+  GetUserById(id:number)
   {
 
-  this.http.get('https://localhost:44301/api/Users/GetUserById/GetUserById/9').subscribe((res)=>{
+  this.http.get('https://localhost:44301/api/Users/GetUserById/GetUserById/'+id).subscribe((res)=>{
     this.GetUserByIdDto=res;
     console.log(res);
-    })
+  })
 }
 UpdateProfileUser(body:any)
 {
+  body.Image=this.display_Image_Profile;
+
   this.http.put('https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',body).subscribe((res)=>{
-     this.UpdateProfileUserDTO=res;
-     console.log(res);
-})
-}
+    console.log(res);
+})}
+
 ChackPassword(body:any)
 {
   this.http.post('https://localhost:44301/api/login/ChackPassword/Chackpassword',body).subscribe((res)=>{

@@ -7,17 +7,31 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import{HttpClientModule}from '@angular/common/http'
-import {ToastrModule, ToastNoAnimation, ToastNoAnimationModule} from 'ngx-toastr';
- import {MatCardModule} from '@angular/material/card';
-
+import { HttpClientModule } from '@angular/common/http';
+import {
+  ToastrModule,
+  ToastNoAnimation,
+  ToastNoAnimationModule,
+} from 'ngx-toastr';
+import { MatCardModule } from '@angular/material/card';
 
 import { NgChartsModule } from 'ng2-charts';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatModule, NbIconModule, NbCardModule, NbListModule, NbUserModule } from '@nebular/theme';
- @NgModule({
-  declarations: [
-  ],
+import {
+  NbLayoutModule,
+  NbSidebarModule,
+  NbMenuModule,
+  NbButtonModule,
+  NbChatModule,
+  NbIconModule,
+  NbCardModule,
+  NbListModule,
+  NbUserModule,
+  NbSearchModule,
+  NbTabsetModule,
+} from '@nebular/theme';
+@NgModule({
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule,
@@ -31,7 +45,7 @@ import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatMo
     NgChartsModule,
     NbLayoutModule,
     NbSidebarModule.forRoot(), // NbSidebarModule.forRoot(), //if this is your app.module
-    NbMenuModule.forRoot(),     // <---------
+    NbMenuModule.forRoot(), // <---------
     NbButtonModule,
     NbChatModule.forRoot(),
     NbEvaIconsModule,
@@ -39,8 +53,10 @@ import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatMo
     NbCardModule,
     NbListModule,
     NbUserModule,
+    NbSearchModule,
+    NbTabsetModule,
   ],
-   exports: [
+  exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -50,8 +66,8 @@ import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatMo
     MatCheckboxModule,
     HttpClientModule,
     NbLayoutModule,
-    NbSidebarModule ,// NbSidebarModule.forRoot(), //if this is your app.module
-    NbMenuModule,     // <---------
+    NbSidebarModule, // NbSidebarModule.forRoot(), //if this is your app.module
+    NbMenuModule, // <---------
     NbButtonModule,
     NbChatModule,
     NbEvaIconsModule,
@@ -59,6 +75,8 @@ import { NbLayoutModule, NbSidebarModule, NbMenuModule, NbButtonModule, NbChatMo
     NbCardModule,
     NbListModule,
     NbUserModule,
+    NbSearchModule,
+    NbTabsetModule,
   ],
 })
-export class SharedModule { }
+export class SharedModule {}
