@@ -14,7 +14,8 @@ export class UserService {
    Users:any={}
     Services:any=[{}];
   UserSubscription:any=[{}];
- 
+  post:any=[{}];
+  ReportPost:any={};
 
   deleteSubscription(body:any)
   {
@@ -67,5 +68,30 @@ ChackPassword(body:any)
      console.log(res);
 })
 }
+CreateSubscripe(body:any)
+  {
+    this.http.post('https://localhost:44301/api/Subscription/InsertSubscription',body).subscribe((res)=>{
+     this.UserSubscription=res;
+     console.log(res);
+  })
+  // window.location.reload();
+  }
 
+
+  GetAllPostByChanel()
+  {
+    this.http.get('https://localhost:44301/api/Post/GetAllPostByChanel/chanel/3').subscribe((res)=>{
+      this.post=res;
+      console.log(res);
+    })
+  }
+
+  InsertReportPost(body:any)
+  {
+    this.http.post('https://localhost:44301/api/PostReport/CreatePostReport',body).subscribe((res)=>{
+      this.ReportPost=res;
+      console.log(res);
+    })
+  }
+  
 }

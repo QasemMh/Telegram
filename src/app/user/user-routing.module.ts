@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ChatComponent } from './chat/chat.component';
 import { MyorderComponent } from './myorder/myorder.component';
+import { ChannelComponent } from './channel/channel.component';
 
 import { UserprofileComponent } from './userprofile/userprofile.component';
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
     component: MyorderComponent,
   },
   { path: 'userprofile', component: UserprofileComponent },
+  { path: 'channel', component: ChannelComponent },
 ];
 
 @NgModule({
