@@ -1,0 +1,35 @@
+.user-chat {
+  padding: 15px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.user-chat:hover {
+  background-color: rgba(221, 221, 221, 0.308);
+}
+.user-chat.active {
+  background-color: #3390ec;
+}
+::ng-deep .user-chat.active .user-name,
+::ng-deep .user-chat.active .user-title {
+  color: #fff !important;
+}
+::ng-deep .nb-theme-default nb-tabset nb-tab {
+  padding: 0 !important;
+}
+
+::ng-deep .nb-theme-default nb-tabset .tabset {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+::ng-deep.nb-theme-default nb-tabset .tabset::-webkit-scrollbar {
+  display: none;
+}
+
+::ng-deep nb-layout-column {
+  padding: 0 !important;
+}
+
+::ng-deep .scrollable {
+  padding: 0 !important;
+}

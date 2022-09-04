@@ -1,13 +1,17 @@
 <nb-layout>
-    <nb-layout-header fixed><nb-layout-header fixed>
-      <!-- <app-header></app-header> -->
-    </nb-layout-header></nb-layout-header>
-  
-    <nb-sidebar>
-      <!-- <app-sidebar></app-sidebar> -->
-    </nb-sidebar>
-  
-    <nb-layout-column>
-      <!-- <router-outlet></router-outlet> -->
-    </nb-layout-column>
-  </nb-layout>
+  <nb-layout-header fixed>
+    <app-header></app-header>
+  </nb-layout-header>
+
+  <nb-sidebar class="menu-sidebar mysidebar" responsive start>
+    <app-sidebar
+      (conversationClicked)="onconversationClicked($event)"
+    ></app-sidebar>
+  </nb-sidebar>
+
+  <nb-layout-column>
+    <app-chat [userChat]="userData" *ngIf="userData"></app-chat>
+  </nb-layout-column>
+
+  <nb-layout-footer></nb-layout-footer>
+</nb-layout>
