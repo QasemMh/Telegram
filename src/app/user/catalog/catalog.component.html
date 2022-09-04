@@ -1,4 +1,14 @@
-<div class="card card-default">
+<nb-layout>
+      <nb-layout-header fixed><nb-layout-header fixed>
+        <!-- <app-header></app-header> -->
+      </nb-layout-header></nb-layout-header>
+    
+      <!-- <nb-sidebar>
+        <app-sidebar></app-sidebar>
+      </nb-sidebar> -->
+    
+      <nb-layout-column>
+        <div class="card card-default">
     <div class="card-header">
       <h2> Services List :</h2>
   
@@ -31,9 +41,12 @@
               
   
                 
-                 <button (click)="Createdialog(obj)">Subscripe</button> 
+                  <!-- <button class="btn btn primary"(click)=" Createdialog()">Subscripe</button>  -->
+                 <button class="btn btn primary"(click)="CreateSubscripe(obj)">Subscripe</button> 
+ 
+               <!--  <button (click)="Createdialog(obj)">Subscripe</button> -->
                   
-                
+                 
               
             </td>
           </tr>
@@ -48,26 +61,23 @@
 
 
     <ng-template #mypaypallButton>
-      <form class="example-form">
+      <!-- <form class="example-form">
     
-        <br>
+        <br> -->
+      
       
           <div id="mypaypallButtons"></div>
         
-      </form>
+      <!-- </form> -->
       
-     
+     //rEMAS444	333	07778	erer@gmail.com
       
-    </ng-template>
-    
-    
+    </ng-template >
+ 
 
-
-
-
-
-
-
+      </nb-layout-column>
+    </nb-layout>
+   
 
 
 
