@@ -22,6 +22,7 @@
     "@angular/router": "^14.1.0",
     "@aspnet/signalr": "^1.0.27",
     "@egjs/hammerjs": "^2.0.17",
+    "@microsoft/signalr": "^6.0.8",
     "@nebular/eva-icons": "9.0.3",
     "@nebular/theme": "^9.0.3",
     "angular2-chartjs": "^0.5.1",
