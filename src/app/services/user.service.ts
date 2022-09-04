@@ -77,7 +77,7 @@ export class UserService {
 }
 UpdateProfileUser(body:any)
 {
-  body.Image=this.display_Image_Profile;
+  body.u_image_path=this.display_Image_Profile;
 
   this.http.put('https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',body).subscribe((res)=>{
     console.log(res);
