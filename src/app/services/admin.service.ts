@@ -48,7 +48,7 @@ export class AdminService {
 }
 UpdateProfileUser(body:any)
 {
-  body.u_image_path=this.Service_Image;
+  body.u_image_path=this.u_image_path;
 
   this.http.put('https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',body).subscribe((res)=>{
     console.log(res);
