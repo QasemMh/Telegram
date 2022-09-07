@@ -1,66 +1,65 @@
 <div class="card card-default">
     <div class="card-header">
       <h2> Services List :</h2>
-  
+
       <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
         aria-controls="collapse-data-tables"> </a>
-  
+
     </div>
-  
+
       <table id="productsTable" class="table table-hover table-product" style="width:100%">
         <thead>
           <tr>
-            <th>Name </th> 
+            <th>Name </th>
              <th>Price </th>
             <th>Image</th>
             <th>descriptions</th>
-            
             <th>Createtime </th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-  
+
           <tr *ngFor="let obj of User.Services">
             <td>{{obj.name}}</td>
-             <td>{{obj.price}}</td>  
+             <td>{{obj.price}}</td>
              <td><img src="../../../assets/images/{{obj.Image}}" width="50px"> </td>
             <td>{{obj.descriptions}} </td>
             <td>{{obj.createtime}}</td>
             <td>
-              
-  
-                
-                 <button class="btn btn primary"(click)=" Createdialog()">Subscripe</button> 
-                  
-                
-              
+
+
+
+                 <button class="btn btn primary"(click)=" Createdialog()">Subscripe</button>
+
+
+
             </td>
           </tr>
-  
-          
-  
+
+
+
         </tbody>
       </table>
-  
+
     </div>
 
 
 
     <ng-template #mypaypallButton>
       <form class="example-form">
-    
+
         <br>
-      
+
           <div id="mypaypallButtons"></div>
-        
+
       </form>
-      
-     
-      
+
+
+
     </ng-template>
-    
-    
+
+
 
 
     <!--  -->

@@ -16,10 +16,16 @@ import { RolesComponent } from './role/role.component';
  import { BlockuserComponent } from './blockuser/blockuser.component';
  import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
- 
+
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
+import { MangePostComponent } from './mange-post/mange-post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { PostComponent } from './post/post.component';
+import { PostCardComponent } from './post-card/post-card.component';
+import { ReportUsersComponent } from './report-users/report-users.component';
+
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import HammerModule from "@egjs/hammerjs";
 
@@ -32,18 +38,24 @@ import { HeaderComponent } from './header/header.component';
     StoryComponent,
     ChannelComponent,
     GroupComponent,
- 
+
     BlockuserComponent,
-  
+
      UserComponent,
     RolesComponent,
     ManagecatalogComponent,
     SubscriptionComponent,
     AdminComponent,
     HeaderComponent,
- 
- 
- 
+    MangePostComponent,
+    CreatePostComponent,
+    PostComponent,
+    PostCardComponent,
+    ReportUsersComponent,
+
+
+
+
   ],
   imports: [
     CommonModule,
@@ -52,6 +64,6 @@ import { HeaderComponent } from './header/header.component';
     MatSlideToggleModule,
    // BrowserAnimationsModule
   ]
-  // , providers: [ HammerModule ] 
+  // , providers: [ HammerModule ]
 })
 export class AdminModule { }
