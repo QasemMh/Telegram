@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import {render} from 'creditcardpayments/creditCardPayments';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+ 
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
@@ -19,32 +20,45 @@ export class CatalogComponent implements OnInit {
    
 
    }
-
-   p_data:number= +localStorage.getItem('loginId');
-
+    p_data:number= +localStorage.getItem('loginId');
+   
    Createdialog(obj:any){
-    this.dialog.open(this.mypaypallButton)
+    this.dialog.open(this.mypaypallButton);
+ 
     render({
       id:"#mypaypallButtons",
       currency:"USD",
       value:"100.00",
       onApprove:(details)=>{
-       alert("successfully")
+       alert("successfully");
       }
- 
+    });
+    // console.log(obj);
+    
+    // console.log(obj.id);
+    // console.log(obj.p_data);
+    // this.CreateSubscripe(obj);
+    // this.dialog.closeAll();
+     
+    } 
+
+     createFormSubscripe:FormGroup = new FormGroup({
+      ServicesId:new FormControl(),
+      UserId:new FormControl()
     })
-
-     this.createFormSubscripe.controls['ServicesId'].setValue(obj.id); 
-     this.createFormSubscripe.controls['UserId'].setValue(this.p_data); 
-
-    }
-
-  CreateSubscripe(){
-  console.log(this.createFormSubscripe.value);
-  this.User.CreateSubscripe(this.createFormSubscripe.value);
-  }
+     
+    CreateSubscripe(obj:any){
+    this.createFormSubscripe.controls['ServicesId'].setValue(obj.id); 
+    this.createFormSubscripe.controls['UserId'].setValue(2);
+     this.Createdialog(obj);
+      console.log(this.createFormSubscripe.value);
+      this.User.CreateSubscripe(this.createFormSubscripe.value);
+      // window.location.reload();
+      }
+   
+  
+ 
   ngOnInit(): void {
     this.User.GetAllServices();
   }
-
 }
