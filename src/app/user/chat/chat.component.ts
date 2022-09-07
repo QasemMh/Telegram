@@ -13,7 +13,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.sendMessageToFriendLis();
-  }
+  } 
 
   ngOnDestroy() {}
 
