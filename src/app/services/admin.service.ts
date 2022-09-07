@@ -53,14 +53,7 @@ export class AdminService {
       'https://localhost:44301/api/Users/GetUserById/GetUserById/' + id
     );
   }
-  this.http.get('https://localhost:44301/api/Users/GetUserById/GetUserById/'+id).subscribe((res)=>{
-    this.GetUserByIdDto=res;
-    console.log(res);
-  })
-}
-UpdateProfileUser(body:any)
-{
-  body.u_image_path=this.u_image_path;
+
 
   UpdateProfileUser(body: any) {
     body.u_image_path = this.Service_Image;
