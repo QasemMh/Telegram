@@ -14,6 +14,8 @@ export class UserComponent implements OnInit {
   constructor(private readonly signalrService: SignalrService) {}
 
   ngOnInit(): void {
+    this.signalrService.startConnection();
+
     if (
       this.signalrService.hubConnection.state == HubConnectionState.Connected
     ) {
@@ -30,6 +32,10 @@ export class UserComponent implements OnInit {
   onconversationClicked(evt: any) {
     this.userData = evt.user;
     this.userData.userMessages = [];
+
+    //get all message between user.id and current user;
+    //this.userData.userMessages = [];
+
     this.changeActiveChat(evt.event);
   }
   changeActiveChat(evt: any) {
