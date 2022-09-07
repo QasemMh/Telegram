@@ -11,8 +11,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(private readonly signalrService: SignalrService) {}
 
-  ngOnInit(): void {
-    this.signalrService.startConnection();
-  }
+  ngOnInit(): void {}
   ngOnDestroy(): void {}
 }
