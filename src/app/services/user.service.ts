@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  
+ 
   selectedPost:any={};
     constructor(public http:HttpClient) { }
    GetUserByIdDto:any={};
@@ -15,38 +15,17 @@ export class UserService {
   UserSubscription:any=[{}];
    post:any=[{}];
   ReportPost:any={};
-
+  Testimonial:any={};
   ChannelPosts:any=[{}];
   display_Image_Profile: any;
 
   GetChannelPosts()
   {
-
   this.http.get('https://localhost:44301/api/FunctionUser/ChannelPosts/ChannelPosts/4').subscribe((res)=>{
   this.ChannelPosts=res;
-
   })
   }
-
-
- 
-  deleteSubscription(body:any)
-  {
-    this.http.delete('https://localhost:44301/api/Subscription/DeleteSubscription',body).subscribe((resp)=>{
-      console.log(resp)
-    },err=>{
- 
-   GetUserByIdDto: any = {};
-  UpdateProfileUserDTO: any = {};
-  Users: any = {};
-  Services: any = [{}];
-  UserSubscription: any = [{}];
-  post: any = [{}];
-  ReportPost: any = {};
-
-  display_Image_Profile: any;
- 
-
+  
   deleteSubscription(body: any) {
     this.http
       .delete(
@@ -62,6 +41,7 @@ export class UserService {
     window.location.reload();
   }
 
+ 
   GetAllServices() {
     this.http
       .get('https://localhost:44301/api/Services/GetAllSERVICES')
@@ -69,6 +49,7 @@ export class UserService {
         this.Services = res;
       });
   }
+  
   p_data: number = +localStorage.getItem('loginId');
   GetUserSubscription() {
     this.http
@@ -99,6 +80,7 @@ export class UserService {
         }
       );
   }
+  
   GetUserById(id: number) {
     this.http
       .get('https://localhost:44301/api/Users/GetUserById/GetUserById/' + id)
@@ -107,6 +89,7 @@ export class UserService {
         console.log(res);
       });
   }
+  
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image_Profile;
 
@@ -118,7 +101,8 @@ export class UserService {
       .subscribe((res) => {
         console.log(res);
       });
-  }
+      
+   }
 
   ChackPassword(body: any) {
     this.http
@@ -158,4 +142,13 @@ export class UserService {
         console.log(res);
       });
   }
+ 
+  InsertTestimonial(body:any)
+  {
+    this.http.post('https://localhost:44301/api/Testimonial/InsertTestimonial',body).subscribe((res)=>{
+     this.Users=res;
+     console.log(res);
+  })}
 }
+
+ 

@@ -11,7 +11,7 @@ export class PostComponent implements OnInit {
   constructor(public User :UserService) { }
 
   ngOnInit(): void {
-
+ 
   }
 
 }

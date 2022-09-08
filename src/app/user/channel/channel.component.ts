@@ -71,4 +71,5 @@ export class ChannelComponent implements OnInit {
     this.link=this.router.navigate(['channel',obj.channel_id, 'post', obj.id]);
     this.dialog.open(this.callCopyLinkDailog);
   }
-}
+ }
+ 
