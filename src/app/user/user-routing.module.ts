@@ -4,6 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { ChatComponent } from './chat/chat.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { ChannelComponent } from './channel/channel.component';
+import { PostComponent } from './post/post.component';
 
 import { UserprofileComponent } from './userprofile/userprofile.component';
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
   },
   { path: 'userprofile', component: UserprofileComponent },
   { path: 'channel', component: ChannelComponent },
+  {
+    path: 'channel/:id/post/:id',
+    component: PostComponent,
+  },
+ 
 ];
 
 @NgModule({

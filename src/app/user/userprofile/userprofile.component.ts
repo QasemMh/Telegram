@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
 
 
@@ -9,59 +10,27 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userprofile.component.css']
 })
 export class UserprofileComponent implements OnInit {
+  @ViewChild('callUpdateDailog') callUpdateDailog! :TemplateRef<any>;
+  @ViewChild('callUpdateProfileDailog') callUpdateProfileDailog! :TemplateRef<any>;
 
+  constructor(public dialog: MatDialog,public User :UserService) { }
   UpdateProfileUsers = new FormGroup({
-    U_id :new FormControl(),
-    U_first_name :new FormControl(),
-    U_middle_name :new FormControl(),
-    U_last_name :new FormControl(),
-    U_gender :new FormControl(),
-    U_image_path :new FormControl(),
-    L_email :new FormControl(),
-    L_phone :new FormControl()
+    u_id :new FormControl(),
+    u_first_name :new FormControl(),
+    u_middle_name :new FormControl(),
+    u_last_name :new FormControl(),
+    u_image_path :new FormControl(), 
+    u_gender :new FormControl(),
+    l_email :new FormControl(),
+    l_phone :new FormControl()
   })
-  chackPasswords = new FormGroup({
-    loginId :new FormControl(7),
-    oldPassword :new FormControl(),
-    newPassword :new FormControl(),
-    
-  })
-  
-  constructor(public userService :UserService) { }
-
   ngOnInit(): void {
 
-    this.userService.GetUserById();
+    this.User.GetUserById(5);
     
-    console.log(this.userService.GetUserByIdDto);
+    console.log(this.User.GetUserByIdDto);
     
   }
-
-  
-
-
-
-  
-
-  // p_data:any={};
-  // updateDailog(obj:any){
-  //   this.p_data={
-  //     U_id:obj.U_id,
-  //     U_first_name:obj.U_first_name,
-  //     U_middle_name:obj.U_middle_name,
-  //     U_last_name:obj.U_last_name,
-  //     U_gender:obj.U_gender,
-  //     U_image_path:obj.U_image_path,
-  //   L_email:obj.U_gender,
-  //   L_phone:obj.L_phone
-     
-     
-  //   }
-  //   console.log(this.p_data);
-  //   this.UpdateProfileUsers.controls['U_id'].setValue(this.p_data.U_id); 
-    
-    
-  // }
   uploadImage(file:any)
   {
     if(file.length==0)
@@ -70,28 +39,67 @@ export class UserprofileComponent implements OnInit {
     const formDate=new FormData();//object 
     formDate.append('file',fileToUpload,fileToUpload.name);
     // debugger
-    this.userService.UpdateProfileUser(formDate);
+    this.User.uploadAttachment(formDate);
   }
-  UpdateProfileUser(){
+  p_data:any;
+  updateDailog(obj:any){
     
-  this.UpdateProfileUsers.controls['U_id'].setValue(9);
-  this.UpdateProfileUsers.controls['U_first_name'].setValue(this.userService.GetUserByIdDto.U_first_name);
-  this.UpdateProfileUsers.controls['U_middle_name'].setValue(this.userService.GetUserByIdDto.U_middle_name);
-  this.UpdateProfileUsers.controls['U_last_name'].setValue(this.userService.GetUserByIdDto.U_last_name);
-  this.UpdateProfileUsers.controls['U_image_path'].setValue(this.userService.GetUserByIdDto.U_image_path);
-  this.UpdateProfileUsers.controls['U_gender'].setValue(this.userService.GetUserByIdDto.U_gender);
-  this.UpdateProfileUsers.controls['L_email'].setValue(this.userService.GetUserByIdDto.L_email);
-  this.UpdateProfileUsers.controls['L_phone'].setValue(this.userService.GetUserByIdDto.L_phone);
+    this.p_data={
+      u_id:5,
+      u_first_name:obj.first_Name,
+      u_middle_name:obj.middle_Name,
+      u_last_name:obj.last_Name,
+      
+      u_image_path:obj.images,
+      u_gender:obj.gender,
+      l_email:obj.email,
+      l_phone:obj.phone
+     
+     
+    }
+
+
+  
+
+    
+    this.UpdateProfileUsers.controls['u_id'].setValue(5);
+    this.dialog.open(this.callUpdateProfileDailog)
+
     // debugger
     // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
-    this.userService.UpdateProfileUser(this.UpdateProfileUsers.value);
+    // this.admin.UpdateProfileUser(this.UpdateProfileUsers.value);
+    // console.log(this.UpdateProfileUsers.value);
+    
+  }
+
+  chackPasswords = new FormGroup({
+    loginId :new FormControl(5),
+    oldPassword :new FormControl(),
+    newPassword :new FormControl(),
+    
+  })
+  insertReview = new FormGroup({
+    user_from :new FormControl(5),
+    description :new FormControl(),
+    is_accept :new FormControl(0),
+  })
+
+  UpdateProfileUser(){
+    
+  
+    // debugger
+    // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
+    this.User.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);
     
   }
   ChackPassword()
-  {
-    
-    this.userService.ChackPassword(this.chackPasswords.value);
-  }
+{
+  this.User.ChackPassword(this.chackPasswords.value);
+}
 
+InsertTestimonial()
+  {
+    this.User.ChackPassword(this.insertReview.value);
+  }
 }

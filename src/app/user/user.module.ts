@@ -8,6 +8,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { CreateTestimonialComponent } from './create-testimonial/create-testimonial.component';
 import { ChannelComponent } from './channel/channel.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ChannelComponent } from './channel/channel.component';
     CatalogComponent,
     MyorderComponent,
     CreateTestimonialComponent,
-    ChannelComponent
+    ChannelComponent,
+    PostComponent
  
   ],
   imports: 
