@@ -3,7 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { NbSidebarService } from '@nebular/theme';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SignalrService } from 'src/app/signalr.service';
-import { HubConnectionState } from '@microsoft/signalr';
+//import { HubConnectionState } from '@microsoft/signalr';
 import { Subject, Observable } from 'rxjs';
 
 @Component({
@@ -21,11 +21,10 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.signalrService.startConnection();
-
     if (
       this.signalrService.hubConnection.state == HubConnectionState.Connected
     ) {
-      // this.getUsersList();
+       // this.getUsersList();
     } else {
       this.signalrService.ssObs().subscribe((obj: any) => {
         if (obj.type == 'HubConnStarted') {

@@ -11,12 +11,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class CatalogComponent implements OnInit {
   @ViewChild('mypaypallButton') mypaypallButton! :TemplateRef<any>;
-
+ 
   createFormSubscripe:FormGroup = new FormGroup({
     ServicesId:new FormControl(),
     UserId:new FormControl()
   })
-  constructor(public dialog: MatDialog ,public User :UserService) {
+   constructor(public dialog: MatDialog ,public User :UserService) {
 
 
    }

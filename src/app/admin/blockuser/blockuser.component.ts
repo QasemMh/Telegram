@@ -23,10 +23,11 @@ export class BlockuserComponent implements OnInit {
         {
           if(result=='yes')
           this.emailblock.EmailSend(id);
+          
         else (result=='no')
         console.log("Thank you");
              }
     })
-   
+
   }
 }
