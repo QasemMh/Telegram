@@ -8,7 +8,6 @@ import { ChannelComponent } from './channel/channel.component';
 import { PostComponent } from './post/post.component';
 
 import { UserprofileComponent } from './userprofile/userprofile.component';
-import { PostComponent } from './post/post.component';
 const routes: Routes = [
   {
     path: '',
@@ -27,17 +26,15 @@ const routes: Routes = [
         path: 'myorder',
         component: MyorderComponent,
       },
-       { path: 'userprofile', component: UserprofileComponent , outlet: 'user'},
-              
-   { path: 'channel', component: ChannelComponent },
-   {
-    path: 'channel/:id/post/:id',
-    component: PostComponent,
-  },
-  
-     ],
- 
+      { path: 'userprofile', component: UserprofileComponent, outlet: 'user' },
 
+      { path: 'channel', component: ChannelComponent },
+      {
+        path: 'channel/:id/post/:id',
+        component: PostComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
