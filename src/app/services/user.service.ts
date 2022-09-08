@@ -5,8 +5,38 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(public http: HttpClient) {}
-  GetUserByIdDto: any = {};
+  
+  selectedPost:any={};
+    constructor(public http:HttpClient) { }
+   GetUserByIdDto:any={};
+   UpdateProfileUserDTO:any={}
+   Users:any={}
+    Services:any=[{}];
+  UserSubscription:any=[{}];
+   post:any=[{}];
+  ReportPost:any={};
+
+  ChannelPosts:any=[{}];
+  display_Image_Profile: any;
+
+  GetChannelPosts()
+  {
+
+  this.http.get('https://localhost:44301/api/FunctionUser/ChannelPosts/ChannelPosts/4').subscribe((res)=>{
+  this.ChannelPosts=res;
+
+  })
+  }
+
+
+ 
+  deleteSubscription(body:any)
+  {
+    this.http.delete('https://localhost:44301/api/Subscription/DeleteSubscription',body).subscribe((resp)=>{
+      console.log(resp)
+    },err=>{
+ 
+   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
   Users: any = {};
   Services: any = [{}];
@@ -15,7 +45,7 @@ export class UserService {
   ReportPost: any = {};
 
   display_Image_Profile: any;
-  
+ 
 
   deleteSubscription(body: any) {
     this.http

@@ -9,11 +9,11 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { CreateTestimonialComponent } from './create-testimonial/create-testimonial.component';
  import { ChannelComponent } from './channel/channel.component';
-
 import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { PostComponent } from './post/post.component';
+ 
 
 @NgModule({
    declarations:
@@ -23,10 +23,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MyorderComponent,
     CreateTestimonialComponent,
      ChannelComponent,
-
+ 
     UserComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    PostComponent
    ],
   imports:
   [

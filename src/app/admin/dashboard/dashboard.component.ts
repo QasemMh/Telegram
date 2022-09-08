@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChartDataset, ChartOptions,Chart,registerables } from 'chart.js';
 import { AdminService } from 'src/app/services/admin.service';
 import { NbSidebarService } from '@nebular/theme';
+import { HttpClient } from '@angular/common/http';
 
 // import { Label } from 'ng2-charts';
 
@@ -17,7 +18,11 @@ export class DashboardComponent implements OnInit {
   channelCount:any ;
   result:any ;
   chart:any=[];
-  constructor(public Admin :AdminService , private sidebarService: NbSidebarService
+   contGroup:any
+  contChannel:any;
+  contUser:any;
+  constructor(private http: HttpClient,private Admin :AdminService , private sidebarService: NbSidebarService
+ 
     ) {
     Chart.register(...registerables);
 
@@ -27,9 +32,35 @@ export class DashboardComponent implements OnInit {
     return false;
    }
 
-  ngOnInit() {
+  GetNumberOfUsers() {
+    return this.http
+      .get('https://localhost:44301/api/Counts/NumberOfUsers')
+      .subscribe((res: any) => {
+        this.contUser = res[0].countOfUser;
+      });
+  }
+  GetNumberOfChannel() {
+    return this.http
+      .get('https://localhost:44301/api/Counts/NumberOfChannels')
+      .subscribe((res: any) => {
+        this.contChannel = res[0].countOfChannel;
+      });
+  }
 
-   
+   GetNumberOfGroup() {
+    return this.http
+      .get('https://localhost:44301/api/Counts/NumberOfGroups')
+      .subscribe((res: any) => {
+        this.contGroup = res[0].countOfGroups;
+      });
+  }
+
+
+  ngOnInit() {
+    this.GetNumberOfUsers();
+    this.GetNumberOfChannel();
+    this.GetNumberOfGroup();
+ 
   this.Admin.GetCountMemberEachChannel().then((res: any)=>
   {
     this.result=res;
