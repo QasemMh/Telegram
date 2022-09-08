@@ -1,3 +1,4 @@
+import { AdminService } from 'src/app/services/admin.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -8,7 +9,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Output() conversationClicked: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private readonly adminService: AdminService) {
+    this.adminService.GetAllUser().subscribe((res: any[]) => {
+      this.users = res.map((item) => {
+        return {
+          name: item.first_name + ' ' + item.last_name,
+          id: item.id,
+        };
+      });
+    });
+  }
 
   ngOnInit(): void {}
 

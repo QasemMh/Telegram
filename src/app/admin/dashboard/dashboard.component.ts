@@ -18,10 +18,11 @@ export class DashboardComponent implements OnInit {
   channelCount:any ;
   result:any ;
   chart:any=[];
-  contGroup:any
+   contGroup:any
   contChannel:any;
   contUser:any;
   constructor(private http: HttpClient,private Admin :AdminService , private sidebarService: NbSidebarService
+ 
     ) {
     Chart.register(...registerables);
 
@@ -46,7 +47,7 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  GetNumberOfGroup() {
+   GetNumberOfGroup() {
     return this.http
       .get('https://localhost:44301/api/Counts/NumberOfGroups')
       .subscribe((res: any) => {
@@ -59,6 +60,7 @@ export class DashboardComponent implements OnInit {
     this.GetNumberOfUsers();
     this.GetNumberOfChannel();
     this.GetNumberOfGroup();
+ 
   this.Admin.GetCountMemberEachChannel().then((res: any)=>
   {
     this.result=res;
