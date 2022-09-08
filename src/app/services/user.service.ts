@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
  
-
+  selectedPost:any={};
     constructor(public http:HttpClient) { }
    GetUserByIdDto:any={};
    UpdateProfileUserDTO:any={}
@@ -18,15 +18,19 @@ export class UserService {
    post:any=[{}];
   ReportPost:any={};
 
- 
+  ChannelPosts:any=[{}];
   display_Image_Profile: any;
-  CreateSubscripe(body:any)
+
+  GetChannelPosts()
   {
-    this.http.post('https://localhost:44301/api/Subscription/InsertSubscription',body).subscribe((res)=>{
-     
+
+  this.http.get('https://localhost:44301/api/FunctionUser/ChannelPosts/ChannelPosts/4').subscribe((res)=>{
+  this.ChannelPosts=res;
+
   })
-  window.location.reload();
   }
+
+
  
   deleteSubscription(body:any)
   {

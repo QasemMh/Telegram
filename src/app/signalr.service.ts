@@ -21,7 +21,7 @@ export class SignalrService implements OnInit {
       .withUrl('https://localhost:44301/chat', {
         skipNegotiation: true,
         transport: signalR.HttpTransportType.WebSockets,
-        // accessTokenFactory: () => <string>localStorage.getItem('token'),
+        accessTokenFactory: () => <string>localStorage.getItem('token'),
       })
       .build();
 

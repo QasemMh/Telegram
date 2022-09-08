@@ -1,13 +1,4 @@
-<nb-layout>
-    <nb-layout-header fixed><nb-layout-header fixed>
-      <!-- <app-header></app-header> -->
-    </nb-layout-header></nb-layout-header>
-  
-    <!-- <nb-sidebar>
-      <app-sidebar></app-sidebar>
-    </nb-sidebar> -->
-  
-    <nb-layout-column>
+
       <div class="card card-default">
   <div class="card-header">
     <h2> Report Chanel:</h2>
@@ -20,25 +11,42 @@
     <table id="productsTable" class="table table-hover table-product" style="width:100%">
       <thead>
         <tr>
-          <th>id</th> 
-           <th>content</th>
-         
-          <th>createtime</th>
-          <th></th>
+          <th>firstName</th> 
+          <th>lastName</th>
+          <th>postContent</th>
+          <th>createAt</th>
+          <th>filePath</th>
+          <th>countComment</th>
+          <th>countLike</th>
+          <th>other</th>
         </tr>
       </thead>
       <tbody>
+<!-- 
+    "channel_id": 4,
+    "id": 3,
+    "firstName": "tasneem",
+    "lastName": "rawashdeh",
+    "postContent": "post2",
+    "createAt": "2022-08-09T11:14:39.622",
+    "filePath": "cccccccc",
+    "countComment": 9,
+    "countLike": 9 -->
+        <tr *ngFor="let obj of User.ChannelPosts">
+           
+          <td>{{obj.firstName}}</td>
+           <td>{{obj.lastName}}</td>  
+           <td>{{obj.postContent}}</td>
+           <td>{{obj.createAt}}</td>  
+           <td>{{obj.filePath}}</td>
+          <td>{{obj.countComment}}</td>  
+          <td>{{obj.countLike}}</td>  
 
-        <tr *ngFor="let obj of User.post">
-            <td>{{obj.id}}</td>
-          <td>{{obj.content}}</td>
-           <td>{{obj.created_at}}</td>  
-          
-          <td>
+          <td> 
             
 
-              
-               <button class="btn btn primary"(click)="dialogepost(obj)">Add Report</button> 
+            <button class="btn btn primary"(click)="PostProfile(obj)">Copylink</button> 
+            <button class="btn btn primary"(click)="dialogepost(obj)">Add Report</button> 
               
             
           </td>
@@ -50,7 +58,20 @@
     </table>
 
   </div>
+  <ng-template #callCopyLinkDailog>
 
+          <h2 mat-dialog-title>Copy This Link </h2>
+
+    <mat-dialog-content class="mat-typography">
+    <h3 mat-dialog-title>{{this.link}}</h3>
+    
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Done</button>
+       </mat-dialog-actions>
+    </ng-template>
+  
 
 
   <ng-template #callCreateServicesDailog>
@@ -58,8 +79,8 @@
     <mat-dialog-content class="mat-typography">
       
     
-      <form action="/action_page.php" [formGroup]="createFormReportChannel">
-        <p><laple for="w3review"> Select Type: </laple> </p>  
+<!-- <form action="/action_page.php" [formGroup]="createFormReportChannel">
+<p><laple for="w3review"> Select Type: </laple> </p>  
 <select id = "myList"  formControlName="type" >  
 <option value="inappropriate content">inappropriate content</option>  
 <option value="elemental content">elemental content</option>   
@@ -71,7 +92,7 @@
         <textarea id="w3review" name="w3review" rows="4" cols="50" formControlName="description"></textarea>
         <br>
        
-      </form>
+      </form> -->
     </mat-dialog-content>
     <mat-dialog-actions align="end">
       <button mat-button mat-dialog-close>Cancel</button>
@@ -80,10 +101,10 @@
     </ng-template>
   
 
-    </nb-layout-column>
-  </nb-layout>
+
  
 
+    
 
 
 
