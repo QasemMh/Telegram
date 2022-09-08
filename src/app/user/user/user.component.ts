@@ -1,3 +1,5 @@
+import { NgxSpinnerService } from 'ngx-spinner';
+import { UserService } from 'src/app/services/user.service';
 import { NbSidebarService } from '@nebular/theme';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SignalrService } from 'src/app/signalr.service';
@@ -11,7 +13,11 @@ import { Subject, Observable } from 'rxjs';
 })
 export class UserComponent implements OnInit {
   userData: any;
-  constructor(private readonly signalrService: SignalrService) {}
+  constructor(
+    private readonly signalrService: SignalrService,
+    private readonly userService: UserService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit(): void {
     this.signalrService.startConnection();
@@ -32,9 +38,50 @@ export class UserComponent implements OnInit {
     this.userData = evt.user;
     this.userData.userMessages = [];
 
-    //get all message between user.id and current user;
-    //this.userData.userMessages = [];
-
+    let currentUserId = +JSON.parse(localStorage.getItem('userData')).userid;
+    this.userService.GetFullUserById(currentUserId).subscribe(
+      (currentUser: any) => {
+        this.spinner.show();
+        this.userService.GetUserFriendsChat(evt.user.id).subscribe(
+          (res: any) => {
+            this.userData.userMessages = res.map((item: any) => {
+              if (item.userFromId == currentUser.userId) {
+                return {
+                  text: item.message,
+                  date: new Date(item.datetime),
+                  reply: true,
+                  type: 'text',
+                  files: [],
+                  user: {
+                    name: currentUser.last_Name + ' ' + currentUser.first_Name,
+                    avatar: currentUser.images,
+                  },
+                };
+              } else {
+                return {
+                  text: item.message,
+                  date: new Date(item.datetime),
+                  reply: false,
+                  type: 'text',
+                  files: [],
+                  user: {
+                    name: evt.user.name,
+                    avatar: evt.user.avatar,
+                  },
+                };
+              }
+            });
+            this.spinner.hide();
+          },
+          (err) => {
+            this.spinner.hide();
+          }
+        );
+      },
+      (err) => {
+        this.spinner.hide();
+      }
+    );
     this.changeActiveChat(evt.event);
   }
   changeActiveChat(evt: any) {

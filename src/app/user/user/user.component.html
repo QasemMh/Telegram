@@ -11,6 +11,7 @@
 
   <nb-layout-column>
     <app-chat [userChat]="userData" *ngIf="userData"></app-chat>
+    <router-outlet name="user" ></router-outlet>
   </nb-layout-column>
 
   <nb-layout-footer></nb-layout-footer>

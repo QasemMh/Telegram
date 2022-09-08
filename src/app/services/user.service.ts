@@ -143,12 +143,34 @@ export class UserService {
       });
   }
  
+  //qasem
+  GetFullUserById(userId: number) {
+    return this.http.get(
+      'https://localhost:44301/api/Users/GetUserById/GetUserById/' + userId
+    );
+  }
+  GetAllUserFriends(userId: number) {
+    return this.http.get(
+      'https://localhost:44301/api/Friends/GetUserFriends/' + userId
+    );
+  }
+
+  GetUserFriendsChat(userToId: number) {
+    let userFromId = +JSON.parse(localStorage.getItem('userData')).userid;
+    return this.http.get(
+      'https://localhost:44301/api/ChatMassage/GetUserFriendChat/' +
+        userFromId +
+        '/' +
+        userToId
+    );
+  }
+  
   InsertTestimonial(body:any)
   {
     this.http.post('https://localhost:44301/api/Testimonial/InsertTestimonial',body).subscribe((res)=>{
      this.Users=res;
      console.log(res);
   })}
-}
+  }
 
  

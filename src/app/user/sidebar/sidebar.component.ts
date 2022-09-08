@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
@@ -9,12 +10,19 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Output() conversationClicked: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly adminService: AdminService) {
-    this.adminService.GetAllUser().subscribe((res: any[]) => {
+  constructor(
+    private readonly adminService: AdminService,
+    private readonly userService: UserService
+  ) {
+    let userId = +JSON.parse(localStorage.getItem('userData')).userid;
+    this.userService.GetAllUserFriends(userId).subscribe((res: any[]) => {
       this.users = res.map((item) => {
         return {
           name: item.first_name + ' ' + item.last_name,
           id: item.id,
+          connid: item.connectionId,
+          avatar: item.image_path,
+          title: 'friends',
         };
       });
     });

@@ -1,5 +1,5 @@
 import { UserComponent } from './user/user.component';
- import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ChatComponent } from './chat/chat.component';
@@ -27,16 +27,17 @@ const routes: Routes = [
         path: 'myorder',
         component: MyorderComponent,
       },
-      { path: 'userprofile', component: UserprofileComponent },
-      
-  { path: 'userprofile', component: UserprofileComponent },
-  { path: 'channel', component: ChannelComponent },
+       { path: 'userprofile', component: UserprofileComponent , outlet: 'user'},
+              
+   { path: 'channel', component: ChannelComponent },
    {
     path: 'channel/:id/post/:id',
     component: PostComponent,
- 
   },
+  
+     ],
  
+
 ];
 
 @NgModule({
