@@ -14,7 +14,12 @@ import { StoryComponent } from './story/story.component';
 
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AdminComponent } from './admin/admin.component';
+ import { MangePostComponent } from './mange-post/mange-post.component';
+import { PostComponent } from './post/post.component';
+import { ReportUsersComponent } from './report-users/report-users.component';
+ 
 import { ProfileComponent } from './profile/profile.component';
+ 
 
 
 const routes: Routes = [
@@ -58,9 +63,26 @@ const routes: Routes = [
       {
           path:'user',
         component:UserComponent
-      },{
+      },
+      {
         path:'sub',
         component:SubscriptionComponent
+
+       },
+
+      {
+        path:'MangePost',
+        component:MangePostComponent
+
+       },
+       {
+        path:'Post',
+        component: PostComponent
+
+       },
+       {
+        path:'Report',
+        component:ReportUsersComponent
 
        },
     ]

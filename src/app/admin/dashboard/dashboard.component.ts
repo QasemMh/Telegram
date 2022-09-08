@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   channelCount:any ;
   result:any ;
   chart:any=[];
-  constructor(private Admin :AdminService , private sidebarService: NbSidebarService
+  constructor(public Admin :AdminService , private sidebarService: NbSidebarService
     ) {
     Chart.register(...registerables);
 
@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+   
   this.Admin.GetCountMemberEachChannel().then((res: any)=>
   {
     this.result=res;

@@ -14,11 +14,66 @@ export class AdminService {
   Testimonials: any = [{}];
   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
+
   constructor(private http: HttpClient) {}
   Services: any = [{}];
   GetAllSubscription: any = [{}];
   ProfitsAndLosses: any = [{}];
   CountMemberEachChannel: any = [{}];
+  Service_Image: any;
+  AllPost:any=[{}];
+
+
+  GetAllPost() {
+   return this.http.get('https://localhost:44301/api/Post/GetAllpost').subscribe((res) => {
+        this.AllPost = res;
+      });
+  }
+
+
+
+  // GetAllPos5t(){
+  //   this.spinner.show();
+  //   this.http.get('https://localhost:44301/api/Post/GetAllpost').subscribe((res)=>{
+  //     this.AllPost=res;
+  //      this.spinner.hide();
+  //      this.toster.success('Data Retriveed !' );
+  //   },err=>{
+  //      this.spinner.hide();
+  //       this.toster.error(err.message,err.status );
+  //   }
+  //   )
+  // }
+
+
+  UpdateService(body: any) {
+    body.Image = this.Service_Image;
+    this.http
+      .put(
+        'https://localhost:44301/api/Services/UpdateService/UpdateService',
+        body
+      )
+      .subscribe(
+        (resp) => {},
+        (err) => {}
+      );
+    window.location.reload();
+  }
+
+  DeleteService(id: number) {
+    this.http
+      .delete(
+        'https://localhost:44301/api/Services/DeleteService/DeleteService/' + id
+      )
+      .subscribe(
+        (resp) => {
+          console.log(resp);
+        },
+        (err) => {}
+      );
+    window.location.reload();
+  }
+
   EmailSenduserblockDTO: any = {};
   Service_Image: any;
   u_image_path: any;
@@ -133,6 +188,7 @@ export class AdminService {
       );
     window.location.reload();
   }
+ 
   GetAllServices() {
     this.http
       .get('https://localhost:44301/api/Services/GetAllSERVICES')
@@ -263,6 +319,6 @@ export class AdminService {
       )
       .subscribe((resp) => {
         this.EmailSenduserblockDTO = resp;
-      });
+       });
   }
 }

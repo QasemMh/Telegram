@@ -1,0 +1,57 @@
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center mb-5">
+    <br>
+    <br>
+    <h2 class="heading-section">Report Post</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+
+          <th>Report ID</th>
+          <th>Name </th>
+          <th>Post Contnt</th>
+          <th>create At</th>
+          <!-- <th>Image </th> -->
+          <th>repoId </th>
+          <th>repoType </th>
+          <th>description</th>
+          <!-- <th>Is Accept</th> -->
+          <!-- <th>count Commint</th>
+          <th>count Like</th> -->
+          <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let obj of Report">
+            <td>{{obj.postID}}</td>
+            <td>{{obj.firstName}} {{obj.lastName}}</td>
+            <td>{{obj.postContent}}</td>
+            <td>{{obj.createAt}}</td>
+            <!-- <td> <img src="../../../assets/images/{{obj.filePath}}" width="50px">    </td> -->
+            <td>{{obj.reportID}}</td>
+            <td>{{obj.repoType}}</td>
+            <td>{{obj.repodescription}}</td>
+            <!-- <td>{{obj.repoIsAccept}}</td> -->
+            <!-- <td>{{obj.countCommint}}</td>
+            <td>{{obj.countLike}}</td> -->
+           <td>
+             <button class="border-bottom-0 btn btn-danger"  *ngIf="obj.is_accept==0"  (click)="Regect(obj)">Regect</button>
+             <button class="border-bottom-0 btn btn-success"  *ngIf="obj.is_accept!=0"  (click)="Accept(obj)">Accept</button>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
