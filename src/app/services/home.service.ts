@@ -13,18 +13,22 @@ export class HomeService {
   display_Image:any;
   constructor(private http :HttpClient) { }
   Testimonials:any=[{}];
+  AllPost:any=[{}];
+
+
+
+
 
   GetAllTestimonial()
   {
-    
-  this.http.get('https://localhost:44301/api/Testimonial/GetAllTestimonial').subscribe((res)=>{
+  this.http.get('https://localhost:44301/api/Testimonial/GetAllTestimonialUser').subscribe((res)=>{
   this.Testimonials=res;
    //console.log(this.HomePage)
   })
   }
   GetAcceptTestimonial()
   {
-    
+
   this.http.get('https://localhost:44301/api/Testimonial/GetAcceptTestimonial').subscribe((res)=>{
   this.AcceptTestimonial=res;
    //console.log(this.HomePage)
@@ -32,18 +36,18 @@ export class HomeService {
   }
   UpdateTestimonial(body:any)
   {
-    
+
     this.http.put('https://localhost:44301/api/Testimonial/UpdateTestimonial',body).subscribe((resp)=>{
-   
+
     },err=>{
-     
+
     })
     window.location.reload();
   }
 
   getHomeInfo()
   {
-    
+
   this.http.get('https://localhost:44301/api/HomePage/GetHomeInfo/Home').subscribe((res)=>{
   this.HomePage=res;
    //console.log(this.HomePage)
@@ -64,32 +68,31 @@ getAllContact()
 
 UpdateHome (body:any)
 {
-  
+
   body.img=this.display_Image;
-  this.http.put('https://localhost:44301/api/HomePage/UpdateHome',body).subscribe((resp)=>{
-   
+  this.http.put('https://localhost:44301/api/HomePage/UpdateHomeInfo/UpdateHome',body).subscribe((resp)=>{
   },err=>{
-   
+
   })
   window.location.reload();
 }
 uploadAttachment(file:FormData)
 {
-  this.http.post('https://localhost:44301/api/HomePage/UploadImageHome',file).subscribe
+  this.http.post('https://localhost:44301/api/HomePage/UploadHome/UploadImageHome',file).subscribe
   ((resp:any)=>{
     if(resp)
-    {     
+    {
       this.display_Image=resp.img;//
       console.log(resp);
 
     }
   },err=>{
     console.log(err);
-    
+
   })
 }
-createContact(body:any){//form group --> create form 
-  
+createContact(body:any){//form group --> create form
+
  // body.imagename=this.display_Image;
   this.http.post('https://localhost:44301/api/HomePage/InsertContactUs',body).subscribe((resp)=>{
    console.log(resp)
@@ -102,35 +105,36 @@ deleteContactUs(id:number)
   this.http.delete('https://localhost:44301/api/HomePage/deleteContactUs/deleteContactUs/'+ id).subscribe((resp)=>{
     console.log(resp)
   },err=>{
-   
+
   })
   window.location.reload();
 }
 UpdateAboutUs (body:any)
 {
-  
+
   body.img=this.display_Image;
-  this.http.put('https://localhost:44301/api/HomePage/UpdateAboutUs',body).subscribe((resp)=>{
+
+  this.http.put('https://localhost:44301/api/HomePage/UpdateAboutUsInfo/UpdateAboutUs',body).subscribe((resp)=>{
    
   },err=>{
-   
+
   })
   window.location.reload();
 }
 uploadAboutAttachment(file:FormData)
 {
   debugger;
-  this.http.post('https://localhost:44301/api/HomePage/UploadImageAboutUs',file).subscribe
+  this.http.post('https://localhost:44301/api/HomePage/UploadImageAboutUs/UploadImageAboutUs',file).subscribe
   ((resp:any)=>{
     if(resp)
-    {     
+    {
       this.display_Image=resp.img;//
       console.log(resp);
 
     }
   },err=>{
     console.log(err);
-    
+
   })
 }
 

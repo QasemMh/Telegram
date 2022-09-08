@@ -1,0 +1,90 @@
+<!--
+<div *ngFor="let obj of admin.AllPost">
+<h1>{{obj.content}}</h1>
+</div> -->
+
+
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center mb-5">
+    <br>
+    <br>
+    <h2 class="heading-section">post</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+
+            <th>name</th>
+            <th>bio</th>
+            <th>Image_path</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let obj of AllPost" >
+
+            <td>{{obj.user}}</td>
+            <td>{{obj.content}}</td>
+             <td><img src="../../../assets/images/{{obj.media_posts}}" width="50px"></td>
+           <td>
+             <!-- <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
+             <button class="border-bottom-0 btn btn-success " *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button> -->
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- 1st blog post -->
+  <!-- <div class="card" > -->
+
+    <!-- banner image and text -->
+      <!-- <div class="card-banner">
+
+        <img class="banner-img" src='post1.jpg' alt=''>
+      </div> -->
+
+<!-- #tags,heading,description -->
+      <!-- <div class="card-body"> -->
+        <!-- <p class="blog-hashtag">{{obj.created_at}}</p> -->
+        <!-- <h2 class="blog-title">What is the tastiest pizza in Pizza Hut?</h2> -->
+        <!-- <p class="blog-description">{{obj.content}}</p> -->
+
+<!-- Profile image, name, followers -->
+        <!-- <div class="card-profile"> -->
+          <!-- <img class="profile-img" src='../../../assets/img/screen/{{obj.media_posts}}' alt=''> -->
+            <!-- <img class="profile-img" src='' alt=''>
+          <div class="card-profile-info">
+            <h3 class="profile-name">Eleanor Pea</h3>
+            <p class="profile-followers">5.2k followers</p>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+<!-- 1st blog post - The End -->
+

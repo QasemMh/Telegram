@@ -1,55 +1,116 @@
 
 
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center mb-5">
+    <br>
+    <br>
+    <h2 class="heading-section">Services List</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button  style="margin-bottom:10px" class="border-bottom-0 btn btn-info" (click)=" Createdialog()"> + Add New Service </button>
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+            <th>Name </th>
+            <th>Price </th>
+           <th>Image</th>
+           <th>descriptions</th>
+
+           <th>Createtime </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let obj of Admin.Services">
+            <td>{{obj.name}}</td>
+            <td>{{obj.price}}</td>
+
+            <td><img src="../../../assets/img/{{obj.image}}" width="100px"> </td>
+            <td>{{obj.descriptions}} </td>
+            <td>{{obj.createtime}}</td>
+           <td>
+            <!-- <button (click)="deleteServices(obj.id)">Delete</button>
+
+              <button class="btn btn primary" (click)="updateDailog(obj)">Update</button> -->
+
+
+
+             <button  class="border-bottom-0 btn btn-danger" style="margin-right:10px"  (click)="deleteServices(obj.id)">Delete</button>
+             <button class="border-bottom-0 btn btn-success "  (click)="updateDailog(obj)">Update</button>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
   <div class="card card-default">
     <div class="card-header">
       <h2> Services List :</h2>
-  
+
       <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
         aria-controls="collapse-data-tables"> </a>
-  
+
     </div>
-    <button class="btn btn primary" (click)=" Createdialog()"> + Add New Service </button> 
+    <button class="btn btn primary" (click)=" Createdialog()"> + Add New Service </button>
       <table id="productsTable" class="table table-hover table-product" style="width:100%">
         <thead>
           <tr>
-            <th>Name </th> 
+            <th>Name </th>
              <th>Price </th>
             <th>Image</th>
             <th>descriptions</th>
-            
             <th>Createtime </th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-  
+
           <tr *ngFor="let obj of Admin.Services">
             <td>{{obj.name}}</td>
-             <td>{{obj.price}}</td>  
+             <td>{{obj.price}}</td>
              <td><img src="../../../assets/img/{{obj.image}}" width="50px"> </td>
             <td>{{obj.descriptions}} </td>
             <td>{{obj.createtime}}</td>
-           
+
             <td>
-              
+
               <button (click)="deleteServices(obj.id)">Delete</button>
-                
+
               <button class="btn btn primary" (click)="updateDailog(obj)">Update</button>
-              
-                  
-                
-              
+
+
+
+
             </td>
           </tr>
-  
-          
-  
+
+
+
         </tbody>
     </table>
-  
+
   </div>
 
-
+ -->
 
 
 
@@ -77,18 +138,27 @@
               <mat-label>Price</mat-label>
               <input type="number" matInput formControlName="price" [(ngModel)]="p_data.price">
             </mat-form-field>
-    
+
       <br>
-      
+
+
+
+
+
+
+
+
+
           <mat-label>Upload Image </mat-label>
           <input type="file" #file formControlName="image" (change)="uploadImage (file.files)" [(ngModel)]="p_data.image">
-          <button (click)="updateServices()">Update</button>
+
+          <button  class="border-bottom-0 btn btn-success" (click)="updateServices()">Update</button>
       </form>
-      
-     
-      
+
+
+
   </ng-template>
-  
+
 
 
 
@@ -106,7 +176,7 @@
 
 
 
-  
+
 
 
 
@@ -114,13 +184,13 @@
 <ng-template #callCreateServicesDailog>
 <h2 mat-dialog-title>Add New Course</h2>
 <mat-dialog-content class="mat-typography">
-  
+
 
 <form class="example-form" [formGroup]="createFormServices" >
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label> Services Name </mat-label>
       <input type="text" matInput formControlName="name">
-  
+
       <mat-error *ngIf="createFormServices.controls['name'].hasError('required')">
         Services name is <strong>required</strong>
       </mat-error>
@@ -130,9 +200,9 @@
         <mat-label>Description </mat-label>
         <input type="text" matInput formControlName="descriptions">
         <mat-error *ngIf="createFormServices.controls['descriptions'].hasError('required')">
-          descriptions is <strong>required</strong> 
+          descriptions is <strong>required</strong>
         </mat-error>
-        
+
       </mat-form-field>
 <br>
       <mat-form-field class="example-full-width" appearance="fill">
@@ -144,9 +214,10 @@
         </mat-error>
       </mat-form-field>
 <br>
-      
+
 
     <mat-label>Upload Image </mat-label>
+
     <input type="file" #file formControlName="image" (change)="uploadImage(file.files)">
 </form>
 

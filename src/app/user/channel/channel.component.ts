@@ -25,7 +25,7 @@ export class ChannelComponent implements OnInit {
   constructor(private router:Router,public dialog: MatDialog,public User :UserService) { }
 
   ngOnInit(): void {
-   this.User.GetAllPostByChanel();
+   this.User.GetChannelPosts();
   }
 
   dialogepost(obj:any)
@@ -71,4 +71,5 @@ export class ChannelComponent implements OnInit {
     this.link=this.router.navigate(['channel',obj.channel_id, 'post', obj.id]);
     this.dialog.open(this.callCopyLinkDailog);
   }
-}
+ }
+ 

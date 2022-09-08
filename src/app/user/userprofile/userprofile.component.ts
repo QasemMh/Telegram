@@ -24,6 +24,18 @@ export class UserprofileComponent implements OnInit {
     l_email :new FormControl(),
     l_phone :new FormControl()
   })
+   chackPasswords = new FormGroup({
+    loginId :new FormControl(5),
+    oldPassword :new FormControl(),
+    newPassword :new FormControl(),
+    
+  })
+
+  insertReview = new FormGroup({
+    user_from :new FormControl(5),
+    description :new FormControl(),
+    is_accept :new FormControl(0),
+  })
   ngOnInit(): void {
 
     this.User.GetUserById(5);
@@ -54,13 +66,7 @@ export class UserprofileComponent implements OnInit {
       u_gender:obj.gender,
       l_email:obj.email,
       l_phone:obj.phone
-     
-     
     }
-
-
-  
-
     
     this.UpdateProfileUsers.controls['u_id'].setValue(5);
     this.dialog.open(this.callUpdateProfileDailog)
@@ -72,34 +78,23 @@ export class UserprofileComponent implements OnInit {
     
   }
 
-  chackPasswords = new FormGroup({
-    loginId :new FormControl(5),
-    oldPassword :new FormControl(),
-    newPassword :new FormControl(),
-    
-  })
-  insertReview = new FormGroup({
-    user_from :new FormControl(5),
-    description :new FormControl(),
-    is_accept :new FormControl(0),
-  })
-
   UpdateProfileUser(){
-    
-  
     // debugger
     // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
     this.User.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);
     
   }
-  ChackPassword()
+    ChackPassword()
 {
   this.User.ChackPassword(this.chackPasswords.value);
 }
 
 InsertTestimonial()
   {
-    this.User.ChackPassword(this.insertReview.value);
+  //TODO edit call method
+   // this.User.ChackPassword(this.insertReview.value);
   }
+  
 }
+ 
