@@ -75,8 +75,7 @@ export class AdminService {
   }
 
   EmailSenduserblockDTO: any = {};
-  Service_Image: any;
-  u_image_path: any;
+   u_image_path: any;
   uploadAttachment(file: FormData) {
     this.http
       .post(
@@ -123,35 +122,7 @@ export class AdminService {
       });
     window.location.reload();
   }
-
-  UpdateService(body: any) {
-    body.Image = this.Service_Image;
-    this.http
-      .put(
-        'https://localhost:44301/api/Services/UpdateService/UpdateService',
-        body
-      )
-      .subscribe(
-        (resp) => {},
-        (err) => {}
-      );
-    window.location.reload();
-  }
-
-  DeleteService(id: number) {
-    this.http
-      .delete(
-        'https://localhost:44301/api/Services/DeleteService/DeleteService/' + id
-      )
-      .subscribe(
-        (resp) => {
-          console.log(resp);
-        },
-        (err) => {}
-      );
-    window.location.reload();
-  }
-
+ 
   UploadImageService(file: FormData) {
     this.http
       .post(
@@ -188,7 +159,7 @@ export class AdminService {
       );
     window.location.reload();
   }
- 
+
   GetAllServices() {
     this.http
       .get('https://localhost:44301/api/Services/GetAllSERVICES')
@@ -322,3 +293,4 @@ export class AdminService {
        });
   }
 }
+
