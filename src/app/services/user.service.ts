@@ -15,7 +15,6 @@ export class UserService {
   ReportPost: any = {};
 
   display_Image_Profile: any;
-  
 
   deleteSubscription(body: any) {
     this.http
@@ -127,5 +126,27 @@ export class UserService {
         this.ReportPost = res;
         console.log(res);
       });
+  }
+
+  //qasem
+  GetFullUserById(userId: number) {
+    return this.http.get(
+      'https://localhost:44301/api/Users/GetUserById/GetUserById/' + userId
+    );
+  }
+  GetAllUserFriends(userId: number) {
+    return this.http.get(
+      'https://localhost:44301/api/Friends/GetUserFriends/' + userId
+    );
+  }
+
+  GetUserFriendsChat(userToId: number) {
+    let userFromId = +JSON.parse(localStorage.getItem('userData')).userid;
+    return this.http.get(
+      'https://localhost:44301/api/ChatMassage/GetUserFriendChat/' +
+        userFromId +
+        '/' +
+        userToId
+    );
   }
 }

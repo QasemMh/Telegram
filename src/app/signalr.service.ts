@@ -16,7 +16,6 @@ export class SignalrService implements OnInit {
   hubConnection: signalR.HubConnection | undefined;
 
   startConnection() {
-    localStorage.setItem('token', 'token_fghewlvn');
     this.hubConnection = new signalR.HubConnectionBuilder()
       .withUrl('https://localhost:44301/chat', {
         skipNegotiation: true,

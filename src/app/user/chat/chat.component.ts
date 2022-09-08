@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { SignalrService } from 'src/app/signalr.service';
 
@@ -9,11 +10,11 @@ import { SignalrService } from 'src/app/signalr.service';
 export class ChatComponent implements OnInit, OnDestroy {
   @Input() userChat?: any;
 
-  constructor(public signalr: SignalrService) {}
+  constructor(public signalr: SignalrService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.sendMessageToFriendLis();
-  } 
+  }
 
   ngOnDestroy() {}
 
@@ -26,38 +27,42 @@ export class ChatComponent implements OnInit, OnDestroy {
       }
     );
   }
-  async sendMessageToFriendInv() {
+  async sendMessageToFriendInv(msg: string) {
     await this.signalr.hubConnection.invoke(
       'SendMessageToFriend',
-      'connId',
+      this.userChat.connid,
       this.userChat.id,
-      'Hello'
+      msg
     );
   }
   //
   sendMessage(event: any) {
-    const files = !event.files
-      ? []
-      : event.files.map((file: any) => {
-          return {
-            url: file.src,
-            type: file.type,
-            icon: 'file-text-outline',
-          };
+    this.sendMessageToFriendInv(event.message)
+      .then(() => {
+        const files = !event.files
+          ? []
+          : event.files.map((file: any) => {
+              return {
+                url: file.src,
+                type: file.type,
+                icon: 'file-text-outline',
+              };
+            });
+
+        this.userChat.userMessages.push({
+          text: event.message,
+          date: new Date(),
+          reply: true,
+          type: files.length ? 'file' : 'text',
+          files: files,
+          user: {
+            name: this.userChat.name,
+            avatar: 'https://i.gifer.com/no.gif',
+          },
         });
-
-    this.userChat.userMessages.push({
-      text: event.message,
-      date: new Date(),
-      reply: true,
-      type: files.length ? 'file' : 'text',
-      files: files,
-      user: {
-        name: this.userChat.name,
-        avatar: 'https://i.gifer.com/no.gif',
-      },
-    });
-
-    this.sendMessageToFriendInv();
+      })
+      .catch((err) => {
+        this.toastr.error("Message can't be sent", 'Error');
+      });
   }
 }
