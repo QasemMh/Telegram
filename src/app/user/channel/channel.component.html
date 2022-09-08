@@ -1,0 +1,93 @@
+<nb-layout>
+    <nb-layout-header fixed><nb-layout-header fixed>
+      <!-- <app-header></app-header> -->
+    </nb-layout-header></nb-layout-header>
+
+    <!-- <nb-sidebar>
+      <app-sidebar></app-sidebar>
+    </nb-sidebar> -->
+
+    <nb-layout-column>
+      <div class="card card-default">
+  <div class="card-header">
+    <h2> Report Chanel:</h2>
+
+    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-data-tables" role="button" aria-expanded="false"
+      aria-controls="collapse-data-tables"> </a>
+
+  </div>
+
+    <table id="productsTable" class="table table-hover table-product" style="width:100%">
+      <thead>
+        <tr>
+          <th>id</th>
+           <th>content</th>
+
+          <th>createtime</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let obj of User.post">
+            <td>{{obj.id}}</td>
+          <td>{{obj.content}}</td>
+           <td>{{obj.created_at}}</td>
+
+          <td>
+
+
+
+               <button class="btn btn primary"(click)="dialogepost(obj)">Add Report</button>
+
+
+          </td>
+        </tr>
+
+
+
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+  <ng-template #callCreateServicesDailog>
+    <h2 mat-dialog-title>Add Report Post:</h2>
+    <mat-dialog-content class="mat-typography">
+
+
+      <form action="/action_page.php" [formGroup]="createFormReportChannel">
+        <p> <label for="w3review"> Select Type: </label> </p>
+<select id = "myList"  formControlName="type" >
+<option value="inappropriate content">inappropriate content</option>
+<option value="elemental content">elemental content</option>
+<option value="encourages hate">encourages hate</option>
+</select>
+<br>
+<br>
+        <p><label for="w3review">content:</label></p>
+        <textarea id="w3review" name="w3review" rows="4" cols="50" formControlName="description"></textarea>
+        <br>
+
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="InsertReportPost()">save</button>
+    </mat-dialog-actions>
+    </ng-template>
+
+
+    </nb-layout-column>
+  </nb-layout>
+
+
+
+
+
+
+
+
+

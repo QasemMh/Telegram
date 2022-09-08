@@ -1,36 +1,53 @@
-import { Injectable } from '@angular/core';
-import * as signalR from '@aspnet/signalr';
+import { Subject, Observable } from 'rxjs';
+import { Injectable, OnInit } from '@angular/core';
+import * as signalR from '@microsoft/signalr';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class SignalrService {
-
-  constructor() { }
-
-
-  hubConnrction:signalR.HubConnection | undefined;
-
-  startConnection=()=>
-  {
-   this.hubConnrction=new signalR.HubConnectionBuilder().withUrl('https://localhost:5001/toastr',
-   {skipNegotiation:true,
-    transport:signalR.HttpTransportType.WebSockets
-  }).build();
-this.hubConnrction.start()
-.then(()=>{
-  console.log('started');
-}).catch(err=>console.log('error :'+err))
+export class SignalrService implements OnInit {
+  ssSubj = new Subject<any>();
+  ssObs(): Observable<any> {
+    return this.ssSubj.asObservable();
   }
 
+  constructor() {}
+  ngOnInit(): void {}
 
-  askServer(){
-    this.hubConnrction?.invoke("askServer","hey").catch(err=>console.log("err :"+err))
+  hubConnection: signalR.HubConnection | undefined;
+
+  startConnection() {
+    localStorage.setItem('token', 'token_fghewlvn');
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('https://localhost:44301/chat', {
+        skipNegotiation: true,
+        transport: signalR.HttpTransportType.WebSockets,
+        accessTokenFactory: () => <string>localStorage.getItem('userToken'),
+      })
+      .build();
+
+    this.hubConnection
+      .start()
+      .then(() => {
+        console.log('Hub Connected...');
+        this.ssSubj.next({ type: 'HubConnStarted' });
+        this.sendMessageListener();
+        this.sendMessageInv();
+      })
+      .catch((err) => {
+        console.log('Hub Connection Error...');
+        console.log(new Error(err));
+      });
   }
 
-  askServerListener(){
-    this.hubConnrction?.on("askServerResponse",(someText)=>{
-    console.log(someText)
-
-    })
+  //test connection
+  sendMessageListener() {
+    this.hubConnection.on('SendMessageRespons', (data: any) => {
+      console.log(data);
+    });
+  }
+  async sendMessageInv() {
+    await this.hubConnection
+      .invoke('SendMessage', 'Hello from Angular')
+      .catch((err) => console.error(err));
   }
 }

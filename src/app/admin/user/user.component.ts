@@ -14,6 +14,8 @@ export class UserComponent implements OnInit {
   allUsers: any = [{}];
   currentlyBlocked: any = [{}];
   constructor(public Admin: AdminService, private http: HttpClient,private spinner: NgxSpinnerService) {}
+  EmailSenduserblockDTO:any={};
+
 
   ngOnInit(): void {
     this.GetAllUser();
@@ -51,6 +53,7 @@ export class UserComponent implements OnInit {
       .subscribe((res: any) => {
         if (res) {
           this.spinner.show();
+          this.EmailSenduserblock(obj.id);
           this.GetAllUser();
           this.spinner.hide();
         }
@@ -79,12 +82,18 @@ export class UserComponent implements OnInit {
       .subscribe((res: any) => {
         if (res) {
           this.spinner.show();
+          this.EmailSenduserblock(obj.id);
           this.GetAllUser();
           this.spinner.hide();
         }
       });
   }
-
+  EmailSenduserblock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/EmailSenduserblock/blockuser/'+id).subscribe((resp)=>{
+     this.EmailSenduserblockDTO = resp;
+    })
+  }
   GetNumberOfUsers() {
     return this.http
       .get('https://localhost:44301/api/Users/NumberOfUser/NumberOfUser')

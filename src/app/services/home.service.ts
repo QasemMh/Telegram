@@ -21,8 +21,10 @@ export class HomeService {
 
   GetAllTestimonial()
   {
-
-  return this.http.get('https://localhost:44301/api/Testimonial/GetAllTestimonialUser')
+  this.http.get('https://localhost:44301/api/Testimonial/GetAllTestimonialUser').subscribe((res)=>{
+  this.Testimonials=res;
+   //console.log(this.HomePage)
+  })
   }
   GetAcceptTestimonial()
   {
@@ -68,8 +70,7 @@ UpdateHome (body:any)
 {
 
   body.img=this.display_Image;
-  this.http.put('https://localhost:44301/api/HomePage/UpdateHome',body).subscribe((resp)=>{
-
+  this.http.put('https://localhost:44301/api/HomePage/UpdateHomeInfo/UpdateHome',body).subscribe((resp)=>{
   },err=>{
 
   })
@@ -77,7 +78,7 @@ UpdateHome (body:any)
 }
 uploadAttachment(file:FormData)
 {
-  this.http.post('https://localhost:44301/api/HomePage/UploadImageHome',file).subscribe
+  this.http.post('https://localhost:44301/api/HomePage/UploadHome/UploadImageHome',file).subscribe
   ((resp:any)=>{
     if(resp)
     {
@@ -112,8 +113,9 @@ UpdateAboutUs (body:any)
 {
 
   body.img=this.display_Image;
-  this.http.put('https://localhost:44301/api/HomePage/UpdateAboutUs',body).subscribe((resp)=>{
 
+  this.http.put('https://localhost:44301/api/HomePage/UpdateAboutUsInfo/UpdateAboutUs',body).subscribe((resp)=>{
+   
   },err=>{
 
   })
@@ -122,7 +124,7 @@ UpdateAboutUs (body:any)
 uploadAboutAttachment(file:FormData)
 {
   debugger;
-  this.http.post('https://localhost:44301/api/HomePage/UploadImageAboutUs',file).subscribe
+  this.http.post('https://localhost:44301/api/HomePage/UploadImageAboutUs/UploadImageAboutUs',file).subscribe
   ((resp:any)=>{
     if(resp)
     {

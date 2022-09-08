@@ -20,14 +20,17 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
+ 
 import { MangePostComponent } from './mange-post/mange-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostComponent } from './post/post.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { ReportUsersComponent } from './report-users/report-users.component';
 
+ 
+import { ProfileComponent } from './profile/profile.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//import HammerModule from "@egjs/hammerjs";
+ 
 
 @NgModule({
 
@@ -52,16 +55,14 @@ import { ReportUsersComponent } from './report-users/report-users.component';
     PostComponent,
     PostCardComponent,
     ReportUsersComponent,
-
-
-
-
+    ProfileComponent,
+ 
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    MatSlideToggleModule,
+    // MatSlideToggleModule,
    // BrowserAnimationsModule
   ]
   // , providers: [ HammerModule ]

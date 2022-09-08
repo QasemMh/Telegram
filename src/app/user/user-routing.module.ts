@@ -1,21 +1,37 @@
-import { NgModule } from '@angular/core';
+import { UserComponent } from './user/user.component';
+ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CatalogComponent } from './catalog/catalog.component';
 import { ChatComponent } from './chat/chat.component';
 import { MyorderComponent } from './myorder/myorder.component';
+import { ChannelComponent } from './channel/channel.component';
 
 import { UserprofileComponent } from './userprofile/userprofile.component';
 const routes: Routes = [
-  { path: 'chat', component: ChatComponent },
   {
-    path: 'catalog',
-    component: CatalogComponent,
-  },
-  {
+    path: '',
+    component: UserComponent,
+    children: [
+      { path: '', component: UserComponent },
+      { path: 'chat', component: ChatComponent },
+      {
+        path: 'catalog',
+        component: CatalogComponent,
+      },
+      {
+        path: 'myorder',
+        component: MyorderComponent,
+      },
+      { path: 'userprofile', component: UserprofileComponent },
+      {
     path: 'myorder',
     component: MyorderComponent,
   },
   { path: 'userprofile', component: UserprofileComponent },
+  { path: 'channel', component: ChannelComponent },
+    ],
+  },
+ 
 ];
 
 @NgModule({

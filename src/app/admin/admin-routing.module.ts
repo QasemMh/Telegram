@@ -14,9 +14,12 @@ import { StoryComponent } from './story/story.component';
 
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AdminComponent } from './admin/admin.component';
-import { MangePostComponent } from './mange-post/mange-post.component';
+ import { MangePostComponent } from './mange-post/mange-post.component';
 import { PostComponent } from './post/post.component';
 import { ReportUsersComponent } from './report-users/report-users.component';
+ 
+import { ProfileComponent } from './profile/profile.component';
+ 
 
 
 const routes: Routes = [
@@ -26,7 +29,13 @@ const routes: Routes = [
     children: [
       {
         path:'dashboard',
-      component:DashboardComponent}
+        component:DashboardComponent
+      }
+      ,
+      {
+        path:'profile',
+        component:ProfileComponent
+      }
       ,
       {path:'managehome',
       component:ManageHomeComponent}
@@ -35,7 +44,8 @@ const routes: Routes = [
       component:ManagecatalogComponent}
       ,
       {path:'story',
-      component:StoryComponent},
+      component:StoryComponent
+      },
       {path:'channels',
       component:ChannelComponent}
       ,

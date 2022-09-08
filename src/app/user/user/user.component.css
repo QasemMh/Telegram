@@ -1,0 +1,9 @@
+
+
+::ng-deep nb-layout-column {
+  padding: 0 !important;
+}
+
+::ng-deep .scrollable {
+  padding: 0 !important;
+}

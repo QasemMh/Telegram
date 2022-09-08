@@ -37,49 +37,56 @@ export class AuthService {
     };
     //
 
-     this.http
+    this.http
       .post(
         'https://localhost:44301/api/Login/authon/auth',
         body,
         requestOptions
       )
-      .subscribe((data) => {
-        console.log('token:');
-        console.log(data);
-        this.spinner.hide();
-        const respons = {
-          token: data.toString(),
-        };
-        localStorage.setItem('token', respons.token);
-        let decoded: any = jwt_decode(respons.token);
-        localStorage.setItem('userData', JSON.stringify(decoded));
-        this.decodedToken = decoded;
-        this.decodedloginId = decoded.loginId;
-        
-        this.adminService.GetAllUser().subscribe((res: any) => {
-          res.forEach((element: any) => {
-            if (element.login_id == this.decodedToken.loginId && element.is_blocked == 1) {
-                // alert('you blocked and cannot sign in');
+      .subscribe(
+        (data) => {
+
+          const respons = {
+            token: data.toString(),
+          };
+          localStorage.setItem('userToken', respons.token);
+          let decoded: any = jwt_decode(respons.token);
+          localStorage.setItem('userData', JSON.stringify(decoded));
+          this.decodedToken = decoded;
+          this.decodedloginId = decoded.loginId;
+
+          this.adminService.GetFullUserById(+decoded.userid).subscribe(
+            (res) => {
+              this.spinner.hide();
+
+              let element: any = res;
+              if (
+                element.loginId == this.decodedToken.loginId &&
+                element.isBlocked == 1
+              ) {
                 this.toastr.error('you blocked and cannot sign in', 'Error');
-            }
-            else if (element.login_id == this.decodedToken.loginId && element.is_blocked != 1) {
-              if (this.decodedToken.role == 'Admin') {
-                this.router.navigate(['/admin/dashboard']);
-              } else {
-                this.router.navigate(['/home']);
+              } else if (
+                element.loginId == this.decodedToken.loginId &&
+                element.isBlocked != 1
+              ) {
+                if (this.decodedToken.role == 'Admin') {
+                  this.router.navigate(['/admin/dashboard']);
+                } else {
+                  this.router.navigate(['/user']);
+                }
               }
+            },
+            (err) => {
+              this.spinner.hide();
+
+              this.toastr.error('error in connection', 'Error');
             }
-          });
-          //
-        });
-  },
-  (error) => {
-    this.spinner.hide();
-    this.toastr.error('Invalid Credentials', 'Error');
+          );
+        },
+        (error) => {
+          this.spinner.hide();
+          this.toastr.error('Invalid Credentials', 'Error');
+        }
+      );
   }
-  );
-
-
-  }
-
 }
