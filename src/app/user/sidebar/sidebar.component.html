@@ -12,12 +12,12 @@
       size="large"
       [name]="user.name"
       [title]="user.title"
-      badgeText="99+"
-      badgeStatus="success"
+      [badgeText]="user.badgeText"
+      [badgeStatus]="user.badgeStatus"
       badgePosition="bottom right"
       picture="https://api.lorem.space/image/face?w=150&h=220"
       class="user-chat"
-      (click)="conversationClicked.emit({ user: user, event: $event })"
+      (click)="HandleClickChat({ user: user, event: $event })"
     ></nb-user>
   </nb-tab>
   <nb-tab

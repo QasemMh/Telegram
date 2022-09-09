@@ -164,6 +164,14 @@ export class UserService {
         userToId
     );
   }
+  GetCurrentUserId() {
+    return +JSON.parse(localStorage.getItem('userData')).userid;
+  }
+  GetFullUserByConn(connId: string) {
+    return this.http.get(
+      'https://localhost:44301/api/Connection/GetItemByConn/' + connId
+    );
+  }
 
   InsertTestimonial(body: any) {
     this.http
