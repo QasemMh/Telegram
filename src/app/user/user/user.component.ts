@@ -13,6 +13,7 @@ import { HubConnectionState } from '@microsoft/signalr';
 })
 export class UserComponent implements OnInit {
   userData: any;
+  listenToEvent: boolean = true;
   constructor(
     private readonly signalrService: SignalrService,
     private readonly userService: UserService,
@@ -21,10 +22,11 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.signalrService.startConnection();
+
     if (
       this.signalrService.hubConnection.state == HubConnectionState.Connected
     ) {
-       // this.getUsersList();
+      // this.getUsersList();
     } else {
       this.signalrService.ssObs().subscribe((obj: any) => {
         if (obj.type == 'HubConnStarted') {
@@ -35,15 +37,16 @@ export class UserComponent implements OnInit {
   }
 
   onconversationClicked(evt: any) {
-    this.userData = evt.user;
-    this.userData.userMessages = [];
-
-    let currentUserId = +JSON.parse(localStorage.getItem('userData')).userid;
+    this.spinner.show();
+    this.listenToEvent = false;
+    let currentTarget = evt.event.currentTarget;
+    let currentUserId = this.userService.GetCurrentUserId();
     this.userService.GetFullUserById(currentUserId).subscribe(
       (currentUser: any) => {
-        this.spinner.show();
         this.userService.GetUserFriendsChat(evt.user.id).subscribe(
           (res: any) => {
+            this.userData = evt.user;
+            this.userData.userMessages = [];
             this.userData.userMessages = res.map((item: any) => {
               if (item.userFromId == currentUser.userId) {
                 return {
@@ -72,22 +75,25 @@ export class UserComponent implements OnInit {
               }
             });
             this.spinner.hide();
+            this.changeActiveChat(currentTarget);
+            this.listenToEvent = true;
           },
           (err) => {
             this.spinner.hide();
+            this.listenToEvent = true;
           }
         );
       },
       (err) => {
         this.spinner.hide();
+        this.listenToEvent = true;
       }
     );
-    this.changeActiveChat(evt.event);
   }
-  changeActiveChat(evt: any) {
+  changeActiveChat(currentTarget: any) {
     document.querySelectorAll('[data-user-item]').forEach((item) => {
       item.classList.remove('active');
-      evt.currentTarget.classList.add('active');
+      currentTarget.classList.add('active');
     });
   }
 }
