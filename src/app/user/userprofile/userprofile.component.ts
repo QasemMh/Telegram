@@ -100,6 +100,10 @@ export class UserprofileComponent implements OnInit {
 
 InsertTestimonial()
   {
-    this.User.ChackPassword(this.insertReview.value);
+    this.User.InsertTestimonial(this.insertReview.value);
   }
+
+
+
+  
 }

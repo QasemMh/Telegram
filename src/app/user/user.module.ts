@@ -9,6 +9,8 @@ import { MyorderComponent } from './myorder/myorder.component';
 import { CreateTestimonialComponent } from './create-testimonial/create-testimonial.component';
 import { ChannelComponent } from './channel/channel.component';
 import { PostComponent } from './post/post.component';
+import { StoreComponent } from './store/store.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { PostComponent } from './post/post.component';
     MyorderComponent,
     CreateTestimonialComponent,
     ChannelComponent,
-    PostComponent
+    PostComponent,
+    StoreComponent,
+    SearchComponent
  
   ],
   imports: 

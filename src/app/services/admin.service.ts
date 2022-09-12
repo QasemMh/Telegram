@@ -20,6 +20,7 @@ export class AdminService {
   CountMemberEachChannel:any=[{}];
   EmailSenduserblockDTO:any={};
   Service_Image:any;
+  EmailSendBlockStory:any={};
   
   
   UpdateService (body:any)
@@ -218,6 +219,14 @@ export class AdminService {
     this.http.get('https://localhost:44301/api/Users/EmailSenduserblock/blockuser/'+id).subscribe((resp)=>{
      this.EmailSenduserblockDTO = resp;
     })
+  }
+
+  EmailSendStoryBlock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/sendstoreEmail/blockstore/'+id).subscribe((resp)=>{
+     this.EmailSendBlockStory = resp;
+    })
+
   }
 
 }

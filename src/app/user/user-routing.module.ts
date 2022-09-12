@@ -5,7 +5,8 @@ import { ChatComponent } from './chat/chat.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { ChannelComponent } from './channel/channel.component';
 import { PostComponent } from './post/post.component';
-
+import { StoreComponent } from './store/store.component';
+import { SearchComponent } from './search/search.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 const routes: Routes = [
   { path: 'chat', component: ChatComponent },
@@ -22,6 +23,14 @@ const routes: Routes = [
   {
     path: 'channel/:id/post/:id',
     component: PostComponent,
+  },
+  {
+    path: 'store',
+    component: StoreComponent,
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
   },
  
 ];

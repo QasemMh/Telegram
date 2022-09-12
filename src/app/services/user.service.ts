@@ -17,7 +17,10 @@ export class UserService {
    post:any=[{}];
   ReportPost:any={};
   Testimonial:any={};
+  Story:any={};
   ChannelPosts:any=[{}];
+  SearchGroupDto:any=[{}];
+  Groups :any=[{}];
   display_Image_Profile: any;
 
   GetChannelPosts()
@@ -27,6 +30,8 @@ export class UserService {
   this.ChannelPosts=res;
 
   })
+
+
   }
 
 
@@ -131,4 +136,33 @@ CreateSubscripe(body:any)
      this.Users=res;
      console.log(res);
   })}
+
+
+  insertStore(body:any)
+  {
+    this.http.post('https://localhost:44301/api/story/InsertStory',body).subscribe((res)=>{
+      this.Story=res;
+      console.log(res);
+   })
+  }
+
+
+  searchGroup(data:any)
+{
+this.http.post('https://localhost:44301/api/Groups/SearchGroupUserChannel/filturGroup',data)
+.subscribe((res)=>{
+console.log(res);
+this.Groups=[res];
+})
+}
+
+
+GetAllGroups()
+{
+  this.http.get('https://localhost:44301/api/Groups/GetAllAdminGroup').subscribe((res)=>{
+  
+  this.Groups=res;
+  console.log(res);
+  })
+  }
 }
