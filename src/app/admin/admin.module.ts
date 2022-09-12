@@ -29,6 +29,7 @@ import { ReportUsersComponent } from './report-users/report-users.component';
 
  
 import { ProfileComponent } from './profile/profile.component';
+import { UserActiveComponent } from './user-active/user-active.component';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 
@@ -56,6 +57,7 @@ import { ProfileComponent } from './profile/profile.component';
     PostCardComponent,
     ReportUsersComponent,
     ProfileComponent,
+    UserActiveComponent,
  
   ],
   imports: [
