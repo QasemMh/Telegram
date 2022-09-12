@@ -6,7 +6,7 @@
 
 <button  style="margin-bottom:10px" class="border-bottom-0 btn btn-info" (click)=" CreatePostdialog()"> + Add New Post </button>
 
-
+<!--
 <div class="row justify-content-center">
   <div class="col-md-6 text-center mb-5">
     <br>
@@ -34,10 +34,11 @@
             <td>{{obj.user}}</td>
             <td>{{obj.content}}</td>
              <td><img src="../../../assets/img/{{obj.media_posts}}" width="50px"></td>
-           <td>
+           
+           <td> -->
              <!-- <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
              <button class="border-bottom-0 btn btn-success " *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button> -->
-            </td>
+            <!-- </td>
           </tr>
 
 
@@ -45,7 +46,7 @@
       </table>
     </div>
   </div>
-</div>
+</div> -->
 
 
 
@@ -55,10 +56,77 @@
 
 
 
+<div class="container">
+
+  <div class="card" *ngFor="let obj of AllPost">
+
+    <div>
+    <div   class="card-body" >
+       <!-- <button (click)="DeletePost(obj.id)">Delete</button> -->
+      <div style="margin-bottom: 20px; "  class="dropdown-container" tabindex="-1">
+        <div class="three-dots"></div>
+        <div class="dropdown">
+          <a href="#"  ><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;">Report</div></a>
+
+          <a href="#" (click)="DeletePost(obj.id)"><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;" *ngIf="obj.user_id==currentuserId" >Delete</div></a>
+          <a href="#" (click)="UpdatePost(obj.id)"><div *ngIf="obj.user_id==currentuserId">Update</div></a>
+        </div>
+      </div>
+      <!-- <span class="tag tag-teal">Sheare</span> -->
+      <!-- <h4>
+        {{obj.postContent}}
+      </h4> -->
+
+      <div class="user">
+        <div >
+        <img  src="../../../assets/img/{{obj.imageUser}}">
+      </div>
+        <div class="user-info">
+          <h5>{{obj.firstName}} {{obj.lastName}}</h5>
+          <small>{{obj.createAt}}</small>
+
+        </div>
+
+      </div>
+
+      <hr>
+
+      <p>
+        {{obj.postContent}}
+      </p>
 
 
 
+    </div>
+    <div class="card-header">
+      <img *ngIf="obj.filePath != null" src="../../../assets/img/{{obj.filePath}}">
 
+
+    </div>
+    <hr>
+
+    <span style="margin-top: 20px ; margin-left: 20px;">Like : {{obj.countLike }}   Comment : {{obj.countComment}}    </span>
+
+    <div *ngFor="let reaction of ReactionList let i = index"  style="  margin-right: 30px;" >
+      <!-- *ngIf="reaction.user_id==null && obj.id==null && reaction.is_react==null" -->
+
+      <div>
+
+
+      </div>
+
+
+      <!-- <span *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1" style="color:green">you liked this post</span> -->
+
+      <!-- then Like ;else Lvike -->
+      <div >
+
+
+        <button style=" margin-left: 20px;"   *ngIf=" ((reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1)==false ) && i==0" class="btn btn-primary" (click)="createLike(obj)" >Like</button>
+
+
+        <button style=" margin-left: 20px;"  *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1"  class="btn btn-danger" (click)="DeleteLike(obj)"> unLike Like</button>
+      </div >
 
 
 
@@ -141,30 +209,124 @@
 
   <!-- 1st blog post -->
   <!-- <div class="card" > -->
+=======
 
-    <!-- banner image and text -->
-      <!-- <div class="card-banner">
 
-        <img class="banner-img" src='post1.jpg' alt=''>
-      </div> -->
 
-<!-- #tags,heading,description -->
-      <!-- <div class="card-body"> -->
-        <!-- <p class="blog-hashtag">{{obj.created_at}}</p> -->
-        <!-- <h2 class="blog-title">What is the tastiest pizza in Pizza Hut?</h2> -->
-        <!-- <p class="blog-description">{{obj.content}}</p> -->
 
-<!-- Profile image, name, followers -->
-        <!-- <div class="card-profile"> -->
-          <!-- <img class="profile-img" src='../../../assets/img/screen/{{obj.media_posts}}' alt=''> -->
-            <!-- <img class="profile-img" src='' alt=''>
-          <div class="card-profile-info">
-            <h3 class="profile-name">Eleanor Pea</h3>
-            <p class="profile-followers">5.2k followers</p>
-          </div>
+
+    </div>
+
+<ng-template #Lvike>
+  <button  style=" border-color:rgb(241, 12, 12) ; margin-left: 20px;" class="btn btn-defult" (click)="createLike(obj.id)" >Like</button>
+  </ng-template>
+ <ng-template #Like2>
+    <span  style=" margin-left: 20px;" class="btn btn-danger" (click)="obj.id" >Un Like</span>
+  </ng-template>
+
+    <!-- <span    style="  margin-right: 30px;" > <button class="btn btn-danger" (click)="createLike(obj)" >desLike</button></span> -->
+
+    <!-- <span  *ngIf="isLike ==false"  style="  margin-right: 30px;" > <button class="btn btn-danger" (click)="createLike(obj)" >Like</button></span>
+    <span  *ngIf="isLike ==true"  style="  margin-right: 30px;" > <button class="btn btn-primary" (click)="createLike(obj)" >Like</button></span> -->
+    <hr >
+
+
+    <!-- <input  class="form-control"  type="hidden"  ngModel [(ngModel)]="postid"     /> -->
+    <!-- #userComment="ngForm"(ngSubmit)="CreateComment(userComment )" -->
+
+      <div class="form-group">
+        <form class="form-inline"  style="margin: 10px;">
+          <div class="form-group" >
+            <input style="height: 50px;" class="form-control"  type="text"  ngModel [(ngModel)]="message"  id="message" name="message"   placeholder="Your comments" />
+            <button   type="submit" name="Comment" style="width: 20%; margin-top:10px; " class="btn btn-primary" (click)="AddComment(obj)" >Add</button>
+            <!-- <button class="btn btn-defult"   style=" margin-top:10px; color: dodgerblue; "   (click)="GetCommentByPostID(obj.id)">Show comments</button> -->
+
         </div>
+      </form>
+      </div>
+
+
+  <hr>
+  <div *ngFor="let comment of commentsList">
+    <div  *ngIf="comment.postId==obj.id" style="margin-right: 60px;" >
+      <div>
+      <div style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; padding:5px ;margin:30px; width: 100%;" class="user">
+        <div>
+       <img style="width:40px ; border-radius:50% ;" *ngIf="comment.userImage != null" src="../../../assets/img/{{comment.userImage}}">
+      </div>
+      <div class="user-info">
+       <h5>{{comment.firstName}} {{comment.lastName}}</h5>
+       <p>{{comment.content}}</p>
+       <small>{{comment.createdAt}}</small>
 
       </div>
-    </div> -->
-<!-- 1st blog post - The End -->
+
+      <span  style="margin: 10px; display: inline; cursor: pointer;" *ngIf="comment.userId==currentuserId">Update</span>
+      <span style="margin: 10px; color: red; display: inline; cursor: pointer;" *ngIf="comment.userId==currentuserId">Delete</span>
+     </div>
+
+    </div>
+
+    </div>
+
+  </div>
+
+<div>
+</div>
+
+
+
+
+</div>
+
+
+</div>
+<div class="card" *ngFor="let obj2 of CommentByPostID">
+  <div class="card-body">
+
+    <div class="user">
+      <div>
+      <img *ngIf="obj2.imagePath !=null" src="../../../assets/img/{{obj2.imagePath}}">
+    </div>
+      <div class="user-info">
+        <h5>{{obj2.firstName}} {{obj2.lastName}}</h5>
+        <small>{{obj2.createdAt}}</small>
+
+      </div>
+
+    </div>
+    <hr>
+    <p>{{obj2.content}} </p>
+    <hr>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
