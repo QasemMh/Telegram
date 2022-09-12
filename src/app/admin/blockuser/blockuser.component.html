@@ -18,7 +18,8 @@
         <td><img src="../../../assets/images/{{obj.imagepath}}" width="50px"></td>
         <td>{{obj.email}}</td>
         <td>{{obj.sendEmail}}</td>
-        <td><button   (click)="EmailSend(obj.id)">send</button>
+        <td><button  *ngIf="obj.sendEmail==0" (click)="EmailSend(obj.id)">send</button>
+          <button  disabled  *ngIf="obj.sendEmail==1" (click)="EmailSend(obj.id)">send</button>
         </td>
     </tr>
 </table>

@@ -1,0 +1,41 @@
+<nb-tabset>
+  <nb-tab
+    tabTitle="friends"
+    responsive
+    tabIcon="person-outline"
+    badgeText="99+"
+    badgeStatus="danger"
+  >
+    <nb-user
+      data-user-item
+      *ngFor="let user of users"
+      size="large"
+      [name]="user.name"
+      [title]="user.title"
+      [badgeText]="user.badgeText"
+      [badgeStatus]="user.badgeStatus"
+      badgePosition="bottom right"
+      picture="https://api.lorem.space/image/face?w=150&h=220"
+      class="user-chat"
+      (click)="HandleClickChat({ user: user, event: $event })"
+    ></nb-user>
+  </nb-tab>
+  <nb-tab
+    tabTitle="Groups"
+    tabIcon="person-outline"
+    responsive
+    badgeText="2"
+    badgeStatus="danger"
+  >
+    groups here
+  </nb-tab>
+  <nb-tab
+    tabTitle="Channel"
+    tabIcon="person-outline"
+    responsive
+    badgeText="9"
+    badgeStatus="danger"
+  >
+    channel here
+  </nb-tab>
+</nb-tabset>

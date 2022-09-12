@@ -12,13 +12,21 @@ export class ManagecatalogComponent implements OnInit {
   @ViewChild('callCreateServicesDailog') callCreateServicesDailog! :TemplateRef<any>;
   @ViewChild('callDeleteServicesDailog') callDeleteServicesDailog! :TemplateRef<any>;
   @ViewChild('callUpdateServicesDailog') callUpdateServicesDailog! :TemplateRef<any>;
+
+
+
+
   createFormServices:FormGroup = new FormGroup({
-   
+
     name:new FormControl('',Validators.required),
     descriptions:new FormControl('',Validators.required),
     price:new FormControl('',Validators.required),
     image:new FormControl()
   })
+
+
+
+
 
   updateFormServices:FormGroup = new FormGroup({
     id:new FormControl(),
@@ -45,18 +53,16 @@ export class ManagecatalogComponent implements OnInit {
     image:obj.image
     }
     console.log(this.p_data);
-    this.updateFormServices.controls['id'].setValue(this.p_data.id); 
-    
+    this.updateFormServices.controls['id'].setValue(this.p_data.id);
+
     this.dialog.open(this.callUpdateServicesDailog)
-    
+
   }
 
   updateServices(){
-    
+
     this.Admin.UpdateService(this.updateFormServices.value);
   }
-
-
 
 
   Createdialog(){
@@ -71,10 +77,10 @@ export class ManagecatalogComponent implements OnInit {
   }
   uploadImage(file:any)
   {
-    if(file.length==0)
-    return ; 
+    if(file.length==0){
+    return ;}
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object 
+    const formDate=new FormData();//object
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.Admin.UploadImageService(formDate);
@@ -90,15 +96,16 @@ export class ManagecatalogComponent implements OnInit {
         {
           if (res=='yes')
           this.Admin.DeleteService(id);
-        
+          
         else (res=='no')
            console.log("Thank you");
-        }     
+        }
+
     })
-   
 
 
 
-   
+
+
   }
 }

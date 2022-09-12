@@ -1,4 +1,4 @@
- <section class="ftco-section">
+ <!-- <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 text-center mb-5">
@@ -41,49 +41,56 @@
       </div>
     </div>
   </div>
-</section>
-
-
- 
-
-
-<!--  
-<div class="card card-default">
-  <div class="card-header">
-    <h2>With Control</h2>
-    <a class="btn mdi mdi-code-tags" data-toggle="collapse" href="#collapse-carousel-2" role="button"
-      aria-expanded="false" aria-controls="collapse-carousel-2"> </a>
-
-
-  </div>
-  <div class="card-body">
-    <div class="collapse" id="collapse-carousel-2">
-      
-<div class="owl-carousel owl-theme carousel-with-control" *ngFor="let obj of Admin.story">
-  <div class="single-item bg-overlay-black-40 rounded">
-    {{obj.created_at}}<br> <img class="rounded" src="../../../assets/img/screen/{{obj.file_path}}" alt="Slide Image"><br>{{obj.content}}
-  </div>
-  
-</div> -->
- 
-
-
-
-<!--
-<section id="screenshots" class="padd-section text-center">
-
-    <div class="container" data-aos="fade-up">
-      <div class="section-title text-center">
-        <h2>App Stories</h2>
-        <p class="separator"></p>
-      </div>
-
-      <div class="screens-slider swiper" *ngFor="let obj of Admin.story">
-        <div class="swiper-wrapper align-items-center">
-          <div class="swiper-slide"> {{obj.created_at}}<br><img src="../../../assets/img/screen/{{obj.file_path}}" class="img-fluid" alt=""> <br>{{obj.content}}</div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-
 </section> -->
+
+
+
+
+
+
+
+
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center mb-5">
+    <br>
+    <br>
+    <h2 class="heading-section">Story All Users</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+
+          <th>User ID</th>
+          <th>Story</th>
+          <th>content</th>
+          <th>created At</th>
+          <th>Is Blocked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let obj of Admin.story">
+            <td>{{obj.user_id}}</td>
+
+            <td><img src="../../../assets/img/screen/{{obj.file_path}}" class="img-fluid" alt="" style="width: 100px; ;"></td>
+            <td>{{obj.content}}</td>
+            <td>{{obj.created_at}}</td>
+           <td>
+             <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
+             <button class="border-bottom-0 btn btn-success "  *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

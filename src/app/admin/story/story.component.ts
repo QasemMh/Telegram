@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-story',
   templateUrl: './story.component.html',
@@ -11,9 +12,11 @@ export class StoryComponent implements OnInit {
   allBlockedArr: any = [{}];
   allstory: any = [{}];
   currentlyBlocked: any = [{}];
+
   story:any= [{}];
   EmailSendBlockStory:any =[{}];
-  constructor(public Admin :AdminService ,private http: HttpClient ,private toastr: ToastrService,) { }
+
+  constructor(public Admin :AdminService ,private http: HttpClient ,private toastr: ToastrService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.Admin.GetAllStory();
@@ -41,17 +44,24 @@ export class StoryComponent implements OnInit {
 
     };
     if (confirm('Are you sure to block ' + obj.content)) {
+      this.spinner.show();
     }
+
     return this.http.put('https://localhost:44301/api/Story/UpdateStory', blockObj)
       .subscribe((res: any) => {
         if (res) {
           this.EmailSendBlockStory(obj.user_id);
+
+          this.spinner.show();
           this.GetAllStory();
+          this.spinner.hide();
         }
 
         window.location.reload();
         this.toastr.success('Done Block', 'Success');
+
       });
+
 
   }
 
@@ -68,12 +78,16 @@ UnBlockstory(obj :any){
 
     };
     if (confirm('Are you sure to unblock ' + obj.content)) {
+      this.spinner.show();
     }
     return this.http.put('https://localhost:44301/api/Story/UpdateStory', UnBlockObj)
       .subscribe((res: any) => {
         if (res) {
           this.EmailSendBlockStory(obj.user_id);
+
+          this.spinner.show();
           this.GetAllStory();
+          this.spinner.hide();
         }
 
         window.location.reload();

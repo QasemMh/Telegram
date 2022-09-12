@@ -11,12 +11,12 @@ import { Router } from '@angular/router';
 })
 export class ChannelComponent implements OnInit {
   @ViewChild('callCopyLinkDailog') callCopyLinkDailog! :TemplateRef<any>;
- 
+
   @ViewChild('callCreateServicesDailog') callCreateServicesDailog! :TemplateRef<any>;
   @Output() post=new EventEmitter();
   link: any;
   createFormReportChannel:FormGroup = new FormGroup({
-   
+
     user_from:new FormControl(),
     post_id:new FormControl(),
     type:new FormControl(),
@@ -25,24 +25,25 @@ export class ChannelComponent implements OnInit {
   constructor(private router:Router,public dialog: MatDialog,public User :UserService) { }
 
   ngOnInit(): void {
-   this.User.GetAllPostByChanel();
+   this.User.GetChannelPosts();
   }
 
   dialogepost(obj:any)
   {
+    
     this.dialog.open(this.callCreateServicesDailog);
     this.createFormReportChannel.controls['user_from'].setValue(9);
-    this.createFormReportChannel.controls['post_id'].setValue(obj.id); 
-   
+    this.createFormReportChannel.controls['post_id'].setValue(obj.id);
+
   }
  InsertReportPost()
   {
 
     console.log(this.createFormReportChannel.value);
   this.User.InsertReportPost(this.createFormReportChannel.value);
-    
+
   }
-  // <!-- 
+  // <!--
   //   "channel_id": 4,
   //   "id": 3,
   //   "firstName": "tasneem",
@@ -71,4 +72,5 @@ export class ChannelComponent implements OnInit {
     this.link=this.router.navigate(['channel',obj.channel_id, 'post', obj.id]);
     this.dialog.open(this.callCopyLinkDailog);
   }
-}
+ }
+

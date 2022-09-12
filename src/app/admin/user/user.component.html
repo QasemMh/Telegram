@@ -1,8 +1,15 @@
-<h1  > {{contUser}}</h1>
+
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Number Of Users</div>
+        <div class="card-body">
+
+          <p class="card-text" style="color: #fff; font-size: 40px;">{{contUser}}</p>
+        </div>
+      </div>
 <div class="card card-default">
 
 
-
+<!--
     <div class="card-header">
       <h2>Users List :</h2>
 
@@ -37,7 +44,64 @@
               </td>
             </tr>
         </tbody>
-      </table>
+      </table> -->
 
 
-<ng-template #confarm></ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+              <br>
+              <br>
+              <h2 class="heading-section">User Information And Block User</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="table-wrap">
+                <table class="table">
+                  <thead class="thead-primary">
+                    <tr>
+                      <th>Full Name</th>
+                     <th>bio</th>
+                     <th>gender</th>
+                     <th>image_path</th>
+                    <th>created_at</th>
+                    <th>Bloked</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  *ngFor="let obj of allUsers">
+                      <td>{{obj.first_name}} {{obj.middle_name}} {{obj.last_name}}</td>
+                    <td>{{obj.bio}} </td>
+                    <td>{{obj.gender}}</td>
+                    <td><img src="../../../assets/img/{{obj.image_path}}" width="50px"> </td>
+                    <td>{{obj.created_at}}</td>
+                     <td>
+                       <button class="border-bottom-0 btn btn-danger" *ngIf="obj.is_blocked==0"  (click)="BlockUser(obj)">block</button>
+                       <button class="border-bottom-0 btn btn-success " *ngIf="obj.is_blocked!=0"  (click)="UnBlockUser(obj)">unblock</button>
+                      </td>
+                    </tr>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+

@@ -1,126 +1,361 @@
-<nb-layout>
-  <nb-layout-header fixed><nb-layout-header fixed>
-    <!-- <app-header></app-header> -->
-  </nb-layout-header></nb-layout-header>
+<!-- <div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
 
-  <!-- <nb-sidebar>
-    <app-sidebar></app-sidebar>
-  </nb-sidebar> -->
-
-  <nb-layout-column>
-
-
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <!-- <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
-        </div> -->
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                
-              
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">First Name</label> {{this.User.GetUserByIdDto.first_Name}}</div>
-                    <div class="col-md-12"><label class="labels">Middle Name</label>{{this.User.GetUserByIdDto.middle_Name}}</div>
-                    <div class="col-md-12"><label class="labels">Last Name</label>{{this.User.GetUserByIdDto.last_Name}}</div>
-                    <div class="col-md-12"><label class="labels"> </label></div>
-                    <div class="col-md-12"><label class="labels">Gender</label> {{this.User.GetUserByIdDto.gender}}</div>
-                   
-                    <!-- <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div>
-                    <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div> -->
-                    <div class="col-md-12"><label class="labels"></label> <img src="../../assets/img/{{this.User.GetUserByIdDto.images}}" width="50px">{{this.User.GetUserByIdDto.images}}</div>
-                    <div class="col-md-12"><label class="labels">Email</label>{{this.User.GetUserByIdDto.email}}</div>
-                    <div class="col-md-12"><label class="labels">phone</label>{{this.User.GetUserByIdDto.phone}}</div>
-                </div>
-                
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" (click)="updateDailog(this.User.GetUserByIdDto)">UpDate  Profile</button></div>
-            
-            </div>
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
         </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <form [formGroup]="chackPasswords">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Password</span>
-                <span class="border px-3 p-1 add-experience" (click)="ChackPassword()" ><i class="fa fa-plus"></i>&nbsp;Update password</span></div><br>
-                <div class="col-md-12"><label class="labels">Current Password</label><input type="text" class="form-control" formControlName="oldPassword"   value=""></div> <br>
-                <div class="col-md-12"><label class="labels">New Password</label><input type="text" class="form-control" formControlName="newPassword"  value=""></div>
-            </form>
-            <form action="/action_page.php" style=" margin-top:40px ;"   [formGroup]="insertReview" >
-              <p><span for="w3review">Review :</span></p>
-              <textarea id="w3review" name="w3review" rows="4" cols="50" formControlName="description"></textarea>
-              <br>
-              <input type="submit" class="btn btn-primary profile-button" (click)="InsertTestimonial()" value="Save">
-            </form>
-            </div>
+
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">First Name</label>
+            {{ this.User.GetUserByIdDto.first_Name }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Middle Name</label
+            >{{ this.User.GetUserByIdDto.middle_Name }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Last Name</label
+            >{{ this.User.GetUserByIdDto.last_Name }}
+          </div>
+          <div class="col-md-12"><label class="labels"> </label></div>
+          <div class="col-md-12">
+            <label class="labels">Gender</label>
+            {{ this.User.GetUserByIdDto.gender }}
+          </div>
+
+          <div class="col-md-12">
+            <label class="labels"></label>
+            <img
+              src="../../assets/img/{{ this.User.GetUserByIdDto.images }}"
+              width="50px"
+            />{{ this.User.GetUserByIdDto.images }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Email</label
+            >{{ this.User.GetUserByIdDto.email }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">phone</label
+            >{{ this.User.GetUserByIdDto.phone }}
+          </div>
         </div>
-        
+
+        <div class="mt-5 text-center">
+          <button
+            class="btn btn-primary profile-button"
+            type="submit"
+            (click)="updateDailog(this.User.GetUserByIdDto)"
+          >
+            UpDate Profile
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+        <form [formGroup]="chackPasswords">
+          <div
+            class="d-flex justify-content-between align-items-center experience"
+          >
+            <span>Edit Password</span>
+            <span
+              class="border px-3 p-1 add-experience"
+              (click)="ChackPassword()"
+              ><i class="fa fa-plus"></i>&nbsp;Update</span
+            >
+          </div>
+          <br />
+          <div class="col-md-12">
+            <label class="labels">Current Password</label
+            ><input
+              type="text"
+              class="form-control"
+              formControlName="oldPassword"
+              value=""
+            />
+          </div>
+          <br />
+          <div class="col-md-12">
+            <label class="labels">New Password</label
+            ><input
+              type="text"
+              class="form-control"
+              formControlName="newPassword"
+              value=""
+            />
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-  
-  
-  
-  
-  <ng-template #callUpdateProfileDailog>
-    <form class="example-form" [formGroup]="UpdateProfileUsers" >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>first_name</mat-label>
-          <input type="text" matInput formControlName="u_first_name"
-                 [(ngModel)]="p_data.u_first_name">
-        </mat-form-field>
-    <br>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>middle_name </mat-label>
-            <input type="text" matInput formControlName="u_middle_name"
-            [(ngModel)]="p_data.u_middle_name">
-          </mat-form-field>
-    <br>
+</div>
+
+<ng-template #callUpdateProfileDailog>
+  <form class="example-form" [formGroup]="UpdateProfileUsers">
     <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>last_name </mat-label>
-        <input type="text" matInput formControlName="u_last_name"
-        [(ngModel)]="p_data.u_last_name">
-      </mat-form-field>
-      <br>
-       
-        <mat-label>Upload Image </mat-label>
-        <input type="file" #file formControlName="u_image_path" (change)="uploadImage(file.files)" [(ngModel)]="p_data.u_image_path">
-       
-    
-  <br>
-  
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>u_gender </mat-label>
-    <input type="text" matInput formControlName="u_gender"
-    [(ngModel)]="p_data.u_gender">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>l_email </mat-label>
-    <input type="text" matInput formControlName="l_email"
-    [(ngModel)]="p_data.l_email">
-  </mat-form-field>
-  <br>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>l_phone </mat-label>
-    <input type="text" matInput formControlName="l_phone"
-    [(ngModel)]="p_data.l_phone">
-  </mat-form-field>
-  <br>
-    
-        <button (click)="UpdateProfileUser()">Update</button> 
-    </form>
-    
-   
-    
-  </ng-template>
-  
+      <mat-label>first_name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_first_name"
+        [(ngModel)]="p_data.u_first_name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>middle_name </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_middle_name"
+        [(ngModel)]="p_data.u_middle_name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>last_name </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_last_name"
+        [(ngModel)]="p_data.u_last_name"
+      />
+    </mat-form-field>
+    <br />
 
- 
+    <mat-label>Upload Image </mat-label>
+    <input
+      type="file"
+      #file
+      formControlName="u_image_path"
+      (change)="uploadImage(file.files)"
+      [(ngModel)]="p_data.u_image_path"
+    />
 
-</nb-layout-column>
-</nb-layout>
+    <br />
 
-  
-  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>u_gender </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_gender"
+        [(ngModel)]="p_data.u_gender"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>l_email </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="l_email"
+        [(ngModel)]="p_data.l_email"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>l_phone </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="l_phone"
+        [(ngModel)]="p_data.l_phone"
+      />
+    </mat-form-field>
+    <br />
+
+    <button (click)="UpdateProfileUser()">Update</button>
+  </form>
+</ng-template> -->
+
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+    <!-- <div class="col-md-3 border-right"> <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div> </div> -->
+    <div class="col-md-5 border-right">
+      <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="text-right">Profile Settings</h4>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="labels">First Name</label>
+            {{ this.User.GetUserByIdDto.first_Name }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Middle Name</label
+            >{{ this.User.GetUserByIdDto.middle_Name }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Last Name</label
+            >{{ this.User.GetUserByIdDto.last_Name }}
+          </div>
+          <div class="col-md-12"><label class="labels"> </label></div>
+          <div class="col-md-12">
+            <label class="labels">Gender</label>
+            {{ this.User.GetUserByIdDto.gender }}
+          </div>
+          <!-- <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div> <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div> -->
+          <div class="col-md-12">
+            <label class="labels"></label>
+            <img
+              src="../../assets/img/{{ this.User.GetUserByIdDto.images }}"
+              width="50px"
+            />{{ this.User.GetUserByIdDto.images }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">Email</label
+            >{{ this.User.GetUserByIdDto.email }}
+          </div>
+          <div class="col-md-12">
+            <label class="labels">phone</label
+            >{{ this.User.GetUserByIdDto.phone }}
+          </div>
+        </div>
+        <div class="mt-5 text-center">
+          <button
+            class="btn btn-primary profile-button"
+            type="submit"
+            (click)="updateDailog(this.User.GetUserByIdDto)"
+          >
+            UpDate Profile
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 py-5">
+        <form [formGroup]="chackPasswords">
+          <div
+            class="d-flex justify-content-between align-items-center experience"
+          >
+            <span>Edit Password</span>
+            <span
+              class="border px-3 p-1 add-experience"
+              (click)="ChackPassword()"
+              ><i class="fa fa-plus"></i>&nbsp;Update password</span
+            >
+          </div>
+          <br />
+          <div class="col-md-12">
+            <label class="labels">Current Password</label
+            ><input
+              type="text"
+              class="form-control"
+              formControlName="oldPassword"
+              value=""
+            />
+          </div>
+          <br />
+          <div class="col-md-12">
+            <label class="labels">New Password</label
+            ><input
+              type="text"
+              class="form-control"
+              formControlName="newPassword"
+              value=""
+            />
+          </div>
+        </form>
+        <form
+          action="/action_page.php"
+          style="margin-top: 40px"
+          [formGroup]="insertReview"
+        >
+          <p><span for="w3review">Review :</span></p>
+          <textarea
+            id="w3review"
+            name="w3review"
+            rows="4"
+            cols="50"
+            formControlName="description"
+          ></textarea>
+          <br />
+          <input
+            type="submit"
+            class="btn btn-primary profile-button"
+            (click)="InsertTestimonial()"
+            value="Save"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #callUpdateProfileDailog>
+  <form class="example-form" [formGroup]="UpdateProfileUsers">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>first_name</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_first_name"
+        [(ngModel)]="p_data.u_first_name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>middle_name </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_middle_name"
+        [(ngModel)]="p_data.u_middle_name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>last_name </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_last_name"
+        [(ngModel)]="p_data.u_last_name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-label>Upload Image </mat-label>
+    <input
+      type="file"
+      #file
+      formControlName="u_image_path"
+      (change)="uploadImage(file.files)"
+      [(ngModel)]="p_data.u_image_path"
+    />
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>u_gender </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="u_gender"
+        [(ngModel)]="p_data.u_gender"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>l_email </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="l_email"
+        [(ngModel)]="p_data.l_email"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>l_phone </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="l_phone"
+        [(ngModel)]="p_data.l_phone"
+      />
+    </mat-form-field>
+    <br />
+    <button (click)="UpdateProfileUser()">Update</button>
+  </form>
+</ng-template>

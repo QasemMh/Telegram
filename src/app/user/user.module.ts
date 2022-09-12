@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from './../shared/shared.module';
+ import { SharedModule } from './../shared/shared.module';
+
 
 import { UserRoutingModule } from './user-routing.module';
 import { ChatComponent } from './chat/chat.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { CreateTestimonialComponent } from './create-testimonial/create-testimonial.component';
-import { ChannelComponent } from './channel/channel.component';
+ 
+ import { ChannelComponent } from './channel/channel.component';
+import { UserComponent } from './user/user.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostComponent } from './post/post.component';
 import { StoreComponent } from './store/store.component';
 import { SearchComponent } from './search/search.component';
 
 
+
 @NgModule({
-   declarations: 
+   declarations:
   [
     ChatComponent,
     CatalogComponent,
@@ -24,9 +30,16 @@ import { SearchComponent } from './search/search.component';
     PostComponent,
     StoreComponent,
     SearchComponent
+
  
-  ],
-  imports: 
+    
+  
+    UserComponent,
+    HeaderComponent,
+    SidebarComponent,
+   
+   ],
+  imports:
   [
     CommonModule,
     UserRoutingModule,

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-
+import { NgxSpinnerService } from "ngx-spinner";
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
@@ -13,8 +13,9 @@ export class UserComponent implements OnInit {
   allBlockedArr: any = [{}];
   allUsers: any = [{}];
   currentlyBlocked: any = [{}];
+  constructor(public Admin: AdminService, private http: HttpClient,private spinner: NgxSpinnerService) {}
   EmailSenduserblockDTO:any={};
-  constructor(public Admin: AdminService, private http: HttpClient) {}
+
 
   ngOnInit(): void {
     this.GetAllUser();
@@ -45,13 +46,16 @@ export class UserComponent implements OnInit {
       is_blocked: 1,
     };
     if (confirm('Are you sure to block ' + obj.first_name)) {
+      this.spinner.show();
     }
     return this.http
-      .put('https://localhost:44301/api/Users/UpdateUsers', blockObj)
+      .post('https://localhost:44301/api/Users/UpdateUsers', blockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.spinner.show();
           this.EmailSenduserblock(obj.id);
           this.GetAllUser();
+          this.spinner.hide();
         }
       });
   }
@@ -70,13 +74,17 @@ export class UserComponent implements OnInit {
       is_blocked: 0,
     };
     if (confirm('Are you sure to unblock ' + obj.first_name)) {
+      this.spinner.show();
     }
+
     return this.http
-      .put('https://localhost:44301/api/Users/UpdateUsers', UnblockObj)
+      .post('https://localhost:44301/api/Users/UpdateUsers', UnblockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.spinner.show();
           this.EmailSenduserblock(obj.id);
           this.GetAllUser();
+          this.spinner.hide();
         }
       });
   }

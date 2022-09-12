@@ -23,25 +23,25 @@ export class AuthorizationGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('userToken');
 
     if (token == null) {
       this.toastr.error('You are not logged in');
-      this.router.navigate(['auth/login']);
+      this.router.navigate(['/auth/login']);
       return false;
     }
 
     const decoded = JSON.parse(<string>localStorage.getItem('userData'));
-    if (state.url.indexOf('Admin') > 0) {
-      if (decoded.roleName == 'Admin') {
+    if (state.url.toLowerCase().indexOf('admin') > 0) {
+      if (decoded.role == 'Admin') {
         return true;
       } else {
         this.toastr.error('You are not authorized to access this page');
         this.router.navigate(['/home']);
         return false;
       }
-    } else if (state.url.indexOf('User') > 0) {
-      if (decoded.roleName == 'User') {
+    } else if (state.url.toLowerCase().indexOf('user') > 0) {
+      if (decoded.role == 'User' ||decoded.role == 'Admin') {
         return true;
       } else {
         this.toastr.error('You are not authorized to access this page');
@@ -49,6 +49,8 @@ export class AuthorizationGuard implements CanActivate {
         return false;
       }
     } else {
+      this.toastr.error('You are not authorized to access this page');
+      this.router.navigate(['/home']);
       return false;
     }
   }
