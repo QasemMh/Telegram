@@ -6,7 +6,8 @@ import { ChatComponent } from './chat/chat.component';
 import { MyorderComponent } from './myorder/myorder.component';
 import { ChannelComponent } from './channel/channel.component';
 import { PostComponent } from './post/post.component';
-
+import { StoreComponent } from './store/store.component';
+import { SearchComponent } from './search/search.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 const routes: Routes = [
   {
@@ -35,6 +36,16 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'store',
+    component: StoreComponent,
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
+  },
+ 
+
 ];
 
 @NgModule({

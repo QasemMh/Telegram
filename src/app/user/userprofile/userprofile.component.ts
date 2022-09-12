@@ -92,9 +92,12 @@ export class UserprofileComponent implements OnInit {
 
 InsertTestimonial()
   {
-  //TODO edit call method
-   // this.User.ChackPassword(this.insertReview.value);
+    this.User.InsertTestimonial(this.insertReview.value);
   }
+
+
+
   
 }
+
  

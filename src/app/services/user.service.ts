@@ -5,6 +5,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
+
+  Groups :any=[{}];
+  SearchGroupDto:any=[{}];
+  Story:any={};
+
   selectedPost: any = {};
   constructor(public http: HttpClient) {}
   GetUserByIdDto: any = {};
@@ -172,6 +177,43 @@ export class UserService {
       'https://localhost:44301/api/Connection/GetItemByConn/' + connId
     );
   }
+
+  InsertTestimonial(body:any)
+  {
+    this.http.post('https://localhost:44301/api/Testimonial/InsertTestimonial',body).subscribe((res)=>{
+     this.Users=res;
+     console.log(res);
+  })}
+
+
+  insertStore(body:any)
+  {
+    this.http.post('https://localhost:44301/api/story/InsertStory',body).subscribe((res)=>{
+      this.Story=res;
+      console.log(res);
+   })
+  }
+
+
+  searchGroup(data:any)
+{
+this.http.post('https://localhost:44301/api/Groups/SearchGroupUserChannel/filturGroup',data)
+.subscribe((res)=>{
+console.log(res);
+this.Groups=[res];
+})
+}
+
+
+GetAllGroups()
+{
+  this.http.get('https://localhost:44301/api/Groups/GetAllAdminGroup').subscribe((res)=>{
+  
+  this.Groups=res;
+  console.log(res);
+  })
+  }
+}
 
   InsertTestimonial(body: any) {
     this.http

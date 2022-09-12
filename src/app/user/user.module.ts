@@ -14,7 +14,10 @@ import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostComponent } from './post/post.component';
-  
+import { StoreComponent } from './store/store.component';
+import { SearchComponent } from './search/search.component';
+
+
 
 @NgModule({
    declarations:
@@ -23,13 +26,18 @@ import { PostComponent } from './post/post.component';
     CatalogComponent,
     MyorderComponent,
     CreateTestimonialComponent,
+    ChannelComponent,
+    PostComponent,
+    StoreComponent,
+    SearchComponent
+
  
-     ChannelComponent,
+    
   
     UserComponent,
     HeaderComponent,
     SidebarComponent,
-    PostComponent
+   
    ],
   imports:
   [

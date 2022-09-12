@@ -12,7 +12,10 @@ export class StoryComponent implements OnInit {
   allBlockedArr: any = [{}];
   allstory: any = [{}];
   currentlyBlocked: any = [{}];
-  story:any= [{}]
+
+  story:any= [{}];
+  EmailSendBlockStory:any =[{}];
+
   constructor(public Admin :AdminService ,private http: HttpClient ,private toastr: ToastrService,private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -47,6 +50,8 @@ export class StoryComponent implements OnInit {
     return this.http.put('https://localhost:44301/api/Story/UpdateStory', blockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.EmailSendBlockStory(obj.user_id);
+
           this.spinner.show();
           this.GetAllStory();
           this.spinner.hide();
@@ -78,6 +83,8 @@ UnBlockstory(obj :any){
     return this.http.put('https://localhost:44301/api/Story/UpdateStory', UnBlockObj)
       .subscribe((res: any) => {
         if (res) {
+          this.EmailSendBlockStory(obj.user_id);
+
           this.spinner.show();
           this.GetAllStory();
           this.spinner.hide();
@@ -86,5 +93,16 @@ UnBlockstory(obj :any){
         window.location.reload();
         this.toastr.success('Done UnBlock', 'Success');
       });
+  }
+
+ 
+  
+
+  EmailSendStoryBlock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/sendstoreEmail/blockstore/'+id).subscribe((resp)=>{
+     this.EmailSendBlockStory = resp;
+    })
+
   }
 }

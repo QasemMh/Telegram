@@ -5,6 +5,19 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AdminService {
+
+  
+  
+  UpdateService (body:any)
+  {
+    
+    body.Image=this.Service_Image;
+    this.http.put('https://localhost:44301/api/Services/UpdateService/UpdateService',body).subscribe((resp)=>{
+     
+    },err=>{
+     
+    })
+
   countOfUsers: any = [{}];
   story: any = [{}];
   display_Image: any;
@@ -21,7 +34,9 @@ export class AdminService {
   GetAllSubscription: any = [{}];
   ProfitsAndLosses: any = [{}];
   CountMemberEachChannel: any = [{}];
-  Service_Image: any;
+  EmailSenduserblockDTO:any={};
+  Service_Image:any;
+  EmailSendBlockStory:any={};
   AllPost:any=[{}];
 
   ImagePost: any;
@@ -355,6 +370,14 @@ export class AdminService {
       .subscribe((res) => {
         this.story = res;
       });
+  }
+
+  EmailSendStoryBlock(id:number)
+  {
+    this.http.get('https://localhost:44301/api/Users/sendstoreEmail/blockstore/'+id).subscribe((resp)=>{
+     this.EmailSendBlockStory = resp;
+    })
+
   }
 
   EmailSenduserblock(id: number) {
