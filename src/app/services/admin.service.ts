@@ -14,7 +14,8 @@ export class AdminService {
   Testimonials: any = [{}];
   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
-
+  UserActive: any = [{}];
+  UserNotActive: any = [{}];
   constructor(private http: HttpClient) {}
   Services: any = [{}];
   GetAllSubscription: any = [{}];
@@ -23,6 +24,60 @@ export class AdminService {
   Service_Image: any;
   AllPost:any=[{}];
 
+  ImagePost: any;
+
+  CreatePost(body: any) {
+    //form group --> create form
+
+    body.file_path = this.ImagePost;
+    this.http
+      .post(
+        'https://localhost:44301/api/Channel/CreatePost',
+        body
+      )
+      .subscribe(
+        (resp) => {
+          debugger
+          console.log(resp);
+        },
+        (err) => {}
+      );
+    window.location.reload();
+  }
+
+
+  uploadPostAttachment(file: FormData) {
+    this.http
+      .post(
+        'https://localhost:44301/api/Channel/UploadImagepost/UploadImagepost',
+        file
+      )
+      .subscribe(
+        (resp: any) => {
+          if (resp) {
+            this.ImagePost = resp.file_path; //
+            console.log(resp);
+          }
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   GetAllPost() {
    return this.http.get('https://localhost:44301/api/Post/GetAllpost').subscribe((res) => {
@@ -30,6 +85,16 @@ export class AdminService {
       });
   }
 
+  GetUserActive() {
+    return this.http.get('https://localhost:44301/api/Users/GetAllUsersActive/GetAllUsersActive').subscribe((res) => {
+         this.UserActive = res;
+       });
+   }
+   GetUserNotActive() {
+    return this.http.get('https://localhost:44301/api/Users/GetAllUsersNotActive/GetAllUsersNotActive').subscribe((res) => {
+         this.UserNotActive = res;
+       });
+   }
 
 
   // GetAllPos5t(){
@@ -76,6 +141,22 @@ export class AdminService {
 
   EmailSenduserblockDTO: any = {};
    u_image_path: any;
+
+
+
+   UpdateProfileUser(body: any) {
+    body.u_image_path = this.display_Image;
+
+    this.http
+      .put(
+        'https://localhost:44301/api/Users/UpdateProfileUser',
+        body
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
+    window.location.reload();
+  }
   uploadAttachment(file: FormData) {
     this.http
       .post(
@@ -94,6 +175,11 @@ export class AdminService {
         }
       );
   }
+
+
+
+
+
   GetUserById(id: number) {
     this.http
       .get('https://localhost:44301/api/Users/GetUserById/GetUserById/' + id)
@@ -109,19 +195,7 @@ export class AdminService {
   }
 
 
-  UpdateProfileUser(body: any) {
-    body.u_image_path = this.Service_Image;
-
-    this.http
-      .put(
-        'https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',
-        body
-      )
-      .subscribe((res) => {
-        console.log(res);
-      });
-    window.location.reload();
-  }
+ 
  
   UploadImageService(file: FormData) {
     this.http
@@ -215,7 +289,7 @@ export class AdminService {
   }
 
   GetAllGroups() {
-    this.http.get('https://localhost:44301/api/Groups').subscribe((res) => {
+    this.http.get('https://localhost:44301/api/Groups/GetAllGroup').subscribe((res) => {
       this.Groups = res;
     });
   }

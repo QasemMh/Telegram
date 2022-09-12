@@ -16,6 +16,28 @@ export class HomeService {
   AllPost:any=[{}];
 
 
+  TopByLike:any=[{}];
+  TopByComment:any=[{}];
+
+
+  GetTop5Like()
+  {
+  this.http.get('https://localhost:44301/api/Admin/Top10Like').subscribe((res)=>{
+  this.TopByLike=res;
+   //console.log(this.HomePage)
+  })
+  }
+
+  GetTop5Comment()
+  {
+  this.http.get('https://localhost:44301/api/Admin/Top10Comment').subscribe((res)=>{
+  this.TopByComment=res;
+   //console.log(this.HomePage)
+  })
+  }
+
+
+
 
 
 
@@ -84,21 +106,23 @@ uploadAttachment(file:FormData)
     {
       this.display_Image=resp.img;//
       console.log(resp);
-
     }
   },err=>{
     console.log(err);
 
   })
 }
+
+
 createContact(body:any){//form group --> create form
 
  // body.imagename=this.display_Image;
-  this.http.post('https://localhost:44301/api/HomePage/InsertContactUs',body).subscribe((resp)=>{
+  this.http.post('https://localhost:44301/api/HomePage/InsertContactUs/InsertContactUs',body).subscribe((resp)=>{
    console.log(resp)
   },err=>{
 
   })
+  window.location.reload();
 }
 deleteContactUs(id:number)
 {

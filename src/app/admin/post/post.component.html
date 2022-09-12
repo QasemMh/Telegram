@@ -4,6 +4,7 @@
 </div> -->
 
 
+<button  style="margin-bottom:10px" class="border-bottom-0 btn btn-info" (click)=" CreatePostdialog()"> + Add New Post </button>
 
 
 <div class="row justify-content-center">
@@ -32,7 +33,7 @@
 
             <td>{{obj.user}}</td>
             <td>{{obj.content}}</td>
-             <td><img src="../../../assets/images/{{obj.media_posts}}" width="50px"></td>
+             <td><img src="../../../assets/img/{{obj.media_posts}}" width="50px"></td>
            <td>
              <!-- <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
              <button class="border-bottom-0 btn btn-success " *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button> -->
@@ -55,6 +56,85 @@
 
 
 
+
+
+
+
+
+
+
+
+
+<ng-template #callCreatepostDailog>
+<h2 mat-dialog-title>Add New post</h2>
+<mat-dialog-content class="mat-typography">
+  
+
+<form class="example-form" [formGroup]="createFormPost" >
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Post Content</mat-label>
+      <input type="text" matInput formControlName="content">
+  
+      <mat-error *ngIf="createFormPost.controls['content'].hasError('required')">
+        Post Content is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+<br>
+    <mat-label>Upload Image </mat-label>
+    <input type="file" #file formControlName="file_path" (change)="uploadImage(file.files)">
+</form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreatePost()">save</button>
+</mat-dialog-actions>
+
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<ng-template #callCreatepostDailog>
+  <h2 mat-dialog-title>Add New Post</h2>
+  <mat-dialog-content class="mat-typography">
+  
+  
+  <form class="example-form" [formGroup]="createFormPost" >
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Content </mat-label>
+      <input type="text" matInput formControlName="content">
+      <mat-error *ngIf="createFormPost.controls['content'].hasError('required')">
+        Post content is <strong>required</strong>
+      </mat-error>
+    </mat-form-field> 
+
+  
+  <br>
+      <mat-label>Upload Image </mat-label>
+  
+      <input type="file" #file formControlName="file_path" (change)="uploadImage(file.files)">
+  </form>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreatePost()">save</button>
+  </mat-dialog-actions>
+  </ng-template>
+  
+  
+ -->
 
 
 
