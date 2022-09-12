@@ -194,7 +194,6 @@ export class ManageHomeComponent implements OnInit {
 
   Blocktestamonail(obj :any){
     console.log("tesst",obj);
-
     let blockObj = {
       id :obj.testaID,
       // testaID:obj.testaID,
@@ -221,7 +220,7 @@ export class ManageHomeComponent implements OnInit {
 
           // console.log("blockObj",blockObj);
 
-
+          window.location.reload();
 
         // this.toastr.success('Done Block', 'Success');
 
@@ -255,7 +254,7 @@ export class ManageHomeComponent implements OnInit {
           this.spinner.hide();
         }
         console.log("blockObj",UnBlockObj);
-      //  window.location.reload();
+        window.location.reload();
         this.toastr.success('Done UnBlock', 'Success');
       }
       );
