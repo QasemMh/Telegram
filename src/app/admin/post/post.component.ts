@@ -226,10 +226,7 @@ export class PostComponent implements OnInit {
 
     this.http
       .delete(
-        'https://localhost:44301/api/Reaction/DeleteReaction/' +
-          DeleteLike.userId +
-          '/' +
-          DeleteLike.postId
+        'https://localhost:44301/api/Reaction/DeleteReaction/' +DeleteLike.userId +'/' + DeleteLike.postId
       )
 
       .subscribe(
