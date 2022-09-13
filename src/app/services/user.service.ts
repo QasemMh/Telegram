@@ -31,7 +31,7 @@ export class UserService {
   userProfileSide: boolean = false;
   profileId: any;
   display_Image: any;
-  display_Image_Profile: any;
+  //display_Image_Profile: any;
   //
   GetChannelPosts() {
     this.http
