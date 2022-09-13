@@ -26,7 +26,7 @@ export class UserService {
   ReportPost: any = {};
   Testimonial: any = {};
   ChannelPosts: any = [{}];
-  //display_Image_Profile: any;
+  display_Image_Profile: any;
   userChatData: any;
   userProfileSide: boolean = false;
   profileId: any;
@@ -79,16 +79,6 @@ export class UserService {
   }
 
  
-  // UpdateProfileUser(body: any) {
-  //   body.u_image_path = this.display_Image;
-
-  //   this.http
-  //     .put('https://localhost:44301/api/Users/UpdateProfileUser', body)
-  //     .subscribe((res) => {
-  //       console.log(res);
-  //     });
-  //   window.location.reload();
-  // }
   uploadAttachment(file: FormData) {
     this.http
       .post(
@@ -117,7 +107,7 @@ export class UserService {
       });
   }
 
- 
+
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image_Profile;
     this.http
@@ -129,7 +119,7 @@ export class UserService {
         console.log(res);
       });
   }
- 
+
   ChackPassword(body: any) {
     this.http
       .post(
