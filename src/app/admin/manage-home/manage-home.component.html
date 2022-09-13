@@ -231,38 +231,32 @@
 
 
 
-
     <div class="row">
       <div class="col-lg-6 col-xl-3">
-       <div class="card mb-4">
-          <img  style="width:auto ; margin:10px ;border:1px solid #000" class="card-img-top" src="../../../assets/img/{{home.HomePage[0].img}}">
-          <div class="card-body">
-            <h2 class="card-title ">{{home.HomePage[0].name}}</h2>
-            <p class="card-text pb-3">{{home.HomePage[0].address}}<br> {{home.HomePage[0].email}}<br>{{home.HomePage[0].phone}} </p>
-            <button class="border-bottom-0 btn btn-success "  (click)="updateHomeDailog(home.HomePage[0])"> UpDate</button>
-            </div>
-          </div>
-      </div> -
-
-
-
-
-
-
-
-          <div class="col-lg-6 col-xl-3">
-            <div class="card mb-4">
-               <img style="width:auto ; height:350px ; margin:10px ;border:1px solid #000" class="card-img-top" src="../../../assets/img/{{home.AboutUs[0].img}}"  >
-               <div class="card-body">
-                 <h2 class="card-title ">Contant</h2>
-                 <p class="card-text pb-3">{{home.AboutUs[0].contant}} </p>
-                 <button class="border-bottom-0 btn btn-success " (click)="updateAboutDailog(home.AboutUs[0])"> UpDate</button>
-                 <!-- <a href="#" class="btn btn-outline-primary btn-pill"> UpDate</a> -->
-                 </div>
-               </div>
+        <div class="card mb-4">
+           <img class="card-img-top" src="../../../assets/img/{{home.HomePage[0].img}}">
+           <div class="card-body">
+             <h2 class="card-title ">{{home.HomePage[0].name}}</h2>
+             <p class="card-text pb-3">{{home.HomePage[0].address}}<br> {{home.HomePage[0].email}}<br>{{home.HomePage[0].phone}} </p>
+             <button (click)="updateHomeDailog(home.HomePage[0])"> UpDate</button>
+             </div>
            </div>
-
-  </div>
+       </div>
+   
+      
+           <div class="col-lg-6 col-xl-3">
+             <div class="card mb-4">
+                <img class="card-img-top" src="../../../assets/img/{{home.AboutUs[0].img}}">
+                <div class="card-body">
+                  <h2 class="card-title ">Contant</h2>
+                  <p class="card-text pb-3">{{home.AboutUs[0].contant}} </p>
+                  <button (click)="updateAboutDailog(home.AboutUs[0])"> UpDate</button>
+                  <!-- <a href="#" class="btn btn-outline-primary btn-pill"> UpDate</a> -->
+                  </div>
+                </div>
+            </div>
+           
+   </div>
 
 
 <!--
@@ -356,21 +350,21 @@
                [(ngModel)]="Home_data.address">
       </mat-form-field>
       <br>
-
+      
          <button (click)="UpdateHome()">DONE</button>
       </form>
-
-
-
+      
+     
+      
   </ng-template>
-
-
+  
+  
   <ng-template #callAboutupdateDailog>
     <form class="example-form" [formGroup]="updateAboutUsForm" >
-
-
+        
+    
     <br>
-
+    
         <mat-label>Upload Image </mat-label>
         <input type="file" #file formControlName="img" (change)="UploadImageAboutUs(file.files)" [(ngModel)]="About_data.img">
         <br>
@@ -381,11 +375,10 @@
                  [(ngModel)]="About_data.contant">
         </mat-form-field><button (click)="UpdateAbout()">DONE</button>
     </form>
-
-
-
+    
+   
+    
 </ng-template>
-
 <ng-template #callTestimonialUpdateDailog>
   <form class="example-form" [formGroup]="updateTestimonialForm" >
 

@@ -37,6 +37,7 @@ import { SearchComponent } from './search/search.component';
     UserprofileComponent,
     ProfileComponent,
     StoreComponent,
+
     SearchComponent
    ],
   imports:

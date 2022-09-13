@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +18,14 @@ export class AdminService {
         (err) => {}
       );
 
+
+  selectedPost: any = {};
+  PostContant =new BehaviorSubject<string>("abc");
+  public SharePostContant =this.PostContant.asObservable();
+
     //  location.reload();
   }
+
 
   countOfUsers: any = [{}];
   story: any = [{}];
@@ -36,12 +43,23 @@ export class AdminService {
   GetAllSubscription: any = [{}];
   ProfitsAndLosses: any = [{}];
   CountMemberEachChannel: any = [{}];
+
   EmailSenduserblockDTO: any = {};
   Service_Image: any;
   EmailSendBlockStory: any = {};
   AllPost: any = [{}];
 
+
   ImagePost: any;
+
+
+updateDataPost(text)
+{
+this.PostContant.next(text);
+debugger
+
+}
+
 
   CreatePost(body: any) {
     //form group --> create form

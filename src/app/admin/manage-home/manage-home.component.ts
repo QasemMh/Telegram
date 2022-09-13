@@ -94,13 +94,12 @@ export class ManageHomeComponent implements OnInit {
     })
   }
 
-
   UploadImageAboutUs(file:any)
   {
     if(file.length==0)
-    return ;
+    return ; 
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object
+    const formDate=new FormData();//object 
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.home.uploadAboutAttachment(formDate);
@@ -113,10 +112,10 @@ export class ManageHomeComponent implements OnInit {
     contant:obj.contant
     }
     console.log(this.About_data);
-    this.updateAboutUsForm.controls['id'].setValue(this.About_data.id);
-
+    this.updateAboutUsForm.controls['id'].setValue(this.About_data.id); 
+    
     this.dialog.open(this.callAboutupdateDailog)
-
+    
   }
   UpdateAbout(){
     // debugger
@@ -125,9 +124,9 @@ export class ManageHomeComponent implements OnInit {
   uploadImage(file:any)
   {
     if(file.length==0)
-    return ;
+    return ; 
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object
+    const formDate=new FormData();//object 
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.home.uploadAttachment(formDate);
@@ -144,10 +143,10 @@ export class ManageHomeComponent implements OnInit {
     address:obj.address
     }
     console.log(this.Home_data);
-    this.updateHomeForm.controls['id'].setValue(this.Home_data.id);
-
+    this.updateHomeForm.controls['id'].setValue(this.Home_data.id); 
+    
     this.dialog.open(this.callHomeupdateDailog)
-
+    
   }
   UpdateHome(){
     this.home.UpdateHome(this.updateHomeForm.value);

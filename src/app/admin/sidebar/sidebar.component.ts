@@ -20,19 +20,23 @@ export class SidebarComponent implements OnInit {
 
   items: NbMenuItem[] = [
     {
-      title: 'home',
-      link: '/',
+      title: 'profile',
+      link: '/admin/profile',
     },
     {
       title: 'dashboard',
       link: '/admin/dashboard',
     },
     {
-      title: 'User',
+      title: 'Subscription',
+      link: '/admin/sub',
+    },
+    {
+      title: 'User Block',
       link: '/admin/user',
     },
     {
-      title: 'Story',
+      title: 'Story Block',
       link: '/admin/story',
     },
     {
@@ -57,8 +61,13 @@ export class SidebarComponent implements OnInit {
       link: '/admin/Report',
     },
     {
+
+      title: 'User Active',
+      link: '/admin/useractive',
+
       title: 'Block User',
       link: '/admin/blockuser',
+
     },
 
 
