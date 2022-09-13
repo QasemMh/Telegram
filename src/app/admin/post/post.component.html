@@ -1,7 +1,24 @@
+
+
+
+
+
 <!--
 <div *ngFor="let obj of admin.AllPost">
 <h1>{{obj.content}}</h1>
 </div> -->
+
+
+<ng-template #callCopyLinkDailog>
+  <h2 mat-dialog-title>Copy This Link</h2>
+
+  <mat-dialog-content class="mat-typography">
+    <h3 mat-dialog-title>http://localhost:4200/admin/{{this.link}}</h3>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Done</button>
+  </mat-dialog-actions>
+</ng-template>
 
 
 <button  style="margin-bottom:10px" class="border-bottom-0 btn btn-info" (click)=" CreatePostdialog()"> + Add New Post </button>
@@ -66,8 +83,10 @@
       <div style="margin-bottom: 20px; "  class="dropdown-container" tabindex="-1">
         <div class="three-dots"></div>
         <div class="dropdown">
-          <a href="#"  ><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;">Report</div></a>
-
+          <a  ><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;">Report</div></a>
+          <a   (click)="PostProfile(obj)"><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;"> Link
+          </div></a>
+          
           <a href="#" (click)="DeletePost(obj.id)"><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;" *ngIf="obj.user_id==currentuserId" >Delete</div></a>
           <a href="#" (click)="UpdatePost(obj.id)"><div *ngIf="obj.user_id==currentuserId">Update</div></a>
         </div>

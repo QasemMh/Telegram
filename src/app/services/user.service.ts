@@ -215,12 +215,5 @@ GetAllGroups()
   }
 }
 
-  InsertTestimonial(body: any) {
-    this.http
-      .post('https://localhost:44301/api/Testimonial/InsertTestimonial', body)
-      .subscribe((res) => {
-        this.Users = res;
-        console.log(res);
-      });
-  }
-}
+  
+

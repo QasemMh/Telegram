@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 import { HttpClient } from '@angular/common/http';
@@ -15,10 +15,22 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PostComponent implements OnInit {
   AllPost:any=[{}];
-
+  @ViewChild('callCopyLinkDailog') callCopyLinkDailog! :TemplateRef<any>;
   @ViewChild('callCreatepostDailog') callCreatepostDailog! :TemplateRef<any>;
 
 
+
+
+  @Input() id:number|undefined;
+  @Input() firstName:string='N\A';
+
+  @Input() lastName:string='N\A';
+  @Input() postContent:string='N\A';
+   
+  
+  
+  @Output() post=new EventEmitter();
+  link: any;
 
   createFormPost:FormGroup = new FormGroup({
 
@@ -29,9 +41,54 @@ export class PostComponent implements OnInit {
   })
 
 
+  PostContant=''
+  PostProfile(obj:any)
+  {
+
+   
+    // this.admin.selectedPost={
+     
+    //   id:obj.id,
+    //   firstName:obj.firstName,
+    //   lastName:obj.lastName,
+    //   postContent:obj.postContent,
+    //   createAt:obj.createAt,
+    //   filePath:obj.filePath,
+    //   countComment:obj.countComment,
+    //   countLike:obj.countLike,
+    // }
+    this.link='post/'+obj.id;
+    this.router.navigate(['post/',obj.id]);
+    console.log(obj.postContent)
+    this.admin.updateDataPost(obj.postContent);
+    debugger
+
+    this.dialog.open(this.callCopyLinkDailog);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   CreatePostdialog(){
-    this.createFormPost.controls['admin_id'].setValue(10);
+    let User : any = localStorage.getItem("userData");
+    User =JSON.parse(User);
+    let uid : number =  +User.userid;
+    this.createFormPost.controls['admin_id'].setValue(uid);
     this.createFormPost.controls['channel_id'].setValue(3);
     debugger
     this.dialog.open(this.callCreatepostDailog)
@@ -43,7 +100,7 @@ export class PostComponent implements OnInit {
      
     console.log(this.createFormPost.value);
     debugger
-    this.Admin.CreatePost(this.createFormPost.value);
+    this.admin.CreatePost(this.createFormPost.value);
     }
     uploadImage(file:any)
     {
@@ -53,7 +110,7 @@ export class PostComponent implements OnInit {
       const formDate=new FormData();//object
       formDate.append('file',fileToUpload,fileToUpload.name);
       debugger
-      this.Admin.uploadPostAttachment(formDate);
+      this.admin.uploadPostAttachment(formDate);
     }
   
 

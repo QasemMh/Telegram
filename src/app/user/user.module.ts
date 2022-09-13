@@ -29,15 +29,10 @@ import { SearchComponent } from './search/search.component';
     ChannelComponent,
     PostComponent,
     StoreComponent,
-    SearchComponent
-
- 
-    
-  
+    SearchComponent,
     UserComponent,
     HeaderComponent,
     SidebarComponent,
-   
    ],
   imports:
   [

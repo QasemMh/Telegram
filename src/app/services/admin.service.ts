@@ -1,23 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
 
-  
-  
-  UpdateService (body:any)
-  {
-    
-    body.Image=this.Service_Image;
-    this.http.put('https://localhost:44301/api/Services/UpdateService/UpdateService',body).subscribe((resp)=>{
-     
-    },err=>{
-     
-    })
-
+  selectedPost: any = {};
+  PostContant =new BehaviorSubject<string>("abc");
+  public SharePostContant =this.PostContant.asObservable();
   countOfUsers: any = [{}];
   story: any = [{}];
   display_Image: any;
@@ -37,9 +29,19 @@ export class AdminService {
   EmailSenduserblockDTO:any={};
   Service_Image:any;
   EmailSendBlockStory:any={};
+
   AllPost:any=[{}];
 
   ImagePost: any;
+
+
+updateDataPost(text)
+{
+this.PostContant.next(text);
+debugger
+
+}
+
 
   CreatePost(body: any) {
     //form group --> create form
@@ -154,7 +156,6 @@ export class AdminService {
     window.location.reload();
   }
 
-  EmailSenduserblockDTO: any = {};
    u_image_path: any;
 
 

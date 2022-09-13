@@ -90,11 +90,12 @@ getAllContact()
 
 UpdateHome (body:any)
 {
-
+  
   body.img=this.display_Image;
   this.http.put('https://localhost:44301/api/HomePage/UpdateHomeInfo/UpdateHome',body).subscribe((resp)=>{
+   
   },err=>{
-
+   
   })
   window.location.reload();
 }
@@ -103,16 +104,16 @@ uploadAttachment(file:FormData)
   this.http.post('https://localhost:44301/api/HomePage/UploadHome/UploadImageHome',file).subscribe
   ((resp:any)=>{
     if(resp)
-    {
+    {     
       this.display_Image=resp.img;//
       console.log(resp);
+
     }
   },err=>{
     console.log(err);
-
+    
   })
 }
-
 
 createContact(body:any){//form group --> create form
 

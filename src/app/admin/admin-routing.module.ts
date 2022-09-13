@@ -18,6 +18,7 @@ import { ReportUsersComponent } from './report-users/report-users.component';
  
 import { ProfileComponent } from './profile/profile.component';
 import { UserActiveComponent } from './user-active/user-active.component';
+import { PostCardComponent } from './post-card/post-card.component';
  
 
 
@@ -93,6 +94,10 @@ const routes: Routes = [
         component:ReportUsersComponent
 
        },
+       {
+        path: 'post/:id',
+        component: PostCardComponent,
+      },
     ]
   }
 

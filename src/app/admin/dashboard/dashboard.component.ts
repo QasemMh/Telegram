@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
       data: {
           labels: this.channelName,
           datasets: [{
-              label: '# CountMemberEachChannel',
+              label: '# CountMemberEachGroup',
               data: this.channelCount,
 
 
