@@ -17,14 +17,14 @@ export class AdminService {
         (resp) => {},
         (err) => {}
       );
-
+   }
 
   selectedPost: any = {};
   PostContant =new BehaviorSubject<string>("abc");
   public SharePostContant =this.PostContant.asObservable();
 
     //  location.reload();
-  }
+  
 
 
   countOfUsers: any = [{}];
@@ -150,7 +150,7 @@ debugger
     window.location.reload();
   }
 
-   u_image_path: any;
+  //  u_image_path: any;
 
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image;
