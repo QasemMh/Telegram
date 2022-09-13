@@ -25,7 +25,10 @@ export class ProfileComponent implements OnInit {
   })
   ngOnInit(): void {
 
-    this.admin.GetUserById(5);
+    let User : any = localStorage.getItem("userData");
+   User =JSON.parse(User);
+   let uid : number =  +User.userid;
+    this.admin.GetUserById(uid);
     
     console.log(this.admin.GetUserByIdDto);
     
@@ -43,8 +46,11 @@ export class ProfileComponent implements OnInit {
   p_data:any;
   updateDailog(obj:any){
     
+    let User : any = localStorage.getItem("userData");
+    User =JSON.parse(User);
+    let uid : number =  +User.userid;
     this.p_data={
-      u_id:5,
+      u_id:uid,
       u_first_name:obj.first_Name,
       u_middle_name:obj.middle_Name,
       u_last_name:obj.last_Name,
@@ -61,7 +67,7 @@ export class ProfileComponent implements OnInit {
   
 
     
-    this.UpdateProfileUsers.controls['u_id'].setValue(5);
+    this.UpdateProfileUsers.controls['u_id'].setValue(uid);
     this.dialog.open(this.callUpdateProfileDailog)
 
      debugger

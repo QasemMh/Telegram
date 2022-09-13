@@ -38,8 +38,9 @@ import { UserFriendsComponent } from './user-friends/user-friends.component';
     UserprofileComponent,
     ProfileComponent,
     StoreComponent,
-    SearchComponent,
+     SearchComponent,
     UserFriendsComponent
+ 
    ],
   imports:
   [

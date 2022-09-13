@@ -195,6 +195,7 @@ export class UserService {
     this.router.navigate(['/auth/login']);
   }
 
+
   InsertTestimonial(body: any) {
     this.http
       .post('https://localhost:44301/api/Testimonial/InsertTestimonial', body)
@@ -234,3 +235,4 @@ export class UserService {
       });
   }
 }
+

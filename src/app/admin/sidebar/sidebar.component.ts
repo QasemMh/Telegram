@@ -16,23 +16,27 @@ export class SidebarComponent implements OnInit {
     console.log(this.userData);
   }
 
-  
+
 
   items: NbMenuItem[] = [
     {
-      title: 'home',
-      link: '/',
+      title: 'profile',
+      link: '/admin/profile',
     },
     {
       title: 'dashboard',
       link: '/admin/dashboard',
     },
     {
-      title: 'User',
+      title: 'Subscription',
+      link: '/admin/sub',
+    },
+    {
+      title: 'User Block',
       link: '/admin/user',
     },
     {
-      title: 'Story',
+      title: 'Story Block',
       link: '/admin/story',
     },
     {
@@ -47,10 +51,7 @@ export class SidebarComponent implements OnInit {
       title: 'Mange groups',
       link: '/admin/groups',
     },
-    {
-      title: 'Mange Post',
-      link: '/admin/MangePost',
-    },
+   
     {
       title: 'All Post',
       link: '/admin/Post',
@@ -58,6 +59,15 @@ export class SidebarComponent implements OnInit {
     {
       title: 'Report Users',
       link: '/admin/Report',
+    },
+    {
+
+      title: 'User Active',
+      link: '/admin/useractive',
+
+      title: 'Block User',
+      link: '/admin/blockuser',
+
     },
 
 
