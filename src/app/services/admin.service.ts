@@ -13,7 +13,7 @@ export class AdminService {
       body
     );
   }
-
+ 
   selectedPost: any = {};
   PostContant = new BehaviorSubject<string>('abc');
 
@@ -135,8 +135,9 @@ export class AdminService {
     window.location.reload();
   }
 
+ 
   u_image_path: any;
-
+ 
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image;
 
