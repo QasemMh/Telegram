@@ -18,17 +18,7 @@ export class ManageHomeComponent implements OnInit {
   @ViewChild('callAboutupdateDailog') callAboutupdateDailog! :TemplateRef<any>;
   @ViewChild('calldeleteDailog') calldeleteDailog! :TemplateRef<any>;
   @ViewChild('callTestimonialUpdateDailog') callTestimonialUpdateDailog! :TemplateRef<any>;
- // //AboutUsInfo
-//   @Input()id :number|undefined
-//   @Input()img :string|undefined
-//   @Input()contant :string|undefined
 
-//   //HomeInfo
-//   @Input()name :string|undefined
-//   @Input()logo :string|undefined
-//   @Input()email :string|undefined
-//   @Input()phone :string|undefined
-//   @Input()address :string|undefined
 
 
   updateAboutUsForm:FormGroup=new FormGroup({
@@ -97,9 +87,9 @@ export class ManageHomeComponent implements OnInit {
   UploadImageAboutUs(file:any)
   {
     if(file.length==0)
-    return ; 
+    return ;
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object 
+    const formDate=new FormData();//object
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.home.uploadAboutAttachment(formDate);
@@ -112,21 +102,21 @@ export class ManageHomeComponent implements OnInit {
     contant:obj.contant
     }
     console.log(this.About_data);
-    this.updateAboutUsForm.controls['id'].setValue(this.About_data.id); 
-    
+    this.updateAboutUsForm.controls['id'].setValue(this.About_data.id);
+    this.updateAboutUsForm.controls['img'].setValue(this.About_data.img);
+
     this.dialog.open(this.callAboutupdateDailog)
-    
+
   }
   UpdateAbout(){
-    // debugger
-    this.home.UpdateAboutUs(this.updateAboutUsForm.value);
+     this.home.UpdateAboutUs(this.updateAboutUsForm.value);
   }
   uploadImage(file:any)
   {
     if(file.length==0)
-    return ; 
+    return ;
     let fileToUpload=<File>file[0];//
-    const formDate=new FormData();//object 
+    const formDate=new FormData();//object
     formDate.append('file',fileToUpload,fileToUpload.name);
     debugger
     this.home.uploadAttachment(formDate);
@@ -143,10 +133,10 @@ export class ManageHomeComponent implements OnInit {
     address:obj.address
     }
     console.log(this.Home_data);
-    this.updateHomeForm.controls['id'].setValue(this.Home_data.id); 
-    
+    this.updateHomeForm.controls['id'].setValue(this.Home_data.id);
+
     this.dialog.open(this.callHomeupdateDailog)
-    
+
   }
   UpdateHome(){
     this.home.UpdateHome(this.updateHomeForm.value);

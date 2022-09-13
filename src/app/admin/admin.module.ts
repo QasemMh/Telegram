@@ -13,29 +13,28 @@ import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 
 import { RolesComponent } from './role/role.component';
- import { BlockuserComponent } from './blockuser/blockuser.component';
- import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
+import { BlockuserComponent } from './blockuser/blockuser.component';
+import { ManagecatalogComponent } from './managecatalog/managecatalog.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
- 
+
 import { MangePostComponent } from './mange-post/mange-post.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { PostComponent } from './post/post.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { ReportUsersComponent } from './report-users/report-users.component';
 
- 
 import { ProfileComponent } from './profile/profile.component';
 import { UserActiveComponent } from './user-active/user-active.component';
 import { PostProfileComponent } from './post-profile/post-profile.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
 
 @NgModule({
-
   declarations: [
     DashboardComponent,
     SidebarComponent,
@@ -46,7 +45,7 @@ import { PostProfileComponent } from './post-profile/post-profile.component';
 
     BlockuserComponent,
 
-     UserComponent,
+    UserComponent,
     RolesComponent,
     ManagecatalogComponent,
     SubscriptionComponent,
@@ -60,15 +59,18 @@ import { PostProfileComponent } from './post-profile/post-profile.component';
     ProfileComponent,
     UserActiveComponent,
     PostProfileComponent,
- 
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    // MatSlideToggleModule,
-   // BrowserAnimationsModule
-  ]
-  // , providers: [ HammerModule ]
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

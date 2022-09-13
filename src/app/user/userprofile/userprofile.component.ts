@@ -36,18 +36,20 @@ export class UserprofileComponent implements OnInit {
     l_phone: new FormControl(),
   });
   chackPasswords = new FormGroup({
-    loginId: new FormControl(5),
+    loginId: new FormControl(this.User.GetUserFromLocalStorage().loginId),
     oldPassword: new FormControl(),
     newPassword: new FormControl(),
   });
 
   insertReview = new FormGroup({
-    user_from: new FormControl(5),
+    user_from: new FormControl(+this.User.GetUserFromLocalStorage().userid),
     description: new FormControl(),
     is_accept: new FormControl(0),
   });
   ngOnInit(): void {
-    this.User.GetUserById(5);
+    console.log(this.User.GetUserFromLocalStorage());
+
+    this.User.GetUserById(+this.User.GetUserFromLocalStorage().userid);
 
     console.log(this.User.GetUserByIdDto);
   }
@@ -73,19 +75,12 @@ export class UserprofileComponent implements OnInit {
       l_phone: obj.phone,
     };
 
-    this.UpdateProfileUsers.controls['u_id'].setValue(5);
+    this.UpdateProfileUsers.controls['u_id'].setValue(+this.User.GetUserFromLocalStorage().userid);
     this.dialog.open(this.callUpdateProfileDailog);
-
-    // debugger
-    // this.updateForm.controls['courseid'].setValue(this.p_data.courseid);
-    // this.admin.UpdateProfileUser(this.UpdateProfileUsers.value);
-    // console.log(this.UpdateProfileUsers.value);
-  }
+   }
 
   UpdateProfileUser() {
-    // debugger
-    // this.updateForm.controls['courseid'].setValue(this.p_data.courseid);
-    this.User.UpdateProfileUser(this.UpdateProfileUsers.value);
+     this.User.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);
   }
   ChackPassword() {

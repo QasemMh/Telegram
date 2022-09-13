@@ -11,9 +11,7 @@ export class TokenInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-
-
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('userToken');
     if (token == null) return next.handle(req);
 
     const cloned = req.clone({
@@ -22,6 +20,5 @@ export class TokenInterceptor implements HttpInterceptor {
       },
     });
     return next.handle(cloned);
-
   }
 }
