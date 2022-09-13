@@ -64,7 +64,7 @@ export class UserprofileComponent implements OnInit {
   p_data: any;
   updateDailog(obj: any) {
     this.p_data = {
-      u_id: 102,
+      u_id: +this.User.GetUserFromLocalStorage().userid,
       u_first_name: obj.first_Name,
       u_middle_name: obj.middle_Name,
       u_last_name: obj.last_Name,
