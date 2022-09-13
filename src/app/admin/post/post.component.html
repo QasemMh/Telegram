@@ -46,12 +46,17 @@
   </div>
 </div> -->
 
+<div *ngFor="let Actv of ListSebscribe" >
+  <button  *ngIf="Actv.userId==currentuserId && Actv.servicesId==30 && Actv.status == 'Active'" class="btn btn-primary" style="font-size: 50px; float: right; position: sticky; bottom: 0;" > + </button>
+</div>
+<div>
 
 
 
-
-
-
+  <!-- <div *ngFor="let Actv of ListSebscribe let i = index " >
+    <button  *ngIf="(!(Actv.userId==currentuserId && Actv.servicesId==30 && Actv.status == 'Active')&& i==0 )" class="btn btn-danger" style="font-size: 50px; float: right; position: sticky; bottom: 0;" > By Now </button>
+  </div>
+  <div> -->
 
 
 <div class="container">
@@ -67,7 +72,7 @@
           <a href="#"  ><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;">Report</div></a>
 
           <a href="#" (click)="DeletePost(obj.id)"><div style="border-bottom:1px solid #888  ;margin-top: 5px; margin-bottom: 5px;" *ngIf="obj.user_id==currentuserId" >Delete</div></a>
-          <a href="#" (click)="UpdatePost(obj.id)"><div *ngIf="obj.user_id==currentuserId">Update</div></a>
+          <a href="#" (click)="UpdatePost(obj)"><div *ngIf="obj.user_id==currentuserId">Update</div></a>
         </div>
       </div>
       <!-- <span class="tag tag-teal">Sheare</span> -->
@@ -108,22 +113,20 @@
     <div *ngFor="let reaction of ReactionList let i = index"  style="  margin-right: 30px;" >
       <!-- *ngIf="reaction.user_id==null && obj.id==null && reaction.is_react==null" -->
 
-      <div>
-
-
-      </div>
 
 
       <!-- <span *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1" style="color:green">you liked this post</span> -->
 
       <!-- then Like ;else Lvike -->
-      <div >
+      <div>
 
 
-        <button style=" margin-left: 20px;"   *ngIf=" ((reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1)==false ) && i==0" class="btn btn-primary" (click)="createLike(obj)" >Like</button>
+        <!-- *ngIf=" ((reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1)==false ) && i==0" -->
+
+        <button style=" margin-left: 20px;"  *ngIf=" ((reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1)==false ) && i==0"  class="btn btn-primary" (click)="createLike(obj)" >Like</button>
 
 
-        <button style=" margin-left: 20px;"  *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1"  class="btn btn-danger" (click)="DeleteLike(obj)"> unLike Like</button>
+        <button style=" margin-left: 20px;" *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1"  class="btn btn-danger" (click)="DeleteLike(obj)"> unLike Like</button>
       </div >
 
 
@@ -177,8 +180,9 @@
 
       </div>
 
-      <span  style="margin: 10px; display: inline; cursor: pointer;" *ngIf="comment.userId==currentuserId">Update</span>
-      <span style="margin: 10px; color: red; display: inline; cursor: pointer;" *ngIf="comment.userId==currentuserId">Delete</span>
+      <a  style="margin-left : 100px; cursor: pointer;" *ngIf="comment.userId==currentuserId" (click)="updateComment(comment.comment_ID)" >Update</a>
+      <a  style="margin-left : 10px; cursor: pointer;" *ngIf="comment.userId==currentuserId" (click)="DeleteComment(comment.comment_ID)" >Delete</a>
+
      </div>
 
     </div>
@@ -195,54 +199,6 @@
 
 </div>
 
-
-</div>
-<div class="card" *ngFor="let obj2 of CommentByPostID">
-  <div class="card-body">
-
-    <div class="user">
-      <div>
-      <img *ngIf="obj2.imagePath !=null" src="../../../assets/img/{{obj2.imagePath}}">
-    </div>
-      <div class="user-info">
-        <h5>{{obj2.firstName}} {{obj2.lastName}}</h5>
-        <small>{{obj2.createdAt}}</small>
-
-      </div>
-
-    </div>
-    <hr>
-    <p>{{obj2.content}} </p>
-    <hr>
-
-</div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
