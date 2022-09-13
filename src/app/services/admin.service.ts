@@ -8,24 +8,14 @@ import { BehaviorSubject } from 'rxjs';
 export class AdminService {
   UpdateService(body: any) {
     body.Image = this.Service_Image;
-    this.http
-      .put(
-        'https://localhost:44301/api/Services/UpdateService/UpdateService',
-        body
-      )
-      .subscribe(
-        (resp) => {},
-        (err) => {}
-      );
-
-
-  selectedPost: any = {};
-  PostContant =new BehaviorSubject<string>("abc");
-  public SharePostContant =this.PostContant.asObservable();
-
-    //  location.reload();
+    return this.http.put(
+      'https://localhost:44301/api/Services/UpdateService/UpdateService',
+      body
+    );
   }
 
+  selectedPost: any = {};
+  PostContant = new BehaviorSubject<string>('abc');
 
   countOfUsers: any = [{}];
   story: any = [{}];
@@ -49,17 +39,12 @@ export class AdminService {
   EmailSendBlockStory: any = {};
   AllPost: any = [{}];
 
-
   ImagePost: any;
 
+  updateDataPost(text) {
+    this.PostContant.next(text);
 
-updateDataPost(text)
-{
-this.PostContant.next(text);
-debugger
-
-}
-
+  }
 
   CreatePost(body: any) {
     //form group --> create form
@@ -69,7 +54,7 @@ debugger
       .post('https://localhost:44301/api/Channel/CreatePost', body)
       .subscribe(
         (resp) => {
-          debugger;
+          
           console.log(resp);
         },
         (err) => {}
@@ -150,7 +135,7 @@ debugger
     window.location.reload();
   }
 
-   u_image_path: any;
+  u_image_path: any;
 
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image;

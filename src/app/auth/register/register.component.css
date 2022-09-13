@@ -1,25 +1,19 @@
-
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css");
 .gradient-custom {
   /* fallback for old browsers */
   background: #ffffff;
+}
 
-
-  }
-
-  .card-registration .select-input.form-control[readonly]:not([disabled]) {
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
-  }
-  .card-registration .select-arrow {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.card-registration .select-arrow {
   top: 13px;
-  }
+}
 
-
-
-
-
-
-
+.gradient-custom {
+  overflow: auto !important;
+}

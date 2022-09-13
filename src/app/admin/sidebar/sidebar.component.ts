@@ -9,14 +9,12 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class SidebarComponent implements OnInit {
   userData: any;
-  constructor( private router:Router) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.userData = localStorage.getItem('userData');
     console.log(this.userData);
   }
-
-
 
   items: NbMenuItem[] = [
     {
@@ -51,7 +49,7 @@ export class SidebarComponent implements OnInit {
       title: 'Mange groups',
       link: '/admin/groups',
     },
-   
+
     {
       title: 'All Post',
       link: '/admin/Post',
@@ -61,15 +59,12 @@ export class SidebarComponent implements OnInit {
       link: '/admin/Report',
     },
     {
-
       title: 'User Active',
       link: '/admin/useractive',
-
+    },
+    {
       title: 'Block User',
       link: '/admin/blockuser',
-
     },
-
-
   ];
 }
