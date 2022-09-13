@@ -1,132 +1,150 @@
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
-
-
     <div id="logo">
-      <h1><a href="index.html"><span> </span>{{home.HomePage[0].name}}</a></h1>
+      <h1>
+        <a href="#"><span> </span>{{ home.HomePage[0].name }}</a>
+      </h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" title="" /></a>-->
     </div>
     <div id="logo">
-      <h1>
-      </h1>
+      <h1></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" title="" /></a>-->
     </div>
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li><a class="nav-link scrollto active" href="#hero">Home </a></li>
         <li><a class="nav-link scrollto" href="#about-us">About</a></li>
-        <li><a class="nav-link scrollto" href="#screenshots">Tops</a></li>
         <li><a class="nav-link scrollto" href="#team">Team</a></li>
-        <li><a class="nav-link scrollto" href="#pricing">Testimonial</a></li>
+        <li>
+          <a class="nav-link scrollto" href="#testimonials">Testimonial</a>
+        </li>
         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+
+        <li *ngIf="!IsLogin">
+          <button class="btn btn-outline-primary m-4" routerLink="auth/login">
+            <nb-icon name="log-in-outline"></nb-icon> Login
+          </button>
+        </li>
+
+        <li *ngIf="IsLogin">
+          <button class="btn btn-outline-primary m-4" [routerLink]="userPath">
+            Welcome {{ userData?.userName }}
+          </button>
+        </li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
+    </nav>
+    <!-- .navbar -->
   </div>
-</header><!-- End Header -->
+</header>
+<!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
 <section id="hero">
   <div class="hero-container" data-aos="fade-in">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <h1>Welcome to {{home.HomePage[0].name}}</h1>
-    <img src="../../assets/img/{{home.HomePage[0].img}}" style="width: 45%; height:60% ;" alt="Hero Imgs"
-      data-aos="zoom-out" data-aos-delay="100">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br /><br />
+    <br />
+    <br />
+    <h1>Welcome to {{ home.HomePage[0].name }}</h1>
+    <img
+      src="../../assets/img/{{ home.HomePage[0].img }}"
+      style="width: 45%; height: 60%"
+      alt="Hero Imgs"
+      data-aos="zoom-out"
+      data-aos-delay="100"
+    />
 
     <a href="#get-started" class="btn-get-started scrollto">Get Started</a>
-    <br>
-    <br>
+    <br />
+    <br />
     <div class="btns">
       <a href="#"><i class="fa fa-apple fa-3x"></i> App Store</a>
       <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
       <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>
     </div>
   </div>
-</section><!-- End Hero Section -->
+</section>
+<!-- End Hero Section -->
 
 <main id="main">
-
   <!-- ======= Get Started Section ======= -->
   <section id="get-started" class="padd-section text-center">
-
     <div class="container" data-aos="fade-up">
       <div class="section-title text-center">
-
-        <h2>simple systeme fordiscount </h2>
+        <h2>simple systeme fordiscount</h2>
         <p class="separator">Integer cursus bibendum augue ac cursus .</p>
-
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-
         <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
           <div class="feature-block">
-
-            <img src="../../assets/img/svg/cloud.svg" alt="img">
+            <img src="../../assets/img/svg/cloud.svg" alt="img" />
             <h4>introducing whatsapp</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
             <a href="#">read more</a>
-
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
           <div class="feature-block">
-
-            <img src="../../assets/img/svg/planet.svg" alt="img">
+            <img src="../../assets/img/svg/planet.svg" alt="img" />
             <h4>user friendly interface</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
             <a href="#">read more</a>
-
           </div>
         </div>
 
         <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="300">
           <div class="feature-block">
-
-            <img src="../../assets/img/svg/asteroid.svg" alt="img">
+            <img src="../../assets/img/svg/asteroid.svg" alt="img" />
             <h4>build the app everyone love</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
             <a href="#">read more</a>
-
           </div>
         </div>
-
       </div>
     </div>
-
-  </section><!-- End Get Started Section -->
+  </section>
+  <!-- End Get Started Section -->
 
   <!-- ======= About Us Section ======= -->
   <section id="about-us" class="about-us padd-section">
     <div class="container" data-aos="fade-up">
       <div class="row justify-content-center">
-
         <div class="col-md-5 col-lg-3">
-          <img src="../../assets/img/{{home.AboutUs[0].img}}" alt="About" data-aos="zoom-in" data-aos-delay="100">
+          <img
+            src="../../assets/img/{{ home.AboutUs[0].img }}"
+            alt="About"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          />
         </div>
 
         <div class="col-md-7 col-lg-5">
           <div class="about-content" data-aos="fade-left" data-aos-delay="100">
-
-            <h2><span>eStartup</span>UI Design Mobile </h2>
-            <p>{{home.AboutUs[0].contant}}
-            </p>
+            <h2><span>eStartup</span>UI Design Mobile</h2>
+            <p>{{ home.AboutUs[0].contant }}</p>
 
             <ul class="list-unstyled">
               <li><i class="vi bi-chevron-right"></i>Creative Design</li>
@@ -135,17 +153,15 @@
               <li><i class="vi bi-chevron-right"></i>Unlimited Features</li>
               <li><i class="vi bi-chevron-right"></i>Unlimited Features</li>
             </ul>
-
           </div>
         </div>
-
       </div>
     </div>
-  </section><!-- End About Us Section -->
+  </section>
+  <!-- End About Us Section -->
 
   <!-- ======= Features Section ======= -->
   <section id="features" class="padd-section text-center">
-
     <div class="container" data-aos="fade-up">
       <div class="section-title text-center">
         <h2>Amazing Features.</h2>
@@ -153,201 +169,251 @@
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
-
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/paint-palette.svg" alt="img">
+            <img src="../../assets/img/svg/paint-palette.svg" alt="img" />
             <h4>creative design</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/vector.svg" alt="img">
+            <img src="../../assets/img/svg/vector.svg" alt="img" />
             <h4>Retina Ready</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/design-tool.svg" alt="img">
+            <img src="../../assets/img/svg/design-tool.svg" alt="img" />
             <h4>easy to use</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/asteroid.svg" alt="img">
+            <img src="../../assets/img/svg/asteroid.svg" alt="img" />
             <h4>Free Updates</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/asteroid.svg" alt="img">
+            <img src="../../assets/img/svg/asteroid.svg" alt="img" />
             <h4>Free Updates</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/cloud-computing.svg" alt="img">
+            <img src="../../assets/img/svg/cloud-computing.svg" alt="img" />
             <h4>App store support</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/pixel.svg" alt="img">
+            <img src="../../assets/img/svg/pixel.svg" alt="img" />
             <h4>Perfect Pixel</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
 
         <div class="col-md-6 col-lg-3">
           <div class="feature-block">
-            <img src="../../assets/img/svg/code.svg" alt="img">
+            <img src="../../assets/img/svg/code.svg" alt="img" />
             <h4>clean codes</h4>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
           </div>
         </div>
-
       </div>
     </div>
-  </section><!-- End Features Section -->
+  </section>
+  <!-- End Features Section -->
 
   <!-- ======= Screenshots Section ======= -->
 
-  <!-- ======= Testimonials Section ======= -->
-  <section id="testimonials" class="padd-section text-center">
+  <!-- ======= Testimonials Section =======
+  <section id="screenshots" class="padd-section text-center">
     <div class="container" data-aos="fade-up">
       <div class="section-title text-center">
         <h2>Top Posts.</h2>
         <p class="separator">Top Posts By Like or Comment .</p>
       </div>
       <div class="row justify-content-center">
-
         <div class="col-md-6">
-
           <div class="testimonials-content">
-            <div id="carousel-example-generic" class="carousel slide" data-bs-ride="carousel">
-
+            <div
+              id="carousel-example-generic"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
               <div class="carousel-inner" role="listbox">
-
-
-                <div class="carousel-item  active" *ngFor="let obj of home.TopByLike">
+                <div
+                  class="carousel-item active"
+                  *ngFor="let obj of home.TopByLike"
+                >
                   <div class="top-top">
-                    <br>
+                    <br />
                     <h2>By Likes</h2>
-                    <p>{{obj.postContent}}</p>
-                    <img src="../../../assets/img/{{obj.filePath}}" width="150px">
-                    <h4><span>{{obj.firstName}} {{obj.lastName}} </span></h4>
-                    <br>
-                    <h4><span>{{obj.countLike}} Likes</span></h4>
-                    <br>
-                    <br>
+                    <p>{{ obj.postContent }}</p>
+                    <img
+                      src="../../../assets/img/{{ obj.filePath }}"
+                      width="150px"
+                    />
+                    <h4>
+                      <span>{{ obj.firstName }} {{ obj.lastName }} </span>
+                    </h4>
+                    <br />
+                    <h4>
+                      <span>{{ obj.countLike }} Likes</span>
+                    </h4>
+                    <br />
+                    <br />
                   </div>
                 </div>
-
               </div>
 
               <div class="btm-btm">
-
                 <ul class="list-unstyled carousel-indicators">
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="0" class="active"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="1"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="2"></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="1"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="2"
+                  ></li>
                 </ul>
-
               </div>
-
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <div class="col-md-6">
-
           <div class="testimonials-content">
-            <div id="carousel-example-generic" class="carousel slide" data-bs-ride="carousel">
-
+            <div
+              id="carousel-example-generic"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
               <div class="carousel-inner" role="listbox">
-
-                <div class="carousel-item  active" *ngFor="let obj of home.TopByComment">
+                <div
+                  class="carousel-item active"
+                  *ngFor="let obj of home.TopByComment"
+                >
                   <div class="top-top">
-                    <br>
+                    <br />
                     <h2>By Comments</h2>
-                    <p>{{obj.postContent}}</p>
-                    <img src="../../../assets/img/{{obj.filePath}}" width="150px">
-                    <h4><span>{{obj.firstName}} {{obj.lastName}} </span></h4>
-                    <br>
-                    <h4><span>{{obj.countComment}} Comments</span></h4>
-                    <br>
-                    <br>
+                    <p>{{ obj.postContent }}</p>
+                    <img
+                      src="../../../assets/img/{{ obj.filePath }}"
+                      width="150px"
+                    />
+                    <h4>
+                      <span>{{ obj.firstName }} {{ obj.lastName }} </span>
+                    </h4>
+                    <br />
+                    <h4>
+                      <span>{{ obj.countComment }} Comments</span>
+                    </h4>
+                    <br />
+                    <br />
                   </div>
                 </div>
-
-
               </div>
 
               <div class="btm-btm">
-
                 <ul class="list-unstyled carousel-indicators">
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="0" class="active"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="1"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="2"></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="1"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="2"
+                  ></li>
                 </ul>
-
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </section><!-- End Testimonials Section -->
-  <!-- End Screenshots Section -->
-
+  </section>
+ -->
 
   <!-- ======= Team Section ======= -->
   <section id="team" class="padd-section text-center">
-
     <div class="container" data-aos="fade-up">
       <div class="section-title text-center">
-
         <h2>Team Member</h2>
         <p class="separator">Integer cursus bibendum augue ac cursus .</p>
       </div>
 
       <div class="row">
-
-        <div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
           <div class="team-block bottom">
-            <img src="../../assets/img/team/1.jpg" class="img-responsive" alt="img">
+            <img
+              src="../../assets/img/team/1.jpg"
+              class="img-responsive"
+              alt="img"
+            />
             <div class="team-content">
               <ul class="list-unstyled">
-                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
               </ul>
               <span>manager</span>
               <h4>Kimberly Tran</h4>
@@ -355,14 +421,28 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
           <div class="team-block bottom">
-            <img src="../../assets/img/team/2.jpg" class="img-responsive" alt="img">
+            <img
+              src="../../assets/img/team/2.jpg"
+              class="img-responsive"
+              alt="img"
+            />
             <div class="team-content">
               <ul class="list-unstyled">
-                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
               </ul>
               <span>manager</span>
               <h4>Kimberly Tran</h4>
@@ -370,14 +450,28 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
           <div class="team-block bottom">
-            <img src="../../assets/img/team/3.jpg" class="img-responsive" alt="img">
+            <img
+              src="../../assets/img/team/3.jpg"
+              class="img-responsive"
+              alt="img"
+            />
             <div class="team-content">
               <ul class="list-unstyled">
-                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
               </ul>
               <span>manager</span>
               <h4>Kimberly Tran</h4>
@@ -385,97 +479,124 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+        <div
+          class="col-md-6 col-md-4 col-lg-3"
+          data-aos="zoom-in"
+          data-aos-delay="400"
+        >
           <div class="team-block bottom">
-            <img src="../../assets/img/team/4.jpg" class="img-responsive" alt="img">
+            <img
+              src="../../assets/img/team/4.jpg"
+              class="img-responsive"
+              alt="img"
+            />
             <div class="team-content">
               <ul class="list-unstyled">
-                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
+                <li>
+                  <a href="#"><i class="bi bi-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-linkedin"></i></a>
+                </li>
               </ul>
               <span>manager</span>
               <h4>Kimberly Tran</h4>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </section><!-- End Team Section -->
+  </section>
+  <!-- End Team Section -->
 
   <!-- ======= Testimonials Section ======= -->
   <section id="testimonials" class="padd-section text-center">
     <div class="container" data-aos="fade-up">
       <div class="row justify-content-center">
-
         <div class="col-md-8">
-
           <div class="testimonials-content">
-            <div id="carousel-example-generic" class="carousel slide" data-bs-ride="carousel">
-
+            <div
+              id="carousel-example-generic"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
               <div class="carousel-inner" role="listbox">
-
-                <div class="carousel-item  active" *ngFor="let obj of home.AcceptTestimonial">
+                <div
+                  class="carousel-item active"
+                  *ngFor="let obj of home.AcceptTestimonial"
+                >
                   <div class="top-top">
-                    <br>
+                    <br />
                     <h2>Our Users Speack volumes us</h2>
-                    <p>{{obj.description}}</p>
-                    <h4><span>{{obj.first_Name}} {{obj.last_Name}} </span></h4>
-                    <br>
-                    <br>
+                    <p>{{ obj.description }}</p>
+                    <h4>
+                      <span>{{ obj.first_Name }} {{ obj.last_Name }} </span>
+                    </h4>
+                    <br />
+                    <br />
                   </div>
                 </div>
-
               </div>
 
               <div class="btm-btm">
-
                 <ul class="list-unstyled carousel-indicators">
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="0" class="active"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="1"></li>
-                  <li data-bs-target="#carousel-example-generic" data-bs-slide-to="2"></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="0"
+                    class="active"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="1"
+                  ></li>
+                  <li
+                    data-bs-target="#carousel-example-generic"
+                    data-bs-slide-to="2"
+                  ></li>
                 </ul>
-
               </div>
-
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </section><!-- End Testimonials Section -->
-
-
+  </section>
+  <!-- End Testimonials Section -->
 
   <!-- ======= Contact Section ======= -->
   <section id="contact" class="padd-section">
-
     <div class="container" data-aos="fade-up">
       <div class="section-title text-center">
         <h2>Contact</h2>
-        <p class="separator">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        <p class="separator">
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque
+        </p>
       </div>
 
-      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-
+      <div
+        class="row justify-content-center"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
         <div class="col-lg-3 col-md-4">
-
           <div class="info">
             <div>
               <i class="bi bi-geo-alt"></i>
-              <p> {{home.HomePage[0].address}}</p>
+              <p>{{ home.HomePage[0].address }}</p>
             </div>
 
             <div class="email">
               <i class="bi bi-envelope"></i>
-              <p> {{home.HomePage[0].email}}</p>
+              <p>{{ home.HomePage[0].email }}</p>
             </div>
 
             <div>
               <i class="bi bi-phone"></i>
-              <p> {{home.HomePage[0].phone}}</p>
+              <p>{{ home.HomePage[0].phone }}</p>
             </div>
           </div>
 
@@ -485,61 +606,103 @@
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
           </div>
-
         </div>
 
         <div class="col-lg-5 col-md-8">
           <div class="form">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form"
-              [formGroup]="CreateContact">
+            <form
+              action="forms/contact.php"
+              method="post"
+              role="form"
+              class="php-email-form"
+              [formGroup]="CreateContact"
+            >
               <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required matInput
-                  formControlName="username">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                  matInput
+                  formControlName="username"
+                />
               </div>
               <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required
-                  matInput formControlName="email">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                  matInput
+                  formControlName="email"
+                />
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required
-                  matInput formControlName="subject">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="subject"
+                  id="subject"
+                  placeholder="Subject"
+                  required
+                  matInput
+                  formControlName="subject"
+                />
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required matInput
-                  formControlName="message"></textarea>
+                <textarea
+                  class="form-control"
+                  name="message"
+                  rows="5"
+                  placeholder="Message"
+                  required
+                  matInput
+                  formControlName="message"
+                ></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">
+                  Your message has been sent. Thank you!
+                </div>
               </div>
-              <div class="text-center"><button type="submit" (click)="CreateContactUs()">Send Message</button></div>
+              <div class="text-center">
+                <button type="submit" (click)="CreateContactUs()">
+                  Send Message
+                </button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-  </section><!-- End Contact Section -->
-
-</main><!-- End #main -->
+  </section>
+  <!-- End Contact Section -->
+</main>
+<!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 col-lg-4">
+      <div class="col-md-4">
         <div class="footer-logo">
-
-          <a class="navbar-brand" href="#">eStartup</a>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the.</p>
-
+          <a class="navbar-brand" href="#">{{ home.HomePage[0].name }}</a>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the.
+          </p>
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-3 col-lg-2">
+      <div class="col-md-4">
         <div class="list-menu">
-
           <h4>Abou Us</h4>
 
           <ul class="list-unstyled">
@@ -548,13 +711,11 @@
             <li><a href="#">Live streaming</a></li>
             <li><a href="#">Privacy Policy</a></li>
           </ul>
-
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-3 col-lg-2">
+      <div class="col-md-4">
         <div class="list-menu">
-
           <h4>Abou Us</h4>
 
           <ul class="list-unstyled">
@@ -563,59 +724,16 @@
             <li><a href="#">Live streaming</a></li>
             <li><a href="#">Privacy Policy</a></li>
           </ul>
-
         </div>
       </div>
-
-      <div class="col-sm-6 col-md-3 col-lg-2">
-        <div class="list-menu">
-
-          <h4>Support</h4>
-
-          <ul class="list-unstyled">
-            <li><a href="#">faq</a></li>
-            <li><a href="#">Editor help</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-3 col-lg-2">
-        <div class="list-menu">
-
-          <h4>Abou Us</h4>
-
-          <ul class="list-unstyled">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Features item</a></li>
-            <li><a href="#">Live streaming</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-
-        </div>
-      </div>
-
     </div>
   </div>
 
   <div class="copyrights">
     <div class="container">
       <p>&copy; Copyrights eStartup. All rights reserved.</p>
-      <div class="credits">
-        <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eStartup
-        -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      <div class="credits">Designed by <a href="#">Tahaluf</a></div>
     </div>
   </div>
-
-</footer><!-- End  Footer -->
-
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-    class="bi bi-arrow-up-short"></i></a>
+</footer>
+<!-- End  Footer -->

@@ -1,3 +1,4 @@
+import { UserFriendsComponent } from './../user-friends/user-friends.component';
 import { NbDialogService } from '@nebular/theme';
 import { SignalrService } from 'src/app/signalr.service';
 import { UserService } from 'src/app/services/user.service';
@@ -88,6 +89,8 @@ export class SidebarComponent implements OnInit {
   }
 
   openFriendsDialog() {
-    //  this.dialogService.open(DialogNamePromptComponent).onClose.subscribe(name => {});
+    this.dialogService.open(UserFriendsComponent, {
+      context: 'This is a title passed to the dialog component',
+    });
   }
 }

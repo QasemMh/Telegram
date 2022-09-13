@@ -18,6 +18,7 @@ import { PostComponent } from './post/post.component';
 import { ProfileComponent } from './profile/profile.component';
  import { StoreComponent } from './store/store.component';
 import { SearchComponent } from './search/search.component';
+import { UserFriendsComponent } from './user-friends/user-friends.component';
 
 
 
@@ -37,8 +38,9 @@ import { SearchComponent } from './search/search.component';
     UserprofileComponent,
     ProfileComponent,
     StoreComponent,
-
-    SearchComponent
+     SearchComponent,
+    UserFriendsComponent
+ 
    ],
   imports:
   [
