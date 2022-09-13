@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NbMenuItem } from '@nebular/theme';
 
 @Component({
@@ -8,12 +9,14 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class SidebarComponent implements OnInit {
   userData: any;
-  constructor() {}
+  constructor( private router:Router) {}
 
   ngOnInit(): void {
     this.userData = localStorage.getItem('userData');
     console.log(this.userData);
   }
+
+  
 
   items: NbMenuItem[] = [
     {
@@ -56,5 +59,7 @@ export class SidebarComponent implements OnInit {
       title: 'Report Users',
       link: '/admin/Report',
     },
+
+
   ];
 }

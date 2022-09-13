@@ -64,10 +64,10 @@ export class ProfileComponent implements OnInit {
     this.UpdateProfileUsers.controls['u_id'].setValue(5);
     this.dialog.open(this.callUpdateProfileDailog)
 
-    // debugger
+     debugger
     // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
     // this.admin.UpdateProfileUser(this.UpdateProfileUsers.value);
-    // console.log(this.UpdateProfileUsers.value);
+     console.log(this.UpdateProfileUsers.value);
     
   }
 
@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit {
   UpdateProfileUser(){
     
   
-    // debugger
+     debugger
     // this.updateForm.controls['courseid'].setValue(this.p_data.courseid); 
     this.admin.UpdateProfileUser(this.UpdateProfileUsers.value);
     console.log(this.UpdateProfileUsers.value);

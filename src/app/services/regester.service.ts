@@ -18,7 +18,7 @@ export class RegesterService {
   submit(body : any){
     this.spinner.show();
     debugger
-    this.http.post('https://localhost:44301/api/Users/RegisterUser/Register' , body).subscribe((resp:any)=>{
+    this.http.post('https://localhost:44301/api/Users/RegisterUser' , body).subscribe((resp:any)=>{
       this.spinner.hide();
       this.toastr.success('Register Successfully :)')
     },

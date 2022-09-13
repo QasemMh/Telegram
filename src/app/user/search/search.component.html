@@ -1,0 +1,28 @@
+<div class="form-inline" style="margin-top: 3%;">
+    <div class="form-group mx-sm-3 mb-2">
+    <label for="inputText" class="sr-`
+    only">Group Name</label>
+    <input type="text" class="form-control"
+    placeholder="Group name"
+    [value]="nameGroup" (change)="inputValue($event)">
+    </div>
+    <button type="submit"
+    class="btn btn-success"
+    (click)="search()">Search</button>
+    </div>
+    
+    
+    
+<table>
+    <tr>
+        <th>Group Number</th>
+        <th>Group Name</th>
+        
+    </tr>
+    <tr *ngFor="let obj of User.Groups">
+        <td>{{obj.id}}</td>
+        <td>{{obj.name}}</td>
+        
+        
+    </tr>
+</table>

@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
       this.spinner.show();
     }
     return this.http
-      .put('https://localhost:44301/api/Users/UpdateUsers', blockObj)
+      .post('https://localhost:44301/api/Users/UpdateUsers', blockObj)
       .subscribe((res: any) => {
         if (res) {
           this.spinner.show();
@@ -78,7 +78,7 @@ export class UserComponent implements OnInit {
     }
 
     return this.http
-      .put('https://localhost:44301/api/Users/UpdateUsers', UnblockObj)
+      .post('https://localhost:44301/api/Users/UpdateUsers', UnblockObj)
       .subscribe((res: any) => {
         if (res) {
           this.spinner.show();

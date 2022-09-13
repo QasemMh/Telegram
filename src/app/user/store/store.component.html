@@ -1,0 +1,27 @@
+<div id="wrapper">
+
+	<form id="paper" method="get" action=""  [formGroup]="insertStory">
+
+		
+		<textarea placeholder="Enter something funny."  formControlName="content"  id="text" name="text" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea>  
+		<br>
+        <!-- <div>
+            <input type="file" (change)="HandelFiles($event)" multiple />
+            <div
+              *ngFor="let file of imageFiles"
+              style="width: 100%; height: 100px; overflow: hidden"
+            >
+              <img [src]="file" style="object-fit: cover" />
+            </div>
+        </div> -->
+
+
+        <mat-label>Upload Image </mat-label>
+        <input type="file" #file formControlName="file_path" (change)="uploadImage(file.files)" >
+        
+
+		<input id="button" type="submit" value="Create" (click)="insertStore()">
+		
+	</form>
+
+</div>

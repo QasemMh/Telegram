@@ -17,6 +17,7 @@ import { PostComponent } from './post/post.component';
 import { ReportUsersComponent } from './report-users/report-users.component';
  
 import { ProfileComponent } from './profile/profile.component';
+import { UserActiveComponent } from './user-active/user-active.component';
  
 
 
@@ -25,6 +26,11 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     children: [
+      {
+        path:'useractive',
+        component:UserActiveComponent
+      }
+      ,
       {
         path:'dashboard',
         component:DashboardComponent

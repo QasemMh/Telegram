@@ -41,6 +41,7 @@ export class ReportUsersComponent implements OnInit {
       type: obj.repoType,
       description: obj.repodescription,
       is_accept:1,
+      
 
     };
     if (confirm('Are you sure to Regect ' + obj.post_id + "And Type Report " + obj.type +"Descrbtion :" +  obj.description)) {
@@ -59,6 +60,9 @@ export class ReportUsersComponent implements OnInit {
         this.toastr.success('Done Regect', 'Success');
 
       });
+
+
+
 
 
   }

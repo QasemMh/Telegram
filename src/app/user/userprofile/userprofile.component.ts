@@ -97,8 +97,18 @@ export class UserprofileComponent implements OnInit {
     // this.User.ChackPassword(this.insertReview.value);
   }
 
-  toggleSidebar() {
+   toggleSidebar() {
     this.User.userProfileSide = !this.User.userProfileSide;
     this.sidebarService.toggle(false, 'profile-sidebar');
   }
 }
+ InsertTestimonial()
+  {
+    this.User.InsertTestimonial(this.insertReview.value);
+  }
+
+ 
+}
+
+ 
+

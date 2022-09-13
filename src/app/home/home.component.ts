@@ -33,6 +33,8 @@ CreateContact:FormGroup=new FormGroup({
     this.home.getHomeInfo();
     this.home.getAboutUsInfo();
     this.home.GetAcceptTestimonial();
+    this.home.GetTop5Like();
+    this.home.GetTop5Comment();
     console.log(this.home.HomePage.address)
    // console.log(this.home.getAboutUsInfo())
   }

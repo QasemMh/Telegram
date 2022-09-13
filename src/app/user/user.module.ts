@@ -14,8 +14,13 @@ import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostComponent } from './post/post.component';
-import { GroupComponent } from './group/group.component';
+ import { GroupComponent } from './group/group.component';
 import { ProfileComponent } from './profile/profile.component';
+ import { StoreComponent } from './store/store.component';
+import { SearchComponent } from './search/search.component';
+
+
+ 
 
 @NgModule({
   declarations: [
@@ -24,14 +29,26 @@ import { ProfileComponent } from './profile/profile.component';
     MyorderComponent,
     CreateTestimonialComponent,
     ChannelComponent,
-    UserComponent,
+     UserComponent,
     HeaderComponent,
     SidebarComponent,
     PostComponent,
     GroupComponent,
     UserprofileComponent,
     ProfileComponent
+     PostComponent,
+    StoreComponent,
+    SearchComponent
+    UserComponent,
+    HeaderComponent,
+    SidebarComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, SharedModule],
+  imports:
+  [
+    CommonModule,
+    UserRoutingModule,
+    SharedModule
+  ]
+ 
 })
 export class UserModule {}
