@@ -63,8 +63,11 @@ export class UserprofileComponent implements OnInit {
   }
   p_data: any;
   updateDailog(obj: any) {
+    let User : any = localStorage.getItem("userData");
+    User =JSON.parse(User);
+    let uid : number =  +User.userid;
     this.p_data = {
-      u_id: 102,
+      u_id:uid,
       u_first_name: obj.first_Name,
       u_middle_name: obj.middle_Name,
       u_last_name: obj.last_Name,
