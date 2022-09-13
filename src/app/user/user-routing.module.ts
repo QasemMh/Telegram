@@ -27,7 +27,7 @@ const routes: Routes = [
         path: 'myorder',
         component: MyorderComponent,
       },
-      { path: 'userprofile', component: UserprofileComponent, outlet: 'user' },
+      { path: 'userprofile', component: UserprofileComponent },
 
       { path: 'channel', component: ChannelComponent },
       {

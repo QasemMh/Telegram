@@ -28,6 +28,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
+              "node_modules/@ctrl/ngx-emoji-mart/picker.css",
               "node_modules/@nebular/theme/styles/prebuilt/default.css"
 
             ],

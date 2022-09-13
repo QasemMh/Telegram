@@ -1,3 +1,4 @@
+import { AngularEmojisModule } from 'angular-emojis';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -14,7 +15,7 @@ import {
   ToastNoAnimationModule,
 } from 'ngx-toastr';
 import { MatCardModule } from '@angular/material/card';
-
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { NgChartsModule } from 'ng2-charts';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
@@ -29,6 +30,8 @@ import {
   NbUserModule,
   NbSearchModule,
   NbTabsetModule,
+  NbContextMenuModule,
+  NbDialogModule,
 } from '@nebular/theme';
 @NgModule({
   declarations: [],
@@ -55,6 +58,11 @@ import {
     NbUserModule,
     NbSearchModule,
     NbTabsetModule,
+    AngularEmojisModule,
+    PickerModule,
+    NbContextMenuModule,
+    NbDialogModule.forRoot( ),
+
   ],
   exports: [
     CommonModule,
@@ -77,6 +85,10 @@ import {
     NbUserModule,
     NbSearchModule,
     NbTabsetModule,
+    AngularEmojisModule,
+    PickerModule,
+    NbContextMenuModule,
+    NbDialogModule
   ],
 })
 export class SharedModule {}

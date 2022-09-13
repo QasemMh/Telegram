@@ -5,3 +5,19 @@
   font-size: 3.5rem;
   cursor: pointer;
 }
+
+nb-search {
+  margin-left: 10px;
+}
+.main-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-header .header__left,
+.main-header .header__right {
+  display: flex;
+  align-items: center;
+}
