@@ -20,7 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 
 
- 
+
 
 @NgModule({
   declarations: [
@@ -35,20 +35,16 @@ import { SearchComponent } from './search/search.component';
     PostComponent,
     GroupComponent,
     UserprofileComponent,
-    ProfileComponent
-     PostComponent,
+    ProfileComponent,
     StoreComponent,
     SearchComponent
-    UserComponent,
-    HeaderComponent,
-    SidebarComponent,
-  ],
+   ],
   imports:
   [
     CommonModule,
     UserRoutingModule,
     SharedModule
   ]
- 
+
 })
 export class UserModule {}
