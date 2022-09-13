@@ -39,7 +39,7 @@
   text-align: center;
   position: -webkit-sticky;
   position: sticky;
-  bottom: 0;
+  bottom: 10px;
   background-color: #0086ff;
   width: 60px;
   height: 60px;
