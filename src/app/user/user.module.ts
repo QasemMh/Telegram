@@ -14,13 +14,13 @@ import { UserComponent } from './user/user.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostComponent } from './post/post.component';
- import { GroupComponent } from './group/group.component';
+import { GroupComponent } from './group/group.component';
 import { ProfileComponent } from './profile/profile.component';
- import { StoreComponent } from './store/store.component';
+import { StoreComponent } from './store/store.component';
 import { SearchComponent } from './search/search.component';
-
-
-
+import { UserFriendsComponent } from './user-friends/user-friends.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { SearchComponent } from './search/search.component';
     MyorderComponent,
     CreateTestimonialComponent,
     ChannelComponent,
-     UserComponent,
+    UserComponent,
     HeaderComponent,
     SidebarComponent,
     PostComponent,
@@ -37,15 +37,16 @@ import { SearchComponent } from './search/search.component';
     UserprofileComponent,
     ProfileComponent,
     StoreComponent,
-
-    SearchComponent
-   ],
-  imports:
-  [
-    CommonModule,
-    UserRoutingModule,
-    SharedModule
-  ]
-
+    SearchComponent,
+    UserFriendsComponent,
+  ],
+  imports: [CommonModule, UserRoutingModule, SharedModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class UserModule {}

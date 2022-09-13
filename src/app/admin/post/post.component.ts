@@ -1,11 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/services/home.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from 'src/app/services/admin.service';
-import { window } from 'rxjs';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,33 +23,20 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-
-  AllPost:any=[{}];
-  @ViewChild('callCopyLinkDailog') callCopyLinkDailog! :TemplateRef<any>;
-  @ViewChild('callCreatepostDailog') callCreatepostDailog! :TemplateRef<any>;
-
-
-
-
-  @Input() id:number|undefined;
-  @Input() firstName:string='N\A';
-
-  @Input() lastName:string='N\A';
-  @Input() postContent:string='N\A';
-   
-  
-  
-  @Output() post=new EventEmitter();
-  link: any;
-
-  createFormPost:FormGroup = new FormGroup({
-
   AllPost: any = [{}];
-
-
-
+  @ViewChild('callCopyLinkDailog') callCopyLinkDailog!: TemplateRef<any>;
   @ViewChild('callCreatepostDailog') callCreatepostDailog!: TemplateRef<any>;
 
+  @Input() id: number | undefined;
+  @Input() firstName: string = 'NA';
+
+  @Input() lastName: string = 'NA';
+  @Input() postContent: string = 'NA';
+
+  @Output() post = new EventEmitter();
+  link: any;
+
+ 
   createFormPost: FormGroup = new FormGroup({
     admin_id: new FormControl(),
     channel_id: new FormControl(),
@@ -50,86 +44,42 @@ export class PostComponent implements OnInit {
     file_path: new FormControl(),
   });
 
-
-  PostContant=''
-  PostProfile(obj:any)
-  {
-
-   
-    // this.admin.selectedPost={
-     
-    //   id:obj.id,
-    //   firstName:obj.firstName,
-    //   lastName:obj.lastName,
-    //   postContent:obj.postContent,
-    //   createAt:obj.createAt,
-    //   filePath:obj.filePath,
-    //   countComment:obj.countComment,
-    //   countLike:obj.countLike,
-    // }
-    this.link='post/'+obj.id;
-    this.router.navigate(['post/',obj.id]);
-    console.log(obj.postContent)
+  PostContant = '';
+  PostProfile(obj: any) {
+    this.link = 'post/' + obj.id;
+    this.router.navigate(['post/', obj.id]);
+    console.log(obj.postContent);
     this.admin.updateDataPost(obj.postContent);
-    debugger
+    debugger;
 
     this.dialog.open(this.callCopyLinkDailog);
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  CreatePostdialog(){
-    let User : any = localStorage.getItem("userData");
-    User =JSON.parse(User);
-    let uid : number =  +User.userid;
+  CreatePostdialog() {
+    let User: any = localStorage.getItem('userData');
+    User = JSON.parse(User);
+    let uid: number = +User.userid;
     this.createFormPost.controls['admin_id'].setValue(uid);
     this.createFormPost.controls['channel_id'].setValue(3);
-    debugger
-    this.dialog.open(this.callCreatepostDailog)
-    }
-  
-  
-  
-    CreatePost(){
-     
+    debugger;
+    this.dialog.open(this.callCreatepostDailog);
+  }
+
+  CreatePost() {
     console.log(this.createFormPost.value);
-    debugger
+    debugger;
     this.admin.CreatePost(this.createFormPost.value);
+  }
+  uploadImage(file: any) {
+    if (file.length == 0) {
+      return;
     }
-    uploadImage(file:any)
-    {
-      if(file.length==0){
-      return ;}
-      let fileToUpload=<File>file[0];//
-      const formDate=new FormData();//object
-      formDate.append('file',fileToUpload,fileToUpload.name);
-      debugger
-      this.admin.uploadPostAttachment(formDate);
-    }
-  
-
-
-
-
-
-
- 
+    let fileToUpload = <File>file[0]; //
+    const formDate = new FormData(); //object
+    formDate.append('file', fileToUpload, fileToUpload.name);
+    debugger;
+    this.admin.uploadPostAttachment(formDate);
+  }
 
   CommentByPostID: any = [{}];
   commentsList: any = [{}];
@@ -139,7 +89,6 @@ export class PostComponent implements OnInit {
   currentuserId: any;
 
   ListSebscribe: any = [{}];
-
 
   constructor(
     public dialog: MatDialog,
@@ -152,8 +101,6 @@ export class PostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //  this.admin.AllPost();
-
     this.GetAllPost();
     this.GetAllComments();
     this.GetAllReaction();
@@ -165,7 +112,6 @@ export class PostComponent implements OnInit {
     this.currentuserId = User.userid;
     console.log('this.userId', this.currentuserId);
   }
-
 
   GetAllSabsecrib() {
     this.http
@@ -179,8 +125,6 @@ export class PostComponent implements OnInit {
         }
       );
   }
-
-
 
   GetAllPost() {
     this.http.get('https://localhost:44301/api/Post/AllPost').subscribe(
@@ -197,16 +141,12 @@ export class PostComponent implements OnInit {
     );
   }
 
-
   UpdatePost(obj: any) {
-    this.http.put('https://localhost:44301/api/Post/UpdatePost',obj).subscribe(
+    this.http.put('https://localhost:44301/api/Post/UpdatePost', obj).subscribe(
       (resp) => {},
       (err) => {}
     );
   }
-
-  UpdatePost(id: number) {}
-
 
   DeletePost(id: number) {
     console.log('id', id);
@@ -222,7 +162,6 @@ export class PostComponent implements OnInit {
       );
 
     window.location.reload();
-
   }
 
   // GetAllComments(){
@@ -249,7 +188,6 @@ export class PostComponent implements OnInit {
           this.commentsList = res;
           console.log('commentsList', this.commentsList);
 
-
           //this.spinner.hide();
           //this.toster.success('Data Retriveed !' );
         },
@@ -273,20 +211,19 @@ export class PostComponent implements OnInit {
   // }
 
   //GetAllReaction(){
-    //this.http.get('https://localhost:44301/api/Reaction/getAllReaction')
-    //.subscribe((resp:any)=>{
-     // this.ReactionList=resp;
-     // console.log("ReactionList",this.ReactionList);
-//
- //   },
- 
-   //     (err) => {
-       
-   //       this.toster.error(err.message, err.status);
+  //this.http.get('https://localhost:44301/api/Reaction/getAllReaction')
+  //.subscribe((resp:any)=>{
+  // this.ReactionList=resp;
+  // console.log("ReactionList",this.ReactionList);
+  //
+  //   },
+
+  //     (err) => {
+
+  //       this.toster.error(err.message, err.status);
   //      }
   //    )
-//  }
-
+  //  }
 
   GetAllReaction() {
     this.http
@@ -320,16 +257,13 @@ export class PostComponent implements OnInit {
           // console.log(resp);
           // this.spinner.hide();
 
-
           this.toster.success(' send comment Successfully :)');
-
         },
         (err) => {
           this.spinner.hide();
           this.toster.error(err.message, err.status);
         }
       );
-
   }
 
   GetCommentByPostID(Postid: number) {
@@ -346,76 +280,6 @@ export class PostComponent implements OnInit {
           this.toster.error(err.message, err.status);
         }
       );
-  }
-
-  CheckLike(postid: number, userid: number) {
-    this.http
-      .get(
-        'https://localhost:44301/api/Comments/GetPostComments/' +
-          userid +
-          '/' +
-          postid
-      )
-      .subscribe(
-        (resp: any) => {
-          this.isLike = resp;
-        },
-        (err) => {
-          this.toster.error(err.message, err.status);
-        }
-      );
-  }
-
-  DeleteLike(obj) {
-    let User: any = localStorage.getItem('userData');
-    User = JSON.parse(User);
-    let uid: number = +User.userid;
-    let DeleteLike = {
-      userId: uid,
-      postId: obj.id,
-    };
-
-    this.http
-      .delete(
-        'https://localhost:44301/api/Reaction/DeleteReaction/' +
-          DeleteLike.userId +
-          '/' +
-          DeleteLike.postId
-      )
-
-      .subscribe(
-        (resp) => {
-          this.toster.success('Delete Like !');
-        },
-        (err) => {}
-      );
-  }
-
-  createLike(obj) {
-    let User: any = localStorage.getItem('userData');
-    User = JSON.parse(User);
-    let uid: number = +User.userid;
-    let addLike = {
-      user_id: uid,
-      post_id: obj.id,
-      is_react: 1,
-    };
-
-    if (this.currentuserId == addLike.user_id)
-      this.http
-        .post('https://localhost:44301/api/Reaction/InsertReaction', addLike)
-        .subscribe(
-          (resp: any) => {
-            console.log(resp);
-            // this.spinner.hide();
-            //this.toster.success(' send comment Successfully :)')
-            this.GetAllReaction();
-          },
-          (err) => {
-            this.spinner.hide();
-            this.toster.error(err.message, err.status);
-          }
-        );
   }
 
   updateComment(id: number) {}
@@ -426,26 +290,10 @@ export class PostComponent implements OnInit {
 
       .subscribe(
         (resp) => {
-           this.toster.success(' send comment Successfully :)');
+          this.toster.success(' send comment Successfully :)');
         },
         (err) => {
           this.spinner.hide();
-          this.toster.error(err.message, err.status);
-        }
-      );
-  }
-
-  GetCommentByPostID(Postid: number) {
-    this.http
-      .get('https://localhost:44301/api/Comments/GetPostComments/' + Postid)
-      .subscribe(
-        (resp: any) => {
-          this.CommentByPostID = resp;
-          // this.spinner.hide();
-          this.toster.success('Successfully :)');
-        },
-        (err) => {
-          // this.spinner.hide()
           this.toster.error(err.message, err.status);
         }
       );
@@ -484,10 +332,7 @@ export class PostComponent implements OnInit {
 
     this.http
       .delete(
-        'https://localhost:44301/api/Reaction/DeleteReaction/' +
-          DeleteLike.userId +
-          '/' +
-          DeleteLike.postId
+        'https://localhost:44301/api/Reaction/DeleteReaction/' +DeleteLike.userId +'/' + DeleteLike.postId
       )
 
       .subscribe(
@@ -524,5 +369,4 @@ export class PostComponent implements OnInit {
           }
         );
   }
-
 }

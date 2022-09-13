@@ -17,7 +17,11 @@ const routes: Routes = [
     loadChildren: () => AuthModule,
   },
 
-  { path: 'admin', loadChildren: () => AdminModule },
+  {
+    path: 'admin',
+    loadChildren: () => AdminModule,
+    canActivate: [AuthorizationGuard],
+  },
 
   {
     path: 'user',

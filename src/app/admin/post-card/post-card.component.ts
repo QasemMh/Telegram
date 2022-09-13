@@ -4,23 +4,12 @@ import { AdminService } from 'src/app/services/admin.service';
 @Component({
   selector: 'app-post-card',
   templateUrl: './post-card.component.html',
-  styleUrls: ['./post-card.component.css']
+  styleUrls: ['./post-card.component.css'],
 })
-
 export class PostCardComponent implements OnInit {
-  
- 
- postContant=''
-  
-  constructor(private admin:AdminService) { }
+  postContant = '';
 
-  ngOnInit(): void {
+  constructor(private admin: AdminService) {}
 
-     this.admin.SharePostContant.subscribe(x=>this.postContant=x)
-   debugger
-
-     console.log(this.postContant)
-   
-  }
-
+  ngOnInit(): void {}
 }

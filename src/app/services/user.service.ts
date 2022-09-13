@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,7 +12,11 @@ export class UserService {
   Story: any = {};
 
   selectedPost: any = {};
-  constructor(public http: HttpClient, private router: Router) {}
+  constructor(
+    public http: HttpClient,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
   Users: any = {};
@@ -111,18 +116,34 @@ export class UserService {
       });
   }
 
-  
-
+ 
+  UpdateProfileUser(body: any) {
+    body.u_image_path = this.display_Image_Profile;
+    this.http
+      .put(
+        'https://localhost:44301/api/Users/UpdateProfileUser/UpdateProfile',
+        body
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+ 
   ChackPassword(body: any) {
     this.http
       .post(
         'https://localhost:44301/api/login/ChackPassword/Chackpassword',
         body
       )
-      .subscribe((res) => {
-        this.Users = res;
-        console.log(res);
-      });
+      .subscribe(
+        (res) => {
+          this.Users = res;
+          this.toastr.success('Password Changed', 'Success');
+        },
+        (err) => {
+          this.toastr.error('Password Not Changed', 'Error');
+        }
+      );
   }
   CreateSubscripe(body: any) {
     this.http
@@ -195,7 +216,6 @@ export class UserService {
     this.router.navigate(['/auth/login']);
   }
 
-
   InsertTestimonial(body: any) {
     this.http
       .post('https://localhost:44301/api/Testimonial/InsertTestimonial', body)
@@ -235,4 +255,3 @@ export class UserService {
       });
   }
 }
-
