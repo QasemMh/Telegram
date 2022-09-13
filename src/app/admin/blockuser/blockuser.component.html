@@ -1,4 +1,4 @@
-<form>
+<!-- <form>
 
 
 <table id="customers">
@@ -23,10 +23,60 @@
         </td>
     </tr>
 </table>
-</form>
+</form> -->
 <ng-template #calldeleteDailog>
 
     <h2>Are You Sure you want to send this email?</h2>
     <button mat-dialog-close="yes">Yes</button>
     <button mat-dialog-close="no">No</button>
     </ng-template>
+
+
+
+
+
+
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center mb-5">
+    <br>
+    <br>
+    <h2 class="heading-section">Banned Users</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="table-wrap">
+      <table class="table">
+        <thead class="thead-primary">
+          <tr>
+
+            <th>User Number</th>
+            <th>User Name</th>
+            <th>User Last Name</th>
+            <th>User Image</th>
+            <th>Email</th>
+            <!-- <th>Send Email</th> -->
+            <th>Oprations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let obj of emailblock.GetAllBlockUserAndSendEmailDTO">
+            <td>{{obj.id}}</td>
+            <td>{{obj.nameUser}}</td>
+            <td>{{obj.lastName}}</td>
+            <td><img src="../../../assets/images/{{obj.imagepath}}" width="50px"></td>
+            <td>{{obj.email}}</td>
+            <!-- <td>{{obj.sendEmail}}</td> -->
+            <td><button  class="border-bottom-0 btn btn-danger"  *ngIf="obj.sendEmail==0" (click)="EmailSend(obj.id)">send</button>
+              <button class="border-bottom-0 btn btn-success " disabled  *ngIf="obj.sendEmail==1" (click)="EmailSend(obj.id)">  unsend</button>
+            </td>
+
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

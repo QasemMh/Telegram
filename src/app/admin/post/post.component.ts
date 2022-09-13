@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AdminService } from 'src/app/services/admin.service';
+import { window } from 'rxjs';
+
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -15,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PostComponent implements OnInit {
   AllPost: any = [{}];
+
 
   @ViewChild('callCreatepostDailog') callCreatepostDailog!: TemplateRef<any>;
 
@@ -56,6 +59,9 @@ export class PostComponent implements OnInit {
   isLike: boolean;
   currentuserId: any;
 
+  ListSebscribe: any = [{}];
+
+
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -72,11 +78,30 @@ export class PostComponent implements OnInit {
     this.GetAllPost();
     this.GetAllComments();
     this.GetAllReaction();
+
+    this.GetAllSabsecrib();
+
     let User: any = localStorage.getItem('userData');
     User = JSON.parse(User);
     this.currentuserId = User.userid;
     console.log('this.userId', this.currentuserId);
   }
+
+
+  GetAllSabsecrib() {
+    this.http
+      .get('https://localhost:44301/api/Subscription/AllSubscription')
+      .subscribe(
+        (res) => {
+          this.ListSebscribe = res;
+        },
+        (err) => {
+          this.toster.error(err.message, err.status);
+        }
+      );
+  }
+
+
 
   GetAllPost() {
     this.http.get('https://localhost:44301/api/Post/AllPost').subscribe(
@@ -93,7 +118,16 @@ export class PostComponent implements OnInit {
     );
   }
 
+
+  UpdatePost(obj: any) {
+    this.http.put('https://localhost:44301/api/Post/UpdatePost',obj).subscribe(
+      (resp) => {},
+      (err) => {}
+    );
+  }
+
   UpdatePost(id: number) {}
+
 
   DeletePost(id: number) {
     console.log('id', id);
@@ -107,7 +141,9 @@ export class PostComponent implements OnInit {
         },
         (err) => {}
       );
+
     window.location.reload();
+
   }
 
   // GetAllComments(){
@@ -134,6 +170,7 @@ export class PostComponent implements OnInit {
           this.commentsList = res;
           console.log('commentsList', this.commentsList);
 
+
           //this.spinner.hide();
           //this.toster.success('Data Retriveed !' );
         },
@@ -143,6 +180,34 @@ export class PostComponent implements OnInit {
         }
       );
   }
+
+  // GetAllReaction() {
+  //   this.http.get('https://localhost:44301/api/Reaction/AllReaction').subscribe(
+  //     (resp: any) => {
+  //       this.ReactionList = resp;
+  //       console.log('ReactionList', this.ReactionList);
+  //     },
+  //     (err) => {
+  //       this.toster.error(err.message, err.status);
+  //     }
+  //   );
+  // }
+
+  //GetAllReaction(){
+    //this.http.get('https://localhost:44301/api/Reaction/getAllReaction')
+    //.subscribe((resp:any)=>{
+     // this.ReactionList=resp;
+     // console.log("ReactionList",this.ReactionList);
+//
+ //   },
+ 
+   //     (err) => {
+       
+   //       this.toster.error(err.message, err.status);
+  //      }
+  //    )
+//  }
+
 
   GetAllReaction() {
     this.http
@@ -175,7 +240,114 @@ export class PostComponent implements OnInit {
         (resp: any) => {
           // console.log(resp);
           // this.spinner.hide();
+
+
           this.toster.success(' send comment Successfully :)');
+
+        },
+        (err) => {
+          this.spinner.hide();
+          this.toster.error(err.message, err.status);
+        }
+      );
+
+  }
+
+  GetCommentByPostID(Postid: number) {
+    this.http
+      .get('https://localhost:44301/api/Comments/GetPostComments/' + Postid)
+      .subscribe(
+        (resp: any) => {
+          this.CommentByPostID = resp;
+          // this.spinner.hide();
+          this.toster.success('Successfully :)');
+        },
+        (err) => {
+          // this.spinner.hide()
+          this.toster.error(err.message, err.status);
+        }
+      );
+  }
+
+  CheckLike(postid: number, userid: number) {
+    this.http
+      .get(
+        'https://localhost:44301/api/Comments/GetPostComments/' +
+          userid +
+          '/' +
+          postid
+      )
+      .subscribe(
+        (resp: any) => {
+          this.isLike = resp;
+        },
+        (err) => {
+          this.toster.error(err.message, err.status);
+        }
+      );
+  }
+
+  DeleteLike(obj) {
+    let User: any = localStorage.getItem('userData');
+    User = JSON.parse(User);
+    let uid: number = +User.userid;
+    let DeleteLike = {
+      userId: uid,
+      postId: obj.id,
+    };
+
+    this.http
+      .delete(
+        'https://localhost:44301/api/Reaction/DeleteReaction/' +
+          DeleteLike.userId +
+          '/' +
+          DeleteLike.postId
+      )
+
+      .subscribe(
+        (resp) => {
+          this.toster.success('Delete Like !');
+        },
+        (err) => {}
+      );
+  }
+
+  createLike(obj) {
+    let User: any = localStorage.getItem('userData');
+    User = JSON.parse(User);
+    let uid: number = +User.userid;
+    let addLike = {
+      user_id: uid,
+      post_id: obj.id,
+      is_react: 1,
+    };
+
+    if (this.currentuserId == addLike.user_id)
+      this.http
+        .post('https://localhost:44301/api/Reaction/InsertReaction', addLike)
+        .subscribe(
+          (resp: any) => {
+            console.log(resp);
+            // this.spinner.hide();
+            //this.toster.success(' send comment Successfully :)')
+            this.GetAllReaction();
+          },
+          (err) => {
+            this.spinner.hide();
+            this.toster.error(err.message, err.status);
+          }
+        );
+  }
+
+  updateComment(id: number) {}
+
+  DeleteComment(id: number) {
+    this.http
+      .delete('https://localhost:44301/api/Comments/DeleteComment/delete/' + id)
+
+      .subscribe(
+        (resp) => {
+           this.toster.success(' send comment Successfully :)');
         },
         (err) => {
           this.spinner.hide();
@@ -273,4 +445,5 @@ export class PostComponent implements OnInit {
           }
         );
   }
+
 }
