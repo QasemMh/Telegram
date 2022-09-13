@@ -3,17 +3,45 @@
     <app-header></app-header>
   </nb-layout-header>
 
-  <nb-sidebar class="menu-sidebar mysidebar" responsive start>
+  <nb-sidebar
+    class="menu-sidebar mysidebar"
+    responsive
+    start
+    tag="main-sidebar"
+  >
     <app-sidebar
+      [isActive]="listenToEvent"
       (conversationClicked)="onconversationClicked($event)"
     ></app-sidebar>
   </nb-sidebar>
 
   <nb-layout-column>
-    <app-chat [userChat]="userData" *ngIf="userData"></app-chat>
-    <router-outlet name="user" ></router-outlet>
+    <app-chat
+      [userChat]="userService.userChatData"
+      *ngIf="userService.userChatData"
+    ></app-chat>
+    <!-- <router-outlet> </router-outlet> -->
   </nb-layout-column>
 
-  <nb-layout-footer></nb-layout-footer>
-  </nb-layout>
+  <nb-sidebar
+    right
+    class="right-sidebar"
+    end
+    *ngIf="userService.userProfileSide"
+    tag="profile-sidebar"
+  >
+    <app-userprofile></app-userprofile>
+  </nb-sidebar>
 
+  <nb-sidebar
+    right
+    class="right-sidebar"
+    end
+    *ngIf="userService.profileId"
+    tag="profileData-sidebar"
+  >
+    <app-profile [profileId]="userService.profileId"></app-profile>
+  </nb-sidebar>
+
+  <nb-layout-footer></nb-layout-footer>
+</nb-layout>

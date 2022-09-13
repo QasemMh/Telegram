@@ -89,7 +89,7 @@
                       <td>{{obj.first_name}} {{obj.middle_name}} {{obj.last_name}}</td>
                     <td>{{obj.bio}} </td>
                     <td>{{obj.gender}}</td>
-                    <td><img src="../../../assets/images/{{obj.image_path}}" width="50px"> </td>
+                    <td><img src="../../../assets/img/{{obj.image_path}}" width="50px"> </td>
                     <td>{{obj.created_at}}</td>
                      <td>
                        <button class="border-bottom-0 btn btn-danger" *ngIf="obj.is_blocked==0"  (click)="BlockUser(obj)">block</button>

@@ -1,6 +1,6 @@
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserService } from 'src/app/services/user.service';
-import { NbSidebarService } from '@nebular/theme';
+import { NbDialogService, NbSidebarService } from '@nebular/theme';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SignalrService } from 'src/app/signalr.service';
 import { Subject, Observable } from 'rxjs';
@@ -12,11 +12,15 @@ import { HubConnectionState } from '@microsoft/signalr';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  userData: any;
+  // userData: any;
+  listenToEvent: boolean = true;
+  userProfileSide: boolean = true;
+
   constructor(
     private readonly signalrService: SignalrService,
-    private readonly userService: UserService,
-    private spinner: NgxSpinnerService
+    public readonly userService: UserService,
+    private spinner: NgxSpinnerService,
+    private dialogService: NbDialogService
   ) {}
 
   ngOnInit(): void {
@@ -24,7 +28,7 @@ export class UserComponent implements OnInit {
     if (
       this.signalrService.hubConnection.state == HubConnectionState.Connected
     ) {
-       // this.getUsersList();
+      // this.getUsersList();
     } else {
       this.signalrService.ssObs().subscribe((obj: any) => {
         if (obj.type == 'HubConnStarted') {
@@ -35,59 +39,70 @@ export class UserComponent implements OnInit {
   }
 
   onconversationClicked(evt: any) {
-    this.userData = evt.user;
-    this.userData.userMessages = [];
+    this.spinner.show();
 
-    let currentUserId = +JSON.parse(localStorage.getItem('userData')).userid;
+    this.userService.userChatData = null;
+    this.userService.profileId = null;
+
+    this.listenToEvent = false;
+    let currentTarget = evt.event.currentTarget;
+    let currentUserId = this.userService.GetCurrentUserId();
     this.userService.GetFullUserById(currentUserId).subscribe(
       (currentUser: any) => {
-        this.spinner.show();
         this.userService.GetUserFriendsChat(evt.user.id).subscribe(
           (res: any) => {
-            this.userData.userMessages = res.map((item: any) => {
-              if (item.userFromId == currentUser.userId) {
-                return {
-                  text: item.message,
-                  date: new Date(item.datetime),
-                  reply: true,
-                  type: 'text',
-                  files: [],
-                  user: {
-                    name: currentUser.last_Name + ' ' + currentUser.first_Name,
-                    avatar: currentUser.images,
-                  },
-                };
-              } else {
-                return {
-                  text: item.message,
-                  date: new Date(item.datetime),
-                  reply: false,
-                  type: 'text',
-                  files: [],
-                  user: {
-                    name: evt.user.name,
-                    avatar: evt.user.avatar,
-                  },
-                };
+            this.userService.userChatData = evt.user;
+            this.userService.userChatData.userMessages = [];
+            this.userService.userChatData.userMessages = res.map(
+              (item: any) => {
+                if (item.userFromId == currentUser.userId) {
+                  return {
+                    text: item.message,
+                    date: new Date(item.datetime),
+                    reply: true,
+                    type: 'text',
+                    files: [],
+                    user: {
+                      name:
+                        currentUser.last_Name + ' ' + currentUser.first_Name,
+                      avatar: currentUser.images,
+                    },
+                  };
+                } else {
+                  return {
+                    text: item.message,
+                    date: new Date(item.datetime),
+                    reply: false,
+                    type: 'text',
+                    files: [],
+                    user: {
+                      name: evt.user.name,
+                      avatar: evt.user.avatar,
+                    },
+                  };
+                }
               }
-            });
+            );
             this.spinner.hide();
+            this.changeActiveChat(currentTarget);
+            this.listenToEvent = true;
           },
           (err) => {
             this.spinner.hide();
+            this.listenToEvent = true;
           }
         );
       },
       (err) => {
         this.spinner.hide();
+        this.listenToEvent = true;
       }
     );
-    this.changeActiveChat(evt.event);
   }
-  changeActiveChat(evt: any) {
+  changeActiveChat(currentTarget: any) {
     document.querySelectorAll('[data-user-item]').forEach((item) => {
       item.classList.remove('active');
-      evt.currentTarget.classList.add('active');
+      currentTarget.classList.add('active');
     });
   }
 }

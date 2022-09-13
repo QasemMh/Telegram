@@ -1,4 +1,25 @@
-<nb-chat [title]="userChat.name" size="large" scrollBottom="true">
+<nb-chat size="large" scrollBottom="true">
+  <ng-template nbChatTitle [context]="{ text: userChat.name }" let-data>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="user-datax">
+        <nb-user name="{{ data.text }}" (click)="ShowProfile()"></nb-user>
+      </div>
+      <div>
+        <nb-icon
+          icon="close-outline"
+          class="profileside-toggle"
+          (click)="CloseChat()"
+        ></nb-icon>
+        <button [nbContextMenu]="chatItems">
+          <nb-icon
+            icon="more-vertical-outline"
+            class="profileside-toggle"
+          ></nb-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
   <nb-chat-message
     *ngFor="let msg of userChat.userMessages"
     [type]="msg.type"
@@ -10,9 +31,9 @@
     [avatar]="msg.user.avatar"
     dateFormat="shortTime"
   >
-  </nb-chat-message> 
+  </nb-chat-message>
 
-  <!-- 
+  <!--
       [latitude]="msg.latitude"
           [quote]="msg.quote"
     [longitude]="msg.longitude"
@@ -23,8 +44,22 @@
     [dropFiles]="true"
     [showButton]="true"
     class="fixed-chat"
-    messagePlaceholder="message here..."
     dropFilePlaceholder="drop file"
   >
   </nb-chat-form>
 </nb-chat>
+
+<!-- <div id="smileyIcon">
+  <img
+    (click)="emojiPickerVisible = !emojiPickerVisible"
+    src="../../assets/img/smileIcon.svg"
+  />
+  <emoji-mart
+    (emojiClick)="emojiClicked($event)"
+    *ngIf="emojiPickerVisible"
+    style="position: fixed; top: 30%; left: 40%"
+    [darkMode]="false"
+    title="Pick your emoji…"
+    emoji="point_up"
+  ></emoji-mart>
+</div> -->

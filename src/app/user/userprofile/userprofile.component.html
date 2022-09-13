@@ -1,73 +1,77 @@
-<!-- <div class="container rounded bg-white mt-5 mb-5">
+<div class="container rounded bg-white">
   <div class="row">
-
-    <div class="col-md-5 border-right">
-      <div class="p-3 py-5">
+    <div class="col-md-12">
+      <div class="">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="text-right">Profile Settings</h4>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="labels">First Name</label>
-            {{ this.User.GetUserByIdDto.first_Name }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Middle Name</label
-            >{{ this.User.GetUserByIdDto.middle_Name }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Last Name</label
-            >{{ this.User.GetUserByIdDto.last_Name }}
-          </div>
-          <div class="col-md-12"><label class="labels"> </label></div>
-          <div class="col-md-12">
-            <label class="labels">Gender</label>
-            {{ this.User.GetUserByIdDto.gender }}
-          </div>
-
-          <div class="col-md-12">
-            <label class="labels"></label>
-            <img
-              src="../../assets/img/{{ this.User.GetUserByIdDto.images }}"
-              width="50px"
-            />{{ this.User.GetUserByIdDto.images }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Email</label
-            >{{ this.User.GetUserByIdDto.email }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">phone</label
-            >{{ this.User.GetUserByIdDto.phone }}
-          </div>
-        </div>
-
-        <div class="mt-5 text-center">
-          <button
-            class="btn btn-primary profile-button"
-            type="submit"
-            (click)="updateDailog(this.User.GetUserByIdDto)"
+          <h5
+            class="text-center d-flex justify-content-between align-items-center w-100"
           >
-            UpDate Profile
-          </button>
+            Profile Settings
+            <nb-icon
+              icon="close-outline"
+              class="profileside-toggle"
+              (click)="toggleSidebar()"
+            ></nb-icon>
+          </h5>
         </div>
+
+        <!---->
+        <div class="card">
+          <!-- [src]="User.GetUserByIdDto.images" -->
+          <img
+            src="https://picsum.photos/400/400"
+            class="card-img-top"
+            alt="profile photo"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              <span>
+                {{ User.GetUserByIdDto.first_Name }}
+                {{ User.GetUserByIdDto.middle_Name }}
+                {{ User.GetUserByIdDto.last_Name }}</span
+              >
+            </h5>
+            <p class="card-text">
+              {{
+                User.GetUserByIdDto.bio ??
+                  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, consequuntur."
+              }}
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >@{{ User.GetUserByIdDto.username }}</small
+              >
+              <br />
+              <small class="text-muted"
+                >email:{{ User.GetUserByIdDto.email }}</small
+              >
+              <br />
+              <small class="text-muted"
+                >phone:{{ User.GetUserByIdDto.phone }}</small
+              >
+            </p>
+          </div>
+          <div class="card-footer text-muted">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              (click)="updateDailog(this.User.GetUserByIdDto)"
+            >
+              update profile
+            </button>
+          </div>
+        </div>
+        <!--  -->
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="p-3 py-5">
+
+    <div class="my-4">
+      <hr />
+    </div>
+
+    <div class="col-md-12">
+      <div class="">
         <form [formGroup]="chackPasswords">
-          <div
-            class="d-flex justify-content-between align-items-center experience"
-          >
-            <span>Edit Password</span>
-            <span
-              class="border px-3 p-1 add-experience"
-              (click)="ChackPassword()"
-              ><i class="fa fa-plus"></i>&nbsp;Update</span
-            >
-          </div>
-          <br />
           <div class="col-md-12">
             <label class="labels">Current Password</label
             ><input
@@ -77,7 +81,7 @@
               value=""
             />
           </div>
-          <br />
+
           <div class="col-md-12">
             <label class="labels">New Password</label
             ><input
@@ -87,184 +91,23 @@
               value=""
             />
           </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<ng-template #callUpdateProfileDailog>
-  <form class="example-form" [formGroup]="UpdateProfileUsers">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>first_name</mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="u_first_name"
-        [(ngModel)]="p_data.u_first_name"
-      />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>middle_name </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="u_middle_name"
-        [(ngModel)]="p_data.u_middle_name"
-      />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>last_name </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="u_last_name"
-        [(ngModel)]="p_data.u_last_name"
-      />
-    </mat-form-field>
-    <br />
-
-    <mat-label>Upload Image </mat-label>
-    <input
-      type="file"
-      #file
-      formControlName="u_image_path"
-      (change)="uploadImage(file.files)"
-      [(ngModel)]="p_data.u_image_path"
-    />
-
-    <br />
-
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>u_gender </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="u_gender"
-        [(ngModel)]="p_data.u_gender"
-      />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>l_email </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="l_email"
-        [(ngModel)]="p_data.l_email"
-      />
-    </mat-form-field>
-    <br />
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>l_phone </mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="l_phone"
-        [(ngModel)]="p_data.l_phone"
-      />
-    </mat-form-field>
-    <br />
-
-    <button (click)="UpdateProfileUser()">Update</button>
-  </form>
-</ng-template> -->
-
-<div class="container rounded bg-white mt-5 mb-5">
-  <div class="row">
-    <!-- <div class="col-md-3 border-right"> <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div> </div> -->
-    <div class="col-md-5 border-right">
-      <div class="p-3 py-5">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="text-right">Profile Settings</h4>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="labels">First Name</label>
-            {{ this.User.GetUserByIdDto.first_Name }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Middle Name</label
-            >{{ this.User.GetUserByIdDto.middle_Name }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Last Name</label
-            >{{ this.User.GetUserByIdDto.last_Name }}
-          </div>
-          <div class="col-md-12"><label class="labels"> </label></div>
-          <div class="col-md-12">
-            <label class="labels">Gender</label>
-            {{ this.User.GetUserByIdDto.gender }}
-          </div>
-          <!-- <div style="margin-left:10px ;"><input type="radio"  name="U_gender"  formControlName="U_gender"  style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='F'" > <label class="labels" style="font-size:16px;"> Femail</label> </div> <div style="margin-left:10px ;"><input type="radio"  name="U_gender"   formControlName="U_gender" style ="background:#e8e8e8; border:3px solid #FFF; margin-top: 20PX; margin-right:7px;" [checked]="this.admin.GetUserByIdDto.gender=='M'" > <label class="labels" style="font-size:16px;"> Maile</label> </div> -->
-          <div class="col-md-12">
-            <label class="labels"></label>
-            <img
-              src="../../assets/img/{{ this.User.GetUserByIdDto.images }}"
-              width="50px"
-            />{{ this.User.GetUserByIdDto.images }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">Email</label
-            >{{ this.User.GetUserByIdDto.email }}
-          </div>
-          <div class="col-md-12">
-            <label class="labels">phone</label
-            >{{ this.User.GetUserByIdDto.phone }}
-          </div>
-        </div>
-        <div class="mt-5 text-center">
-          <button
-            class="btn btn-primary profile-button"
-            type="submit"
-            (click)="updateDailog(this.User.GetUserByIdDto)"
-          >
-            UpDate Profile
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="p-3 py-5">
-        <form [formGroup]="chackPasswords">
-          <div
-            class="d-flex justify-content-between align-items-center experience"
-          >
-            <span>Edit Password</span>
-            <span
-              class="border px-3 p-1 add-experience"
+          <br />
+          <div class="col-md-12 experience">
+            <button
+              class="btn btn-primary profile-button"
               (click)="ChackPassword()"
-              ><i class="fa fa-plus"></i>&nbsp;Update password</span
             >
-          </div>
-          <br />
-          <div class="col-md-12">
-            <label class="labels">Current Password</label
-            ><input
-              type="text"
-              class="form-control"
-              formControlName="oldPassword"
-              value=""
-            />
-          </div>
-          <br />
-          <div class="col-md-12">
-            <label class="labels">New Password</label
-            ><input
-              type="text"
-              class="form-control"
-              formControlName="newPassword"
-              value=""
-            />
+              change Password
+            </button>
           </div>
         </form>
         <form
           action="/action_page.php"
           style="margin-top: 40px"
           [formGroup]="insertReview"
+          style="padding-bottom: 100px"
         >
+          <div class="my-4"><hr /></div>
           <p><span for="w3review">Review :</span></p>
           <textarea
             id="w3review"
@@ -272,19 +115,21 @@
             rows="4"
             cols="50"
             formControlName="description"
+            class="form-control"
           ></textarea>
           <br />
           <input
             type="submit"
             class="btn btn-primary profile-button"
             (click)="InsertTestimonial()"
-            value="Save"
+            value="Save review"
           />
         </form>
       </div>
     </div>
   </div>
 </div>
+
 <ng-template #callUpdateProfileDailog>
   <form class="example-form" [formGroup]="UpdateProfileUsers">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -356,6 +201,8 @@
       />
     </mat-form-field>
     <br />
-    <button (click)="UpdateProfileUser()">Update</button>
+    <button (click)="UpdateProfileUser()" class="btn btn-primary">
+      Update
+    </button>
   </form>
 </ng-template>

@@ -185,8 +185,8 @@
           <tr  *ngFor="let obj of Admin.Groups">
             <td>{{obj.name}}</td>
             <td>{{obj.bio}}</td>
-            <td><img src="../../../assets/images/{{obj.image_path}}" width="50px"></td>
-           <!-- <td>
+            <td><img src="../../../assets/img/{{obj.image_path}}" width="50px"> </td>
+            <!-- <td>
              <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
              <button class="border-bottom-0 btn btn-success " *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button>
             </td> -->

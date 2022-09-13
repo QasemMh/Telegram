@@ -1,18 +1,31 @@
 <nb-layout-header fixed>
-  <nb-icon
-    (click)="toggleSidebar()"
-    class="sidebar-toggle"
-    icon="menu-2-outline"
-  ></nb-icon>
-  <span><strong>Telegram</strong></span>
-  <span>
-    <a [routerLink]="[{ outlets: { user: ['userprofile'] } }]">
+  <div class="main-header">
+    <div class="header__left">
+      <nb-icon
+        (click)="toggleSidebar()"
+        class="sidebar-toggle"
+        icon="menu-2-outline"
+      ></nb-icon>
+      <span><strong>Telegram</strong></span>
+      <nb-search type="column-curtain"></nb-search>
+    </div>
+    <div class="header__right">
+      <nb-user
+        [name]="userProfileName"
+        [nbContextMenu]="items"
+        [picture]="userProfilePicture"
+        nbContextMenuTag="my-context-menu"
+      >
+      </nb-user>
+    </div>
+  </div>
+
+  <!-- <a [routerLink]="[{ outlets: { user: ['userprofile'] } }]">
       user profile
-    </a>
-    <!--{ outlets: { user: ['userprofile'] } }
+    </a> -->
+  <!--{ outlets: { user: ['userprofile'] } }
         { outlets: { outletName: ['path'] } }
     -->
-  </span>
-  <nb-search type="column-curtain"></nb-search>
+
   <!-- <nb-search type="rotate-layout"></nb-search> -->
 </nb-layout-header>

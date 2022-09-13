@@ -1,3 +1,6 @@
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { Subject, Observable } from 'rxjs';
 import { Injectable, OnInit } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
@@ -10,7 +13,11 @@ export class SignalrService implements OnInit {
     return this.ssSubj.asObservable();
   }
 
-  constructor() {}
+  constructor(
+    private readonly userService: UserService,
+    private router: Router,
+    private toastr:ToastrService
+  ) {}
   ngOnInit(): void {}
 
   hubConnection: signalR.HubConnection | undefined;
@@ -20,9 +27,9 @@ export class SignalrService implements OnInit {
       .withUrl('https://localhost:44301/chat', {
         skipNegotiation: true,
         transport: signalR.HttpTransportType.WebSockets,
- 
+
         accessTokenFactory: () => <string>localStorage.getItem('userToken'),
-       })
+      })
       .build();
 
     this.hubConnection
@@ -36,6 +43,8 @@ export class SignalrService implements OnInit {
       .catch((err) => {
         console.log('Hub Connection Error...');
         console.log(new Error(err));
+      //  this.router.navigate(['/home']);
+        this.toastr.error('Hub Connection Error...','Error');
       });
   }
 
@@ -50,4 +59,12 @@ export class SignalrService implements OnInit {
       .invoke('SendMessage', 'Hello from Angular')
       .catch((err) => console.error(err));
   }
+
+  //send message
+
+  async sendMessageToFriendInv(connId: string, id: number, msg: string) {
+    await this.hubConnection.invoke('SendMessageToFriend', connId, id, msg);
+  }
+
+  //
 }

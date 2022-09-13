@@ -41,7 +41,7 @@ export class AuthorizationGuard implements CanActivate {
         return false;
       }
     } else if (state.url.toLowerCase().indexOf('user') > 0) {
-      if (decoded.role == 'User') {
+      if (decoded.role == 'User' || decoded.role == 'Admin') {
         return true;
       } else {
         this.toastr.error('You are not authorized to access this page');
