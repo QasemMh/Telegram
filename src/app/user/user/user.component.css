@@ -1,9 +1,22 @@
-
-
 ::ng-deep nb-layout-column {
   padding: 0 !important;
 }
 
 ::ng-deep .scrollable {
   padding: 0 !important;
+}
+
+/* .right-sidebar {
+  width: 30rem !important;
+}
+
+.right-sidebar .main-container {
+  width: 100% !important;
+}
+.right-sidebar .main-container-fixed {
+  width: 100% !important;
+} */
+
+body {
+  background: #0ea4df;
 }

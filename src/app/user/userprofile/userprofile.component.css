@@ -1,44 +1,61 @@
 body {
-    background: #0ea4df
+  background: #0ea4df;
 }
 
 .form-control:focus {
-    box-shadow: none;
-    border-color: #0ea4df
+  box-shadow: none;
+  border-color: #0ea4df;
 }
 
 .profile-button {
-    background: #0ea4df;
-    box-shadow: none;
-    border: none
+  background: #0ea4df;
+  box-shadow: none;
+  border: none;
 }
 
 .profile-button:hover {
-    background: #0ea4df
+  background: #0ea4df;
 }
 
 .profile-button:focus {
-    background: #0ea4df;
-    box-shadow: none
+  background: #0ea4df;
+  box-shadow: none;
 }
 
 .profile-button:active {
-    background: #0ea4df;
-    box-shadow: none
+  background: #0ea4df;
+  box-shadow: none;
 }
 
 .back:hover {
-    color: #0ea4df;
-    cursor: pointer
+  color: #0ea4df;
+  cursor: pointer;
 }
 
 .labels {
-    font-size: 11px
+  font-size: 11px;
 }
 
 .add-experience:hover {
-    background: #0ea4df;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #0ea4df
+  background: #0ea4df;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #0ea4df;
+}
+
+button,
+input[type="submit"] {
+  font-size: 12px !important;
+}
+
+.profileside-toggle {
+  text-decoration: none;
+  color: var(--text-hint-color);
+  font-size: 2rem;
+  cursor: pointer;
+  border: 1px solid #eee;
+}
+.profileside-toggle:hover {
+  color: orangered;
+  border-color: orangered;
 }

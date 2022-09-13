@@ -1,3 +1,4 @@
+import { NbDialogService } from '@nebular/theme';
 import { SignalrService } from 'src/app/signalr.service';
 import { UserService } from 'src/app/services/user.service';
 import { AdminService } from 'src/app/services/admin.service';
@@ -14,7 +15,8 @@ export class SidebarComponent implements OnInit {
   constructor(
     private readonly adminService: AdminService,
     private readonly userService: UserService,
-    private readonly signalrService: SignalrService
+    private readonly signalrService: SignalrService,
+    private dialogService: NbDialogService
   ) {
     this.GetAllUserFriends();
   }
@@ -41,6 +43,12 @@ export class SidebarComponent implements OnInit {
   userOffListener() {
     this.signalrService.hubConnection.on('UserOff', (data) => {
       this.RefreshUserFriends(data, null);
+      let user = this.userService.GetUserFromLocalStorage();
+      if (user)
+        if (user.userid == data) {
+          this.userService.RemoveUserFromLocalStorage();
+          window.location.reload();
+        }
     });
   }
   HandleClickChat(data: any) {
@@ -77,5 +85,9 @@ export class SidebarComponent implements OnInit {
         return a.badgeStatus < b.badgeStatus ? 1 : -1;
       });
     }
+  }
+
+  openFriendsDialog() {
+    //  this.dialogService.open(DialogNamePromptComponent).onClose.subscribe(name => {});
   }
 }

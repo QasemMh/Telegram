@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -6,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
   selectedPost: any = {};
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private router: Router) {}
   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
   Users: any = {};
@@ -17,7 +18,11 @@ export class UserService {
   Testimonial: any = {};
   ChannelPosts: any = [{}];
   display_Image_Profile: any;
+  userChatData: any;
+  userProfileSide: boolean = false;
+  profileId: any;
 
+  //
   GetChannelPosts() {
     this.http
       .get(
@@ -172,7 +177,19 @@ export class UserService {
       'https://localhost:44301/api/Connection/GetItemByConn/' + connId
     );
   }
+  GetUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('userData'));
+  }
+  RemoveUserFromLocalStorage() {
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userToken');
+  }
 
+  Logout() {
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/auth/login']);
+  }
   InsertTestimonial(body: any) {
     this.http
       .post('https://localhost:44301/api/Testimonial/InsertTestimonial', body)

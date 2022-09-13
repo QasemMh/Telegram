@@ -6,3 +6,37 @@ nb-chat-form.fixed-chat {
   background: #fff;
   margin: auto;
 }
+
+#smileyIcon {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 10px;
+  border: 10px;
+  bottom: 6px;
+  z-index: 100;
+}
+
+#smileyIcon img {
+  max-width: 40%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.profileside-toggle {
+  text-decoration: none;
+  color: var(--text-hint-color);
+  font-size: 2rem;
+  cursor: pointer;
+  border: 0;
+}
+button {
+  border: 0;
+  outline: 0;
+  background: none;
+}
+
+.user-datax {
+  cursor: pointer;
+}

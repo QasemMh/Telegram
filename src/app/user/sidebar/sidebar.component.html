@@ -1,5 +1,6 @@
 <nb-tabset>
   <nb-tab
+    style="position: relative"
     tabTitle="friends"
     responsive
     tabIcon="person-outline"
@@ -19,6 +20,10 @@
       class="user-chat"
       (click)="HandleClickChat({ user: user, event: $event })"
     ></nb-user>
+
+    <button class="add-friends" (click)="openFriendsDialog()">
+      <nb-icon icon="plus-outline"></nb-icon>
+    </button>
   </nb-tab>
   <nb-tab
     tabTitle="Groups"

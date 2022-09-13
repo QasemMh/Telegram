@@ -1,7 +1,9 @@
+import { NbSidebarService } from '@nebular/theme';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnDestroy, OnInit, Input } from '@angular/core';
 import { SignalrService } from 'src/app/signalr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -10,15 +12,18 @@ import { SignalrService } from 'src/app/signalr.service';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   @Input() userChat?: any;
-
+  emojiPickerVisible: boolean = false;
   constructor(
     public signalrService: SignalrService,
     private toastr: ToastrService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private sidebarService: NbSidebarService
   ) {}
 
+  chatItems = [{ title: 'Profile' }, { title: 'Block' }];
+
   ngOnInit(): void {
-    // this.signalrService.sendMessageToFriendLis();
     this.sendMessageToFriendLis();
   }
 
@@ -64,15 +69,28 @@ export class ChatComponent implements OnInit, OnDestroy {
         avatar: 'https://i.gifer.com/no.gif',
       },
     });
-    this.signalrService
-      .sendMessageToFriendInv(
-        this.userChat.connid,
-        this.userChat.id,
-        event.message
-      )
-      .then(() => {})
-      .catch((err) => {
-        this.toastr.error("Message can't be sent", 'Error');
-      });
+    this.signalrService.sendMessageToFriendInv(
+      this.userChat.connid,
+      this.userChat.id,
+      event.message
+    );
+  }
+
+  emojiClicked(evt: any) {
+    console.log(evt.emoji.native);
+  }
+
+  CloseChat() {
+    // this.userChat.userMessages = null;
+    //this.userChat = null;
+    this.userService.userChatData = null;
+    this.userChat = null;
+    this.userService.profileId = null;
+    this.router.navigate(['/user']);
+  }
+  ShowProfile() {
+    this.userService.profileId = this.userChat.id;
+    this.sidebarService.toggle(false, 'profileData-sidebar');
+    //this.sidebarService.collapse('profile-sidebar');
   }
 }

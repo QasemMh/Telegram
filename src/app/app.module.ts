@@ -19,22 +19,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import {
-  NbButtonModule,
-  NbCardModule,
-  NbChatModule,
-  NbIconModule,
-  NbLayoutModule,
-  NbListModule,
-  NbMenuModule,
-  NbSidebarModule,
-  NbThemeModule,
-  NbUserModule,
-} from '@nebular/theme';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NbThemeModule } from '@nebular/theme';
+
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, UserprofileComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,7 +34,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NgChartsModule,
     HttpClientModule,
     NbThemeModule.forRoot(),
-   
+
   ],
 
   providers: [
