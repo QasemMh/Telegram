@@ -6,10 +6,27 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AdminService {
+  UpdateService(body: any) {
+    body.Image = this.Service_Image;
+    this.http
+      .put(
+        'https://localhost:44301/api/Services/UpdateService/UpdateService',
+        body
+      )
+      .subscribe(
+        (resp) => {},
+        (err) => {}
+      );
+
 
   selectedPost: any = {};
   PostContant =new BehaviorSubject<string>("abc");
   public SharePostContant =this.PostContant.asObservable();
+
+    //  location.reload();
+  }
+
+
   countOfUsers: any = [{}];
   story: any = [{}];
   display_Image: any;
@@ -26,11 +43,12 @@ export class AdminService {
   GetAllSubscription: any = [{}];
   ProfitsAndLosses: any = [{}];
   CountMemberEachChannel: any = [{}];
-  EmailSenduserblockDTO:any={};
-  Service_Image:any;
-  EmailSendBlockStory:any={};
 
-  AllPost:any=[{}];
+  EmailSenduserblockDTO: any = {};
+  Service_Image: any;
+  EmailSendBlockStory: any = {};
+  AllPost: any = [{}];
+
 
   ImagePost: any;
 
@@ -48,20 +66,16 @@ debugger
 
     body.file_path = this.ImagePost;
     this.http
-      .post(
-        'https://localhost:44301/api/Channel/CreatePost',
-        body
-      )
+      .post('https://localhost:44301/api/Channel/CreatePost', body)
       .subscribe(
         (resp) => {
-          debugger
+          debugger;
           console.log(resp);
         },
         (err) => {}
       );
     window.location.reload();
   }
-
 
   uploadPostAttachment(file: FormData) {
     this.http
@@ -82,37 +96,32 @@ debugger
       );
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   GetAllPost() {
-   return this.http.get('https://localhost:44301/api/Post/GetAllpost').subscribe((res) => {
+    return this.http
+      .get('https://localhost:44301/api/Post/GetAllpost')
+      .subscribe((res) => {
         this.AllPost = res;
       });
   }
 
   GetUserActive() {
-    return this.http.get('https://localhost:44301/api/Users/GetAllUsersActive/GetAllUsersActive').subscribe((res) => {
-         this.UserActive = res;
-       });
-   }
-   GetUserNotActive() {
-    return this.http.get('https://localhost:44301/api/Users/GetAllUsersNotActive/GetAllUsersNotActive').subscribe((res) => {
-         this.UserNotActive = res;
-       });
-   }
-
+    return this.http
+      .get(
+        'https://localhost:44301/api/Users/GetAllUsersActive/GetAllUsersActive'
+      )
+      .subscribe((res) => {
+        this.UserActive = res;
+      });
+  }
+  GetUserNotActive() {
+    return this.http
+      .get(
+        'https://localhost:44301/api/Users/GetAllUsersNotActive/GetAllUsersNotActive'
+      )
+      .subscribe((res) => {
+        this.UserNotActive = res;
+      });
+  }
 
   // GetAllPos5t(){
   //   this.spinner.show();
@@ -126,21 +135,6 @@ debugger
   //   }
   //   )
   // }
-
-
-  UpdateService(body: any) {
-    body.Image = this.Service_Image;
-    this.http
-      .put(
-        'https://localhost:44301/api/Services/UpdateService/UpdateService',
-        body
-      )
-      .subscribe(
-        (resp) => {},
-        (err) => {}
-      );
-    window.location.reload();
-  }
 
   DeleteService(id: number) {
     this.http
@@ -158,16 +152,11 @@ debugger
 
    u_image_path: any;
 
-
-
-   UpdateProfileUser(body: any) {
+  UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image;
 
     this.http
-      .put(
-        'https://localhost:44301/api/Users/UpdateProfileUser',
-        body
-      )
+      .put('https://localhost:44301/api/Users/UpdateProfileUser', body)
       .subscribe((res) => {
         console.log(res);
       });
@@ -192,10 +181,6 @@ debugger
       );
   }
 
-
-
-
-
   GetUserById(id: number) {
     this.http
       .get('https://localhost:44301/api/Users/GetUserById/GetUserById/' + id)
@@ -210,9 +195,6 @@ debugger
     );
   }
 
-
- 
- 
   UploadImageService(file: FormData) {
     this.http
       .post(
@@ -305,9 +287,11 @@ debugger
   }
 
   GetAllGroups() {
-    this.http.get('https://localhost:44301/api/Groups/GetAllGroup').subscribe((res) => {
-      this.Groups = res;
-    });
+    this.http
+      .get('https://localhost:44301/api/Groups/GetAllGroup')
+      .subscribe((res) => {
+        this.Groups = res;
+      });
   }
 
   BlockUser(id: number) {
@@ -373,12 +357,12 @@ debugger
       });
   }
 
-  EmailSendStoryBlock(id:number)
-  {
-    this.http.get('https://localhost:44301/api/Users/sendstoreEmail/blockstore/'+id).subscribe((resp)=>{
-     this.EmailSendBlockStory = resp;
-    })
-
+  EmailSendStoryBlock(id: number) {
+    this.http
+      .get('https://localhost:44301/api/Users/sendstoreEmail/blockstore/' + id)
+      .subscribe((resp) => {
+        this.EmailSendBlockStory = resp;
+      });
   }
 
   EmailSenduserblock(id: number) {
@@ -388,7 +372,6 @@ debugger
       )
       .subscribe((resp) => {
         this.EmailSenduserblockDTO = resp;
-       });
+      });
   }
 }
-

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -5,13 +6,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-
-  Groups :any=[{}];
-  SearchGroupDto:any=[{}];
-  Story:any={};
+  Groups: any = [{}];
+  SearchGroupDto: any = [{}];
+  Story: any = {};
 
   selectedPost: any = {};
-  constructor(public http: HttpClient) {}
+  constructor(public http: HttpClient, private router: Router) {}
   GetUserByIdDto: any = {};
   UpdateProfileUserDTO: any = {};
   Users: any = {};
@@ -22,7 +22,11 @@ export class UserService {
   Testimonial: any = {};
   ChannelPosts: any = [{}];
   display_Image_Profile: any;
+  userChatData: any;
+  userProfileSide: boolean = false;
+  profileId: any;
 
+  //
   GetChannelPosts() {
     this.http
       .get(
@@ -177,43 +181,58 @@ export class UserService {
       'https://localhost:44301/api/Connection/GetItemByConn/' + connId
     );
   }
+  GetUserFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('userData'));
+  }
+  RemoveUserFromLocalStorage() {
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userToken');
+  }
 
-  InsertTestimonial(body:any)
-  {
-    this.http.post('https://localhost:44301/api/Testimonial/InsertTestimonial',body).subscribe((res)=>{
-     this.Users=res;
-     console.log(res);
-  })}
-
-
-  insertStore(body:any)
-  {
-    this.http.post('https://localhost:44301/api/story/InsertStory',body).subscribe((res)=>{
-      this.Story=res;
-      console.log(res);
-   })
+  Logout() {
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/auth/login']);
   }
 
 
-  searchGroup(data:any)
-{
-this.http.post('https://localhost:44301/api/Groups/SearchGroupUserChannel/filturGroup',data)
-.subscribe((res)=>{
-console.log(res);
-this.Groups=[res];
-})
-}
+  InsertTestimonial(body: any) {
+    this.http
+      .post('https://localhost:44301/api/Testimonial/InsertTestimonial', body)
+      .subscribe((res) => {
+        this.Users = res;
+        console.log(res);
+      });
+  }
 
+  insertStore(body: any) {
+    this.http
+      .post('https://localhost:44301/api/story/InsertStory', body)
+      .subscribe((res) => {
+        this.Story = res;
+        console.log(res);
+      });
+  }
 
-GetAllGroups()
-{
-  this.http.get('https://localhost:44301/api/Groups/GetAllAdminGroup').subscribe((res)=>{
-  
-  this.Groups=res;
-  console.log(res);
-  })
+  searchGroup(data: any) {
+    this.http
+      .post(
+        'https://localhost:44301/api/Groups/SearchGroupUserChannel/filturGroup',
+        data
+      )
+      .subscribe((res) => {
+        console.log(res);
+        this.Groups = [res];
+      });
+  }
+
+  GetAllGroups() {
+    this.http
+      .get('https://localhost:44301/api/Groups/GetAllAdminGroup')
+      .subscribe((res) => {
+        this.Groups = res;
+        console.log(res);
+      });
   }
 }
-
-  
 
