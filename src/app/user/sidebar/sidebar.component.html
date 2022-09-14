@@ -4,8 +4,8 @@
     tabTitle="friends"
     responsive
     tabIcon="person-outline"
-    badgeText="99+"
-    badgeStatus="danger"
+    [badgeText]="users.length.toString()"
+    badgeStatus="info"
   >
     <nb-user
       data-user-item
@@ -29,7 +29,7 @@
     tabTitle="Groups"
     tabIcon="person-outline"
     responsive
-    badgeText="2"
+    badgeText="0"
     badgeStatus="danger"
   >
     groups here
@@ -38,7 +38,7 @@
     tabTitle="Channel"
     tabIcon="person-outline"
     responsive
-    badgeText="9"
+    badgeText="0"
     badgeStatus="danger"
   >
     channel here
