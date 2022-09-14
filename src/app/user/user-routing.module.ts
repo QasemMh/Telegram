@@ -9,6 +9,7 @@ import { PostComponent } from './post/post.component';
 import { StoreComponent } from './store/store.component';
 import { SearchComponent } from './search/search.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
+import { PostcardComponent } from './postcard/postcard.component';
 const routes: Routes = [
   {
     path: '',
@@ -31,8 +32,8 @@ const routes: Routes = [
 
       { path: 'channel', component: ChannelComponent },
       {
-        path: 'channel/:id/post/:id',
-        component: PostComponent,
+        path: 'post/:id',
+        component: PostcardComponent,
       },
     ],
   },

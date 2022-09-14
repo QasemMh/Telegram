@@ -31,6 +31,9 @@ export class UserService {
   userProfileSide: boolean = false;
   profileId: any;
   display_Image: any;
+ 
+  //display_Image_Profile: any;
+  
   GetChannelPosts() {
     this.http
       .get(
@@ -64,12 +67,16 @@ export class UserService {
       });
   }
 
-  p_data: number = +localStorage.getItem('loginId');
+  
   GetUserSubscription() {
+    
+  let User : any = localStorage.getItem("userData");
+  User =JSON.parse(User);
+  let uid : number =  +User.loginId;
     this.http
       .get(
         'https://localhost:44301/api/Subscription/GetUserSubscription/' +
-          this.p_data
+         uid
       )
       .subscribe((res) => {
         this.UserSubscription = res;

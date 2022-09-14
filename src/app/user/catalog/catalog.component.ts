@@ -48,8 +48,11 @@ export class CatalogComponent implements OnInit {
     // })
 
     CreateSubscripe(obj:any){
+      let User : any = localStorage.getItem("userData");
+      User =JSON.parse(User);
+      let uid : number =  +User.loginId;
     this.createFormSubscripe.controls['ServicesId'].setValue(obj.id);
-    this.createFormSubscripe.controls['UserId'].setValue(2);
+    this.createFormSubscripe.controls['UserId'].setValue(uid);
      this.Createdialog(obj);
       console.log(this.createFormSubscripe.value);
       this.User.CreateSubscripe(this.createFormSubscripe.value);
