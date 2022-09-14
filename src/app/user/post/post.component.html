@@ -1,8 +1,354 @@
-<p>{{User.selectedPost.firstName}}</p>
-<p>{{User.selectedPost.lastName}}</p>
-<p>{{User.selectedPost.postContent}}</p>
-<p>{{User.selectedPost.createAt}}</p>
-<p>{{User.selectedPost.filePath}}</p>
-<p>{{User.selectedPost.countComment}}</p>
- <p>{{User.selectedPost.countLike}}</p>
- 
+<!--
+<div *ngFor="let obj of admin.AllPost">
+<h1>{{obj.content}}</h1>
+</div> -->
+
+<ng-template #callCopyLinkDailog>
+    <h2 mat-dialog-title>Copy This Link</h2>
+
+    <mat-dialog-content class="mat-typography">
+        <h3 mat-dialog-title>http://localhost:4200/user/{{ this.link }}</h3>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Done</button>
+    </mat-dialog-actions>
+</ng-template>
+
+<button style="margin-bottom: 10px" class="border-bottom-0 btn btn-info" (click)="CreatePostdialog()">
+    + Add New Post
+</button>
+
+<!--
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center mb-5">
+      <br>
+      <br>
+      <h2 class="heading-section">post</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+  
+      <div class="table-wrap">
+        <table class="table">
+          <thead class="thead-primary">
+            <tr>
+  
+              <th>name</th>
+              <th>bio</th>
+              <th>Image_path</th>
+            </tr>
+          </thead>
+          <tbody>
+  
+            <tr *ngFor="let obj of AllPost" >
+  
+              <td>{{obj.user}}</td>
+              <td>{{obj.content}}</td>
+               <td><img src="../../../assets/img/{{obj.media_posts}}" width="50px"></td>
+  
+             <td> -->
+<!-- <button class="border-bottom-0 btn btn-danger" *ngIf="obj.isBlocked==0"  (click)="BlockStory(obj)">block</button>
+               <button class="border-bottom-0 btn btn-success " *ngIf="obj.isBlocked!=0"  (click)="UnBlockstory(obj)">unblock</button> -->
+<!-- </td>
+            </tr>
+  
+  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> -->
+
+<div *ngFor="let Actv of ListSebscribe">
+    <button *ngIf="
+        Actv.userId == currentuserId &&
+        Actv.servicesId == 30 &&
+        Actv.status == 'Active'
+      " class="btn btn-primary" style="font-size: 50px; position: fixed; bottom: 2%;right:2%">
+        +
+    </button>
+</div>
+<div>
+    <!-- <div *ngFor="let Actv of ListSebscribe let i = index " >
+      <button  *ngIf="(!(Actv.userId==currentuserId && Actv.servicesId==30 && Actv.status == 'Active')&& i==0 )" class="btn btn-danger" style="font-size: 50px; float: right; position: sticky; bottom: 0;" > By Now </button>
+    </div>
+    <div> -->
+
+    <div class="container">
+        <div class="card" *ngFor="let obj of AllPost">
+            <div>
+                <div class="card-body">
+                    <!-- <button (click)="DeletePost(obj.id)">Delete</button> -->
+                    <div style="margin-bottom: 20px" class="dropdown-container" tabindex="-1">
+                        <div class="three-dots"></div>
+                        <div class="dropdown">
+                            <a  (click)="dialogepost(obj)">
+                                <div style="
+                      border-bottom: 1px solid #888;
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                    ">
+                                    Report
+                                </div>
+                            </a>
+                            <a (click)="PostProfile(obj)">
+                                <div style="
+                      border-bottom: 1px solid #888;
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                    ">
+                                    Link
+                                </div>
+                            </a>
+
+                            <a href="#" (click)="DeletePost(obj.id)">
+                                <div style="
+                      border-bottom: 1px solid #888;
+                      margin-top: 5px;
+                      margin-bottom: 5px;
+                    " *ngIf="obj.user_id == currentuserId">
+                                    Delete
+                                </div>
+                            </a>
+                            <a href="#" (click)="UpdatePost(obj)">
+                                <div *ngIf="obj.user_id == currentuserId">Update</div>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <span class="tag tag-teal">Sheare</span> -->
+                    <!-- <h4>
+          {{obj.postContent}}
+        </h4> -->
+
+                    <div class="user">
+                        <div>
+                            <img src="../../../assets/img/{{ obj.imageUser }}" />
+                        </div>
+                        <div class="user-info">
+                            <h5>{{ obj.firstName }} {{ obj.lastName }}</h5>
+                            <small>{{ obj.createAt }}</small>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <p>
+                        {{ obj.postContent }}
+                    </p>
+                </div>
+                <div class="card-header">
+                    <img *ngIf="obj.filePath != null" src="../../../assets/img/{{ obj.filePath }}" />
+                </div>
+                <hr />
+
+                <span style="margin-top: 20px; margin-left: 20px">Like : {{ obj.countLike }} Comment : {{
+                    obj.countComment }}
+                </span>
+
+                <div *ngFor="let reaction of ReactionList; let i = index" style="margin-right: 30px">
+                    <!-- *ngIf="reaction.user_id==null && obj.id==null && reaction.is_react==null" -->
+
+                    <!-- <span *ngIf="reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1" style="color:green">you liked this post</span> -->
+
+                    <!-- then Like ;else Lvike -->
+                    <div>
+                        <!-- *ngIf=" ((reaction.user_id==currentuserId && obj.id==reaction.post_id && reaction.is_react==1)==false ) && i==0" -->
+
+                        <button style="margin-left: 20px" *ngIf="
+                  (reaction.user_id == currentuserId &&
+                    obj.id == reaction.post_id &&
+                    reaction.is_react == 1) == false && i == 0
+                " class="btn btn-primary" (click)="createLike(obj)">
+                            Like
+                        </button>
+
+                        <button style="margin-left: 20px" *ngIf="
+                  reaction.user_id == currentuserId &&
+                  obj.id == reaction.post_id &&
+                  reaction.is_react == 1
+                " class="btn btn-danger" (click)="DeleteLike(obj)">
+                            unLike Like
+                        </button>
+                    </div>
+
+                    <ng-template #callCreatepostDailog>
+                        <h2 mat-dialog-title>Add New post</h2>
+                        <mat-dialog-content class="mat-typography">
+                            <form class="example-form" [formGroup]="createFormPost">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Post Content</mat-label>
+                                    <input type="text" matInput formControlName="content" />
+
+                                    <mat-error *ngIf="
+                        createFormPost.controls['content'].hasError('required')
+                      ">
+                                        Post Content is <strong>required</strong>
+                                    </mat-error>
+                                </mat-form-field>
+                                <br />
+                                <mat-label>Upload Image </mat-label>
+                                <input type="file" #file formControlName="file_path"
+                                    (change)="uploadImage(file.files)" />
+                            </form>
+                        </mat-dialog-content>
+                        <mat-dialog-actions align="end">
+                            <button mat-button mat-dialog-close>Cancel</button>
+                            <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreatePost()">
+                                save
+                            </button>
+                        </mat-dialog-actions>
+                    </ng-template>
+
+                    <!--
+  
+  <ng-template #callCreatepostDailog>
+    <h2 mat-dialog-title>Add New Post</h2>
+    <mat-dialog-content class="mat-typography">
+  
+  
+    <form class="example-form" [formGroup]="createFormPost" >
+  
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label> Content </mat-label>
+        <input type="text" matInput formControlName="content">
+        <mat-error *ngIf="createFormPost.controls['content'].hasError('required')">
+          Post content is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+  
+  
+    <br>
+        <mat-label>Upload Image </mat-label>
+  
+        <input type="file" #file formControlName="file_path" (change)="uploadImage(file.files)">
+    </form>
+  
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="CreatePost()">save</button>
+    </mat-dialog-actions>
+    </ng-template>
+  
+  
+   -->
+
+                    <!-- 1st blog post -->
+                    <!-- <div class="card" > -->
+                    =======
+                </div>
+
+                <ng-template #Lvike>
+                    <button style="border-color: rgb(241, 12, 12); margin-left: 20px" class="btn btn-defult"
+                        (click)="createLike(obj.id)">
+                        Like
+                    </button>
+                </ng-template>
+                <ng-template #Like2>
+                    <span style="margin-left: 20px" class="btn btn-danger" (click)="(obj.id)">Un Like</span>
+                </ng-template>
+
+                <!-- <span    style="  margin-right: 30px;" > <button class="btn btn-danger" (click)="createLike(obj)" >desLike</button></span> -->
+
+                <!-- <span  *ngIf="isLike ==false"  style="  margin-right: 30px;" > <button class="btn btn-danger" (click)="createLike(obj)" >Like</button></span>
+      <span  *ngIf="isLike ==true"  style="  margin-right: 30px;" > <button class="btn btn-primary" (click)="createLike(obj)" >Like</button></span> -->
+                <hr />
+
+                <!-- <input  class="form-control"  type="hidden"  ngModel [(ngModel)]="postid"     /> -->
+                <!-- #userComment="ngForm"(ngSubmit)="CreateComment(userComment )" -->
+
+                <div class="form-group">
+                    <form class="form-inline" style="margin: 10px">
+                        <div class="form-group">
+                            <input style="height: 50px" class="form-control" type="text" ngModel [(ngModel)]="message"
+                                id="message" name="message" placeholder="Your comments" />
+                            <button type="submit" name="Comment" style="width: 20%; margin-top: 10px"
+                                class="btn btn-primary" (click)="AddComment(obj)">
+                                Add
+                            </button>
+                            <!-- <button class="btn btn-defult"   style=" margin-top:10px; color: dodgerblue; "   (click)="GetCommentByPostID(obj.id)">Show comments</button> -->
+                        </div>
+                    </form>
+                </div>
+
+                <hr />
+                <div *ngFor="let comment of commentsList">
+                    <div *ngIf="comment.postId == obj.id" style="margin-right: 60px">
+                        <div>
+                            <div style="
+                    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                    padding: 5px;
+                    margin: 30px;
+                    width: 100%;
+                  " class="user">
+                                <div>
+                                    <img style="width: 40px; border-radius: 50%" *ngIf="comment.userImage != null"
+                                        src="../../../assets/img/{{ comment.userImage }}" />
+                                </div>
+                                <div class="user-info">
+                                    <h5>{{ comment.firstName }} {{ comment.lastName }}</h5>
+                                    <p>{{ comment.content }}</p>
+                                    <small>{{ comment.createdAt }}</small>
+                                </div>
+
+                                <a style="margin-left: 100px; cursor: pointer" *ngIf="comment.userId == currentuserId"
+                                    (click)="updateComment(comment.comment_ID)">Update</a>
+                                <a style="margin-left: 10px; cursor: pointer" *ngIf="comment.userId == currentuserId"
+                                    (click)="DeleteComment(comment.comment_ID)">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<ng-template #callCreateServicesDailog>
+    <h2 mat-dialog-title>Add Report Post:</h2>
+    <mat-dialog-content class="mat-typography">
+        <ng-template #callCreateServicesDailog>
+            <h2 mat-dialog-title>Add Report Post:</h2>
+            <mat-dialog-content class="mat-typography">
+                <form action="/action_page.php" [formGroup]="createFormReportChannel">
+                    <p><label for="w3review"> Select Type: </label></p>
+                    <select id="myList" formControlName="type">
+                        <option value="inappropriate content">
+                            inappropriate content
+                        </option>
+                        <option value="elemental content">elemental content</option>
+                        <option value="encourages hate">encourages hate</option>
+                    </select>
+
+                    <br />
+                    <br />
+                    <p><label for="w3review">content:</label></p>
+                    <textarea id="w3review" name="w3review" rows="4" cols="50" formControlName="description"></textarea>
+                    <br />
+                </form>
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+                <button mat-button mat-dialog-close>Cancel</button>
+                <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="InsertReportPost()">
+                    save
+                </button>
+            </mat-dialog-actions>
+        </ng-template>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="InsertReportPost()">
+            save
+        </button>
+    </mat-dialog-actions>
+</ng-template>
+</mat-dialog-content>
