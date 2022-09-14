@@ -4,18 +4,16 @@
     <nb-list>
       <nb-list-item *ngFor="let user of users">
         <nb-user
-          name="{{ user.first_name }} {{ user.last_name }}"
+          name="{{ user?.first_name }} {{ user?.last_name }}"
           size="medium"
-          picture="{{ user.image_path }}"
+          picture="{{ user?.image_path }}"
         ></nb-user>
         <nb-action>
-          <button
-            nbButton
-            hero
-            status="primary"
-            (click)="addFriend($event, user)"
-          >
-            Add
+          <button nbButton hero status="primary" (click)="Accept($event, user)">
+            Accept
+          </button>
+          <button nbButton hero status="danger" (click)="Reject($event, user)">
+            Reject
           </button>
         </nb-action>
       </nb-list-item>

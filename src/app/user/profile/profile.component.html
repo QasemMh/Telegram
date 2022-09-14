@@ -21,9 +21,9 @@
           <div class="card-body">
             <h5 class="card-title">
               <span>
-                {{ profile.first_Name }}
-                {{ profile.middle_Name }}
-                {{ profile.last_Name }}</span
+                {{ profile?.first_Name }}
+                {{ profile?.middle_Name }}
+                {{ profile?.last_Name }}</span
               >
             </h5>
             <p class="card-text">
@@ -40,7 +40,9 @@
               <small class="text-muted">phone:{{ profile.phone }}</small>
             </p>
           </div>
-          <div class="card-footer text-muted"></div>
+          <div class="card-footer text-muted">
+            <button class="btn btn-danger btn-sm" (click)="DeleteFriend()">Delete Friends</button>
+          </div>
         </div>
         <!--  -->
       </div>

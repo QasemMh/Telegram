@@ -1,6 +1,8 @@
+import { FriendsRequestComponent } from './../friends-request/friends-request.component';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import {
+  NbDialogService,
   NbMenuService,
   NbSearchService,
   NbSidebarService,
@@ -20,7 +22,8 @@ export class HeaderComponent implements OnInit {
     private nbMenuService: NbMenuService,
     @Inject(NB_WINDOW) private window,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private dialogService: NbDialogService
   ) {
     this.searchService.onSearchSubmit().subscribe((data: any) => {
       console.log('Search: ', data.term);
@@ -29,7 +32,11 @@ export class HeaderComponent implements OnInit {
 
   userProfileName: string;
   userProfilePicture: string;
-  items = [{ title: 'Profile' }, { title: 'Logout' }];
+  items = [
+    { title: 'Profile' },
+    { title: 'Friends-request' },
+    { title: 'Logout' },
+  ];
 
   ngOnInit(): void {
     let userId = this.userService.GetUserFromLocalStorage().userid;
@@ -38,12 +45,14 @@ export class HeaderComponent implements OnInit {
       this.userProfilePicture = res.images;
     });
     this.nbMenuService.onItemClick().subscribe((bag: any) => {
-      if(bag.tag == 'my-context-menu') 
-      if (bag.item.title == 'Logout') {
-        this.Logout();
-      } else if (bag.item.title == 'Profile') {
-        this.userService.userProfileSide = !this.userService.userProfileSide;
-      }
+      if (bag.tag == 'my-context-menu')
+        if (bag.item.title == 'Logout') {
+          this.Logout();
+        } else if (bag.item.title == 'Profile') {
+          this.userService.userProfileSide = !this.userService.userProfileSide;
+        } else if (bag.item.title == 'Friends-request') {
+          this.openFriendsDialog();
+        }
     });
   }
 
@@ -53,5 +62,9 @@ export class HeaderComponent implements OnInit {
 
   Logout() {
     this.userService.Logout();
+  }
+
+  openFriendsDialog() {
+    this.dialogService.open(FriendsRequestComponent);
   }
 }

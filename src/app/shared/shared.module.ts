@@ -32,6 +32,7 @@ import {
   NbTabsetModule,
   NbContextMenuModule,
   NbDialogModule,
+  NbActionsModule,
 } from '@nebular/theme';
 @NgModule({
   declarations: [],
@@ -62,6 +63,7 @@ import {
     PickerModule,
     NbContextMenuModule,
     NbDialogModule.forRoot( ),
+    NbActionsModule
 
   ],
   exports: [
@@ -88,7 +90,8 @@ import {
     AngularEmojisModule,
     PickerModule,
     NbContextMenuModule,
-    NbDialogModule
+    NbDialogModule,    NbActionsModule
+
   ],
 })
 export class SharedModule {}

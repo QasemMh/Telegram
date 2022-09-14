@@ -21,7 +21,10 @@ import { SearchComponent } from './search/search.component';
 import { UserFriendsComponent } from './user-friends/user-friends.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
+ import { FriendsRequestComponent } from './friends-request/friends-request.component';
+ 
 import { PostcardComponent } from './postcard/postcard.component';
+ 
 
 @NgModule({
   declarations: [
@@ -40,8 +43,10 @@ import { PostcardComponent } from './postcard/postcard.component';
     StoreComponent,
     SearchComponent,
     UserFriendsComponent,
+     FriendsRequestComponent,
+ 
     PostcardComponent,
-  ],
+   ],
   imports: [CommonModule, UserRoutingModule, SharedModule],
   providers: [
     {
