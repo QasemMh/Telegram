@@ -49,6 +49,7 @@ export class FriendsRequestComponent implements OnInit {
       })
       .subscribe((res: any) => {
         this.tostr.info('You rejecte friend request');
+        //this.tostr.info('You rejecte friend request');
       });
   }
 }
