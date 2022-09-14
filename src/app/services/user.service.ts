@@ -31,8 +31,6 @@ export class UserService {
   userProfileSide: boolean = false;
   profileId: any;
   display_Image: any;
-  display_Image_Profile: any;
-  //
   GetChannelPosts() {
     this.http
       .get(
@@ -78,7 +76,6 @@ export class UserService {
       });
   }
 
- 
   uploadAttachment(file: FormData) {
     this.http
       .post(
@@ -106,7 +103,6 @@ export class UserService {
         console.log(res);
       });
   }
-
 
   UpdateProfileUser(body: any) {
     body.u_image_path = this.display_Image_Profile;
@@ -171,7 +167,7 @@ export class UserService {
     );
   }
   GetAllUserFriends(userId: number) {
-   return this.http.get(
+    return this.http.get(
       'https://localhost:44301/api/Friends/GetUserFriends/' + userId
     );
   }
@@ -244,5 +240,12 @@ export class UserService {
         this.Groups = res;
         console.log(res);
       });
+  }
+
+  DeleteFriend(body: any) {
+    return this.http.post(
+      'https://localhost:44301/api/Friends/DeleteFriendship',
+      body
+    );
   }
 }

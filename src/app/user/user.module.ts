@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 import { UserFriendsComponent } from './user-friends/user-friends.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
+import { FriendsRequestComponent } from './friends-request/friends-request.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TokenInterceptor } from 'src/Interceptor/token.Interceptor';
     StoreComponent,
     SearchComponent,
     UserFriendsComponent,
+    FriendsRequestComponent,
   ],
   imports: [CommonModule, UserRoutingModule, SharedModule],
   providers: [
